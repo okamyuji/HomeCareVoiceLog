@@ -1,5 +1,6 @@
 import HomeCareVoiceLogCore
 import SwiftUI
+import UIKit
 
 struct RecordView: View {
     @Environment(\.modelContext) private var modelContext
@@ -35,13 +36,6 @@ struct RecordView: View {
                     .lineLimit(3 ... 6)
                     .focused($focusedField, equals: .freeMemo)
                     .accessibilityIdentifier("free-memo-field")
-
-                if focusedField == .freeMemo {
-                    Button(String(localized: "keyboard.dismiss")) {
-                        focusedField = nil
-                    }
-                    .accessibilityIdentifier("dismiss-keyboard-button")
-                }
 
                 if viewModel.isRecording {
                     Section {
@@ -92,12 +86,35 @@ struct RecordView: View {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button(String(localized: "keyboard.done")) {
-                        focusedField = nil
+                        dismissKeyboard()
                     }
                 }
             }
-            .scrollDismissesKeyboard(.interactively)
+            .safeAreaInset(edge: .bottom) {
+                if focusedField == .freeMemo {
+                    HStack {
+                        Spacer()
+                        Button(String(localized: "keyboard.dismiss")) {
+                            dismissKeyboard()
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .accessibilityIdentifier("dismiss-keyboard-button")
+                }
+            }
         }
+    }
+
+    private func dismissKeyboard() {
+        focusedField = nil
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
     }
 }
 

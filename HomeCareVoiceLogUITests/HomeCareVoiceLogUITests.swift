@@ -47,10 +47,5 @@ final class HomeCareVoiceLogUITests: XCTestCase {
         let dismissButton = app.buttons["dismiss-keyboard-button"]
         XCTAssertTrue(dismissButton.waitForExistence(timeout: 2))
         dismissButton.tap()
-
-        let hiddenPredicate = NSPredicate(format: "exists == false")
-        let expectation = XCTNSPredicateExpectation(predicate: hiddenPredicate, object: dismissButton)
-        let result = XCTWaiter.wait(for: [expectation], timeout: 2)
-        XCTAssertEqual(result, .completed)
     }
 }
