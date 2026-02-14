@@ -3,13 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */; };
 		44EE2EFC6B827F103321A866 /* HomeCareVoiceLogCore in Frameworks */ = {isa = PBXBuildFile; productRef = DE243C4263DC63856EBF5A16 /* HomeCareVoiceLogCore */; };
+		53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */; };
+		7437B4D20881C783FDF1A3BE /* CareRecordRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */; };
 		7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */; };
+		A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */; };
+		AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */; };
 		F1417BF2BD48FC41163F11D5 /* PlaceholderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,10 +36,14 @@
 
 /* Begin PBXFileReference section */
 		1C85F317D307256080CA9DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepository.swift; sourceTree = "<group>"; };
+		59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HomeCareVoiceLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTests.swift; sourceTree = "<group>"; };
-		6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeCareVoiceLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordEntity.swift; sourceTree = "<group>"; };
+		6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HomeCareVoiceLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
+		B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsEntity.swift; sourceTree = "<group>"; };
 		B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderUITests.swift; sourceTree = "<group>"; };
 		CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogApp.swift; sourceTree = "<group>"; };
 		DD0924C829E28491CFC504E7 /* HomeCareVoiceLogCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HomeCareVoiceLogCore; path = Packages/HomeCareVoiceLogCore; sourceTree = SOURCE_ROOT; };
@@ -82,6 +90,14 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		4FA4745A0BC2D00C38D97292 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				9330C4EA9FFEA6B9154FD44A /* Persistence */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
 		5507BF7D09DE714F2F66B46D /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +109,7 @@
 		5BFB0C89EBDEBADF5B71DF1D /* HomeCareVoiceLogTests */ = {
 			isa = PBXGroup;
 			children = (
+				803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */,
 				6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */,
 			);
 			path = HomeCareVoiceLogTests;
@@ -104,6 +121,16 @@
 				B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */,
 			);
 			path = HomeCareVoiceLogUITests;
+			sourceTree = "<group>";
+		};
+		9330C4EA9FFEA6B9154FD44A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */,
+				54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */,
+				B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		D5DF09AE86DEBB67BBD89DE1 /* App */ = {
@@ -118,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				D5DF09AE86DEBB67BBD89DE1 /* App */,
+				4FA4745A0BC2D00C38D97292 /* Infrastructure */,
 				5507BF7D09DE714F2F66B46D /* Supporting */,
 			);
 			path = HomeCareVoiceLog;
@@ -188,7 +216,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					69C145E4A77EB399E0B4CDC4 = {
 						TestTargetID = 96A3269CD4C7B4FE971D6634;
@@ -211,6 +239,7 @@
 			packageReferences = (
 				19852675C5EBBC6F3189169A /* XCLocalSwiftPackageReference "Packages/HomeCareVoiceLogCore" */,
 			);
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -234,7 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */,
+				AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */,
 				7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */,
+				A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7437B4D20881C783FDF1A3BE /* CareRecordRepositoryTests.swift in Sources */,
 				2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +350,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -330,7 +362,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 6.0;
@@ -410,7 +441,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -430,7 +460,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
@@ -443,7 +472,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P2HW44ZU6P;
 				INFOPLIST_FILE = HomeCareVoiceLog/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -462,7 +490,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P2HW44ZU6P;
 				INFOPLIST_FILE = HomeCareVoiceLog/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
