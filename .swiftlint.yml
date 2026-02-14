@@ -1,0 +1,21 @@
+included:
+  - HomeCareVoiceLog
+  - HomeCareVoiceLogTests
+  - HomeCareVoiceLogUITests
+  - Packages/HomeCareVoiceLogCore/Sources
+  - Packages/HomeCareVoiceLogCore/Tests
+
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - first_where
+  - sorted_imports
+
+line_length:
+  warning: 140
+  error: 180
+
+disabled_rules:
+  - todo
+
+reporter: "xcode"
