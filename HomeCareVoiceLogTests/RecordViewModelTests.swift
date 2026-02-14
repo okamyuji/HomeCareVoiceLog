@@ -1,10 +1,10 @@
-@testable import HomeCareVoiceLog
 import Foundation
+@testable import HomeCareVoiceLog
 import XCTest
 
 @MainActor
 final class RecordViewModelTests: XCTestCase {
-    func testStopRecordingTriggersTranscriptionAutomatically() async throws {
+    func testStopRecordingTriggersTranscriptionAutomatically() async {
         let audio = AudioRecorderServiceMock()
         let speech = SpeechTranscriptionServiceMock(result: .success("recognized text"))
         let files = FileManagerMock()
@@ -21,7 +21,7 @@ final class RecordViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.transcriptText, "recognized text")
     }
 
-    func testSuccessfulTranscriptionDeletesAudioFile() async throws {
+    func testSuccessfulTranscriptionDeletesAudioFile() async {
         let audio = AudioRecorderServiceMock()
         let speech = SpeechTranscriptionServiceMock(result: .success("done"))
         let files = FileManagerMock()
@@ -37,7 +37,7 @@ final class RecordViewModelTests: XCTestCase {
         XCTAssertEqual(files.deletedURLs.count, 1)
     }
 
-    func testFailureKeepsRecoverableErrorState() async throws {
+    func testFailureKeepsRecoverableErrorState() async {
         let audio = AudioRecorderServiceMock()
         let speech = SpeechTranscriptionServiceMock(result: .failure(SpeechTranscriptionError.recognitionFailed))
         let files = FileManagerMock()
@@ -53,12 +53,67 @@ final class RecordViewModelTests: XCTestCase {
         XCTAssertNotNil(viewModel.lastErrorMessage)
         XCTAssertEqual(files.deletedURLs.count, 0)
     }
+
+    func testElapsedRecordingSecondsIncreaseWhileRecording() async {
+        let audio = AudioRecorderServiceMock()
+        let speech = SpeechTranscriptionServiceMock(result: .success("ok"))
+        let viewModel = RecordViewModel(
+            audioRecorder: audio,
+            speechTranscriber: speech,
+            tickIntervalNanoseconds: 20_000_000
+        )
+
+        await viewModel.startRecording()
+        try? await Task.sleep(nanoseconds: 70_000_000)
+
+        XCTAssertGreaterThanOrEqual(viewModel.elapsedRecordingSeconds, 1)
+    }
+
+    func testElapsedRecordingSecondsResetToZeroAfterStopRecording() async {
+        let audio = AudioRecorderServiceMock()
+        let speech = SpeechTranscriptionServiceMock(result: .success("ok"))
+        let viewModel = RecordViewModel(
+            audioRecorder: audio,
+            speechTranscriber: speech,
+            tickIntervalNanoseconds: 20_000_000
+        )
+
+        await viewModel.startRecording()
+        try? await Task.sleep(nanoseconds: 70_000_000)
+        await viewModel.stopRecording()
+
+        XCTAssertEqual(viewModel.elapsedRecordingSeconds, 0)
+    }
+
+    func testElapsedRecordingSecondsStayZeroWhenStartRecordingFails() async {
+        let audio = AudioRecorderServiceMock(startError: NSError(domain: "test", code: 99))
+        let speech = SpeechTranscriptionServiceMock(result: .success("ok"))
+        let viewModel = RecordViewModel(
+            audioRecorder: audio,
+            speechTranscriber: speech,
+            tickIntervalNanoseconds: 20_000_000
+        )
+
+        await viewModel.startRecording()
+        try? await Task.sleep(nanoseconds: 70_000_000)
+
+        XCTAssertEqual(viewModel.elapsedRecordingSeconds, 0)
+        XCTAssertFalse(viewModel.isRecording)
+    }
 }
 
 private final class AudioRecorderServiceMock: AudioRecording {
     private var url: URL?
+    private let startError: Error?
+
+    init(startError: Error? = nil) {
+        self.startError = startError
+    }
 
     func startRecording() async throws -> URL {
+        if let startError {
+            throw startError
+        }
         let output = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("recording.m4a")
         url = output
         return output

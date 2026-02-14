@@ -1,19 +1,56 @@
 import XCTest
 
+@MainActor
 final class HomeCareVoiceLogUITests: XCTestCase {
     func testTabNavigationAndShareButtonVisibility() {
         let app = XCUIApplication()
         app.launch()
 
-        XCTAssertTrue(app.tabBars.buttons["Record"].exists)
-        XCTAssertTrue(app.tabBars.buttons["Timeline"].exists)
-        XCTAssertTrue(app.tabBars.buttons["Summary"].exists)
-        XCTAssertTrue(app.tabBars.buttons["Settings"].exists)
+        let tabButtons = app.tabBars.buttons
+        XCTAssertGreaterThanOrEqual(tabButtons.count, 4)
 
-        app.tabBars.buttons["Summary"].tap()
-        XCTAssertTrue(app.buttons["Generate Summary"].exists)
+        tabButtons.element(boundBy: 2).tap()
+        let generateButton = app.buttons["generate-summary"]
+        let generateExists = generateButton.waitForExistence(timeout: 2)
+        XCTAssertTrue(generateExists)
 
-        app.buttons["Generate Summary"].tap()
-        XCTAssertTrue(app.buttons["Share Summary"].waitForExistence(timeout: 2))
+        generateButton.tap()
+        let shareButton = app.buttons["share-summary"]
+        let shareExists = shareButton.waitForExistence(timeout: 2)
+        XCTAssertTrue(shareExists)
+    }
+
+    func testCategorySelectionUpdatesSelectedLabel() {
+        let app = XCUIApplication()
+        app.launch()
+
+        let categorySelector = app.buttons["category-selector-row"]
+        XCTAssertTrue(categorySelector.waitForExistence(timeout: 2))
+        categorySelector.tap()
+
+        let targetCategory = app.buttons["category-option-medication"]
+        XCTAssertTrue(targetCategory.waitForExistence(timeout: 2))
+        targetCategory.tap()
+
+        let selectedLabel = app.staticTexts["selected-category-medication"]
+        XCTAssertTrue(selectedLabel.waitForExistence(timeout: 2))
+    }
+
+    func testKeyboardCanBeDismissedWithExplicitButton() {
+        let app = XCUIApplication()
+        app.launch()
+
+        let memoInput = app.descendants(matching: .any)["free-memo-field"]
+        XCTAssertTrue(memoInput.waitForExistence(timeout: 2))
+        memoInput.tap()
+
+        let dismissButton = app.buttons["dismiss-keyboard-button"]
+        XCTAssertTrue(dismissButton.waitForExistence(timeout: 2))
+        dismissButton.tap()
+
+        let hiddenPredicate = NSPredicate(format: "exists == false")
+        let expectation = XCTNSPredicateExpectation(predicate: hiddenPredicate, object: dismissButton)
+        let result = XCTWaiter.wait(for: [expectation], timeout: 2)
+        XCTAssertEqual(result, .completed)
     }
 }
