@@ -9,7 +9,12 @@ struct HomeCareVoiceLogApp: App {
             ReminderSettingsEntity.self,
         ])
         let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        return try! ModelContainer(for: schema, configurations: [configuration])
+
+        do {
+            return try ModelContainer(for: schema, configurations: [configuration])
+        } catch {
+            fatalError("Failed to create SwiftData container: \(error)")
+        }
     }()
 
     var body: some Scene {
