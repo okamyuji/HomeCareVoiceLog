@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		CFBC0D4C4519A1E8820F8434 /* SummaryShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA85DFAF9EB441D72304623 /* SummaryShareView.swift */; };
 		E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */; };
 		E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */; };
+		E9A6AEEB2A6D4E1F8C2C0011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A6AEEB2A6D4E1F8C2C0010 /* Assets.xcassets */; };
 		EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */; };
 		F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */; };
 		F1417BF2BD48FC41163F11D5 /* PlaceholderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */; };
@@ -52,14 +53,14 @@
 		1A4696BF81B38AFFE0E8D443 /* HomeCareVoiceLogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogUITests.swift; sourceTree = "<group>"; };
 		1C85F317D307256080CA9DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
-		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepository.swift; sourceTree = "<group>"; };
-		59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HomeCareVoiceLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0C9CEA604150123C652633 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		5FA85DFAF9EB441D72304623 /* SummaryShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryShareView.swift; sourceTree = "<group>"; };
 		6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTests.swift; sourceTree = "<group>"; };
 		6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordEntity.swift; sourceTree = "<group>"; };
-		6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HomeCareVoiceLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeCareVoiceLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE14744FFAA5DA8EB8A6A8E /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
 		838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
 		CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogApp.swift; sourceTree = "<group>"; };
 		DD0924C829E28491CFC504E7 /* HomeCareVoiceLogCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HomeCareVoiceLogCore; path = Packages/HomeCareVoiceLogCore; sourceTree = SOURCE_ROOT; };
+		E9A6AEEB2A6D4E1F8C2C0010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 		ECCDE9677B88EB709F1896A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E9A6AEEB2A6D4E1F8C2C0010 /* Assets.xcassets */,
 				AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */,
 			);
 			path = Resources;
@@ -328,7 +331,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					69C145E4A77EB399E0B4CDC4 = {
 						TestTargetID = 96A3269CD4C7B4FE971D6634;
@@ -352,7 +355,6 @@
 			packageReferences = (
 				19852675C5EBBC6F3189169A /* XCLocalSwiftPackageReference "Packages/HomeCareVoiceLogCore" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -368,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A6AEEB2A6D4E1F8C2C0011 /* Assets.xcassets in Resources */,
 				EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -484,8 +488,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = P2HW44ZU6P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -498,6 +504,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 6.0;
@@ -544,6 +551,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -575,8 +583,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = P2HW44ZU6P;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -596,6 +606,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
