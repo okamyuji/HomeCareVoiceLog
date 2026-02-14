@@ -6,10 +6,6 @@ import SwiftData
 struct CareRecordRepository {
     let modelContext: ModelContext
 
-    init(modelContext: ModelContext) {
-        self.modelContext = modelContext
-    }
-
     @discardableResult
     func addRecord(
         timestamp: Date,
@@ -68,7 +64,7 @@ struct CareRecordRepository {
 
     private func dayBounds(for date: Date, calendar: Calendar) -> DateInterval {
         let start = calendar.startOfDay(for: date)
-        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86_400)
+        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86400)
         return DateInterval(start: start, end: end)
     }
 }

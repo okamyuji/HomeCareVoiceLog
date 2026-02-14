@@ -14,9 +14,9 @@ enum AudioRecorderError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingRecorder:
-            return String(localized: "error.audio.missingRecorder")
+            String(localized: "error.audio.missingRecorder")
         case .permissionDenied:
-            return String(localized: "error.audio.permission")
+            String(localized: "error.audio.permission")
         }
     }
 }
@@ -39,7 +39,7 @@ final class AudioRecorderService: NSObject, AudioRecording {
         let url = directory.appendingPathComponent("homecare-\(UUID().uuidString).m4a")
         let settings: [String: Any] = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 44_100,
+            AVSampleRateKey: 44100,
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
         ]

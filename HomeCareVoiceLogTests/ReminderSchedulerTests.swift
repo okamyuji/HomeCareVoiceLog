@@ -1,5 +1,5 @@
-@testable import HomeCareVoiceLog
 import Foundation
+@testable import HomeCareVoiceLog
 import UserNotifications
 import XCTest
 
@@ -41,7 +41,7 @@ private final class NotificationCenterMock: NotificationScheduling {
     var removedIdentifiers: [String] = []
     var addedRequests: [UNNotificationRequest] = []
 
-    func requestAuthorization(options: UNAuthorizationOptions) async throws -> Bool {
+    func requestAuthorization(options _: UNAuthorizationOptions) async throws -> Bool {
         authorizationGranted
     }
 

@@ -15,13 +15,13 @@ enum SpeechTranscriptionError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .recognizerUnavailable:
-            return String(localized: "error.speech.unavailable")
+            String(localized: "error.speech.unavailable")
         case .onDeviceNotAvailable:
-            return String(localized: "error.speech.onDevice")
+            String(localized: "error.speech.onDevice")
         case .recognitionFailed:
-            return String(localized: "error.speech.failed")
+            String(localized: "error.speech.failed")
         case .permissionDenied:
-            return String(localized: "error.speech.permission")
+            String(localized: "error.speech.permission")
         }
     }
 }

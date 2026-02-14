@@ -49,7 +49,7 @@ enum ReminderSchedulerError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notificationPermissionDenied:
-            return String(localized: "error.notification.permission")
+            String(localized: "error.notification.permission")
         }
     }
 }
