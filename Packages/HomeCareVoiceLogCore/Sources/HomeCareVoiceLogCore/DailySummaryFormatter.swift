@@ -6,16 +6,18 @@ public struct DailySummaryFormatter: Sendable {
     public func format(records: [CareRecordDraft], date: Date, locale: Locale) -> String {
         let isJapanese = locale.language.languageCode?.identifier == "ja"
         let sorted = records.sorted { $0.timestamp < $1.timestamp }
+        let displayTimeZone = TimeZone.autoupdatingCurrent
+        let displayCalendar = Calendar.autoupdatingCurrent
         let dateFormatter = DateFormatter()
         dateFormatter.locale = locale
-        dateFormatter.calendar = Calendar(identifier: .gregorian)
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.calendar = displayCalendar
+        dateFormatter.timeZone = displayTimeZone
         dateFormatter.dateFormat = isJapanese ? "yyyy/MM/dd" : "yyyy-MM-dd"
 
         let timeFormatter = DateFormatter()
         timeFormatter.locale = locale
-        timeFormatter.calendar = Calendar(identifier: .gregorian)
-        timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        timeFormatter.calendar = displayCalendar
+        timeFormatter.timeZone = displayTimeZone
         timeFormatter.dateFormat = "HH:mm"
 
         let title = isJapanese ? "日次サマリー (\(dateFormatter.string(from: date)))" : "Daily Summary (\(dateFormatter.string(from: date)))"

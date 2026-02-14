@@ -1,9 +1,9 @@
-@testable import HomeCareVoiceLogCore
 import Foundation
+@testable import HomeCareVoiceLogCore
 import Testing
 
 @Test("Formats timeline in chronological order")
-func timelineIsChronological() {
+func timelineIsChronological() throws {
     let formatter = DailySummaryFormatter()
     let records = [
         CareRecordDraft(timestamp: date(hour: 10, minute: 30), category: .meal, transcriptText: "Lunch", freeMemoText: nil),
@@ -11,12 +11,12 @@ func timelineIsChronological() {
     ]
 
     let text = formatter.format(records: records, date: date(hour: 0, minute: 0), locale: Locale(identifier: "en"))
-    let first = text.range(of: "08:15")
-    let second = text.range(of: "10:30")
+    let first = text.range(of: "Morning meds")
+    let second = text.range(of: "Lunch")
 
     #expect(first != nil)
     #expect(second != nil)
-    #expect(first!.lowerBound < second!.lowerBound)
+    #expect(try #require(first?.lowerBound) < second!.lowerBound)
 }
 
 @Test("Includes category counts and free memo list")
@@ -51,13 +51,13 @@ func usesJapaneseHeadings() {
 }
 
 private func date(hour: Int, minute: Int) -> Date {
-    let calendar = Calendar(identifier: .gregorian)
+    let calendar = Calendar.autoupdatingCurrent
     var components = DateComponents()
     components.year = 2026
     components.month = 2
     components.day = 14
     components.hour = hour
     components.minute = minute
-    components.timeZone = TimeZone(secondsFromGMT: 0)
+    components.timeZone = TimeZone.autoupdatingCurrent
     return calendar.date(from: components)!
 }
