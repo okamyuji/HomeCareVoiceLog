@@ -13,13 +13,13 @@ struct RecordView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Category", selection: $selectedCategory) {
+                Picker(String(localized: "record.category"), selection: $selectedCategory) {
                     ForEach(CareCategory.allCases, id: \.self) { category in
                         Text(category.localizedLabel(locale: .current)).tag(category)
                     }
                 }
 
-                TextField("Free Memo", text: $freeMemo, axis: .vertical)
+                TextField(String(localized: "record.freeMemo"), text: $freeMemo, axis: .vertical)
                     .lineLimit(3...6)
 
                 if let error = viewModel.lastErrorMessage {
@@ -28,12 +28,12 @@ struct RecordView: View {
                 }
 
                 if !viewModel.transcriptText.isEmpty {
-                    Section("Transcript") {
+                    Section(String(localized: "record.transcript")) {
                         Text(viewModel.transcriptText)
                     }
                 }
 
-                Button(viewModel.isRecording ? "Stop Recording" : "Start Recording") {
+                Button(viewModel.isRecording ? String(localized: "record.stop") : String(localized: "record.start")) {
                     Task {
                         if viewModel.isRecording {
                             await viewModel.stopRecording()
@@ -51,7 +51,7 @@ struct RecordView: View {
                     }
                 }
             }
-            .navigationTitle("Record")
+            .navigationTitle(String(localized: "tab.record"))
         }
     }
 }

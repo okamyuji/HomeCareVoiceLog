@@ -15,13 +15,13 @@ enum SpeechTranscriptionError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .recognizerUnavailable:
-            return "Speech recognizer is unavailable."
+            return String(localized: "error.speech.unavailable")
         case .onDeviceNotAvailable:
-            return "On-device speech recognition is not available on this device."
+            return String(localized: "error.speech.onDevice")
         case .recognitionFailed:
-            return "Speech recognition failed."
+            return String(localized: "error.speech.failed")
         case .permissionDenied:
-            return "Speech recognition permission denied."
+            return String(localized: "error.speech.permission")
         }
     }
 }
@@ -39,23 +39,31 @@ final class SpeechTranscriptionService: SpeechTranscribing {
 
         let request = SFSpeechURLRecognitionRequest(url: fileURL)
         request.requiresOnDeviceRecognition = true
-        guard request.requiresOnDeviceRecognition else {
+
+        if !recognizer.supportsOnDeviceRecognition {
             throw SpeechTranscriptionError.onDeviceNotAvailable
         }
 
         return try await withCheckedThrowingContinuation { continuation in
+            var finished = false
             recognizer.recognitionTask(with: request) { result, error in
+                if finished {
+                    return
+                }
                 if let error {
+                    finished = true
                     continuation.resume(throwing: error)
                     return
                 }
 
                 guard let result else {
+                    finished = true
                     continuation.resume(throwing: SpeechTranscriptionError.recognitionFailed)
                     return
                 }
 
                 if result.isFinal {
+                    finished = true
                     let text = result.bestTranscription.formattedString.trimmingCharacters(in: .whitespacesAndNewlines)
                     continuation.resume(returning: text)
                 }

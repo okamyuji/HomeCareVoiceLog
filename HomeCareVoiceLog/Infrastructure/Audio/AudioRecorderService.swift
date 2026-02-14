@@ -14,9 +14,9 @@ enum AudioRecorderError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingRecorder:
-            return "Recorder was not initialized."
+            return String(localized: "error.audio.missingRecorder")
         case .permissionDenied:
-            return "Microphone permission denied."
+            return String(localized: "error.audio.permission")
         }
     }
 }
@@ -27,7 +27,7 @@ final class AudioRecorderService: NSObject, AudioRecording {
 
     func startRecording() async throws -> URL {
         let session = AVAudioSession.sharedInstance()
-        let granted = await requestRecordPermission(session: session)
+        let granted = await requestRecordPermission()
         guard granted else {
             throw AudioRecorderError.permissionDenied
         }
@@ -61,9 +61,9 @@ final class AudioRecorderService: NSObject, AudioRecording {
         return outputURL
     }
 
-    private func requestRecordPermission(session: AVAudioSession) async -> Bool {
+    private func requestRecordPermission() async -> Bool {
         await withCheckedContinuation { continuation in
-            session.requestRecordPermission { granted in
+            AVAudioApplication.requestRecordPermission { granted in
                 continuation.resume(returning: granted)
             }
         }

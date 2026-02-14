@@ -18,6 +18,10 @@
     <string>1.0</string>
     <key>CFBundleVersion</key>
     <string>1</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Voice input is used for care log recording.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Speech recognition is used to transcribe recorded care logs.</string>
     <key>UILaunchScreen</key>
     <dict/>
     <key>UIApplicationSceneManifest</key>

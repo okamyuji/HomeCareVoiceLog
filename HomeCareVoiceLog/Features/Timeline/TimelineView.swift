@@ -1,5 +1,5 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct TimelineView: View {
     @Query(sort: [SortDescriptor(\CareRecordEntity.timestamp, order: .reverse)])
@@ -25,12 +25,12 @@ struct TimelineView: View {
                 }
             }
             .safeAreaInset(edge: .top) {
-                DatePicker("Day", selection: $selectedDay, displayedComponents: .date)
+                DatePicker(String(localized: "timeline.day"), selection: $selectedDay, displayedComponents: .date)
                     .padding(.horizontal)
                     .padding(.bottom, 8)
                     .background(.thinMaterial)
             }
-            .navigationTitle("Timeline")
+            .navigationTitle(String(localized: "tab.timeline"))
         }
     }
 

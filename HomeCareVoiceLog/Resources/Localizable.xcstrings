@@ -1,0 +1,156 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "tab.record" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Record" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "記録" } }
+      }
+    },
+    "tab.timeline" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Timeline" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "タイムライン" } }
+      }
+    },
+    "tab.summary" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Summary" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "サマリー" } }
+      }
+    },
+    "tab.settings" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定" } }
+      }
+    },
+    "record.category" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Category" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "カテゴリ" } }
+      }
+    },
+    "record.freeMemo" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Free Memo" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "自由メモ" } }
+      }
+    },
+    "record.transcript" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Transcript" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "文字起こし" } }
+      }
+    },
+    "record.start" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start Recording" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "録音開始" } }
+      }
+    },
+    "record.stop" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stop Recording" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "録音停止" } }
+      }
+    },
+    "timeline.day" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Day" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "日付" } }
+      }
+    },
+    "summary.targetDay" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target Day" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "対象日" } }
+      }
+    },
+    "summary.generate" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Generate Summary" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "サマリー生成" } }
+      }
+    },
+    "summary.preview" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Preview" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "プレビュー" } }
+      }
+    },
+    "summary.share" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share Summary" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "サマリーを共有" } }
+      }
+    },
+    "settings.dailyReminder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily Reminder" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "毎日リマインダー" } }
+      }
+    },
+    "settings.reminderTime" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reminder Time" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "リマインダー時刻" } }
+      }
+    },
+    "reminder.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Care log reminder" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ケア記録のリマインダー" } }
+      }
+    },
+    "reminder.body" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Please record today's care notes." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "本日のケア記録を入力しましょう。" } }
+      }
+    },
+    "error.notification.permission" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notification permission denied." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "通知の許可がありません。" } }
+      }
+    },
+    "error.audio.missingRecorder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recorder was not initialized." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "録音が初期化されていません。" } }
+      }
+    },
+    "error.audio.permission" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Microphone permission denied." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マイクの許可がありません。" } }
+      }
+    },
+    "error.speech.unavailable" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speech recognizer is unavailable." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "音声認識が利用できません。" } }
+      }
+    },
+    "error.speech.onDevice" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "On-device speech recognition is not available on this device." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "この端末ではオンデバイス音声認識が利用できません。" } }
+      }
+    },
+    "error.speech.failed" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speech recognition failed." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "音声認識に失敗しました。" } }
+      }
+    },
+    "error.speech.permission" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speech recognition permission denied." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "音声認識の許可がありません。" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

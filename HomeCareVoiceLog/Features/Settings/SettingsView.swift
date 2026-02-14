@@ -8,10 +8,10 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Toggle("Daily Reminder", isOn: $dailyReminderEnabled)
+                Toggle(String(localized: "settings.dailyReminder"), isOn: $dailyReminderEnabled)
 
                 DatePicker(
-                    "Reminder Time",
+                    String(localized: "settings.reminderTime"),
                     selection: Binding(
                         get: {
                             Calendar.current.date(from: DateComponents(hour: dailyReminderHour, minute: dailyReminderMinute)) ?? Date()
@@ -25,7 +25,7 @@ struct SettingsView: View {
                     displayedComponents: .hourAndMinute
                 )
             }
-            .navigationTitle("Settings")
+            .navigationTitle(String(localized: "tab.settings"))
         }
     }
 }

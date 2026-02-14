@@ -20,9 +20,12 @@
 		A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */; };
 		AB0805625D973311A64D1369 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9CEA604150123C652633 /* RecordView.swift */; };
 		AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */; };
+		BE37278766DE1737AB8740F2 /* ReminderSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EABE70E52B2FE73690B069 /* ReminderSchedulerTests.swift */; };
 		BE3CB5094795A993BB88AC21 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5885E04BCE2878C9CB8E3A5 /* SettingsView.swift */; };
 		CFBC0D4C4519A1E8820F8434 /* SummaryShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA85DFAF9EB441D72304623 /* SummaryShareView.swift */; };
 		E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */; };
+		E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */; };
+		EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */; };
 		F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */; };
 		F1417BF2BD48FC41163F11D5 /* PlaceholderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */; };
 /* End PBXBuildFile section */
@@ -59,10 +62,13 @@
 		6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HomeCareVoiceLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE14744FFAA5DA8EB8A6A8E /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
+		838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsEntity.swift; sourceTree = "<group>"; };
 		B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderUITests.swift; sourceTree = "<group>"; };
 		B5885E04BCE2878C9CB8E3A5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B6041363C5B0617A44D5CCCA /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		B7EABE70E52B2FE73690B069 /* ReminderSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSchedulerTests.swift; sourceTree = "<group>"; };
 		C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
 		CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogApp.swift; sourceTree = "<group>"; };
 		DD0924C829E28491CFC504E7 /* HomeCareVoiceLogCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HomeCareVoiceLogCore; path = Packages/HomeCareVoiceLogCore; sourceTree = SOURCE_ROOT; };
@@ -150,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				2EE0D61B3978C89B975C81A3 /* Audio */,
+				B600F365A96E59BD1AF508CA /* Notifications */,
 				9330C4EA9FFEA6B9154FD44A /* Persistence */,
 				578E2A65F7A13C4E6C8E2290 /* Speech */,
 			);
@@ -178,6 +185,7 @@
 				803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */,
 				6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */,
 				0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */,
+				B7EABE70E52B2FE73690B069 /* ReminderSchedulerTests.swift */,
 			);
 			path = HomeCareVoiceLogTests;
 			sourceTree = "<group>";
@@ -199,6 +207,14 @@
 				B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		B600F365A96E59BD1AF508CA /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		CEE83235D9DE22E01CF520D8 /* SummaryShare */ = {
@@ -224,9 +240,18 @@
 				D5DF09AE86DEBB67BBD89DE1 /* App */,
 				1989FEDC2A012411C2A61D07 /* Features */,
 				4FA4745A0BC2D00C38D97292 /* Infrastructure */,
+				ECCDE9677B88EB709F1896A2 /* Resources */,
 				5507BF7D09DE714F2F66B46D /* Supporting */,
 			);
 			path = HomeCareVoiceLog;
+			sourceTree = "<group>";
+		};
+		ECCDE9677B88EB709F1896A2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F0861734699FE60416FA5F8B /* Settings */ = {
@@ -281,6 +306,7 @@
 			buildConfigurationList = 6A37C3C6E067AB67DA25D6FF /* Build configuration list for PBXNativeTarget "HomeCareVoiceLog" */;
 			buildPhases = (
 				B9222AECEE88A048DA481692 /* Sources */,
+				2B188566B319B489FB30BAC1 /* Resources */,
 				BC5D2567A8F344E8BC15BA91 /* Frameworks */,
 			);
 			buildRules = (
@@ -319,6 +345,7 @@
 			knownRegions = (
 				Base,
 				en,
+				ja,
 			);
 			mainGroup = 27227437243DFAFC2FBF8F4C;
 			minimizedProjectReferenceProxies = 1;
@@ -335,6 +362,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B188566B319B489FB30BAC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1747B59F4A4FBC6DE303E97A /* Sources */ = {
@@ -356,6 +394,7 @@
 				7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */,
 				AB0805625D973311A64D1369 /* RecordView.swift in Sources */,
 				2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */,
+				E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */,
 				A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */,
 				57573F0490119CCE9CF37839 /* RootTabView.swift in Sources */,
 				BE3CB5094795A993BB88AC21 /* SettingsView.swift in Sources */,
@@ -372,6 +411,7 @@
 				7437B4D20881C783FDF1A3BE /* CareRecordRepositoryTests.swift in Sources */,
 				2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */,
 				F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */,
+				BE37278766DE1737AB8740F2 /* ReminderSchedulerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
