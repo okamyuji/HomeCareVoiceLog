@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */; };
+		2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */; };
 		44EE2EFC6B827F103321A866 /* HomeCareVoiceLogCore in Frameworks */ = {isa = PBXBuildFile; productRef = DE243C4263DC63856EBF5A16 /* HomeCareVoiceLogCore */; };
 		53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */; };
 		7437B4D20881C783FDF1A3BE /* CareRecordRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */; };
 		7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */; };
+		8E19B5F1A06FF5D087A60097 /* AudioRecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */; };
 		A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */; };
 		AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */; };
+		E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */; };
+		F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */; };
 		F1417BF2BD48FC41163F11D5 /* PlaceholderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTests.swift; sourceTree = "<group>"; };
 		1C85F317D307256080CA9DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
 		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepository.swift; sourceTree = "<group>"; };
 		59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HomeCareVoiceLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,8 +51,10 @@
 		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
 		B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsEntity.swift; sourceTree = "<group>"; };
 		B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderUITests.swift; sourceTree = "<group>"; };
+		C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
 		CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogApp.swift; sourceTree = "<group>"; };
 		DD0924C829E28491CFC504E7 /* HomeCareVoiceLogCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HomeCareVoiceLogCore; path = Packages/HomeCareVoiceLogCore; sourceTree = SOURCE_ROOT; };
+		FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1989FEDC2A012411C2A61D07 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				4CD910B0FBFB776AD9046E5E /* Record */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 		27227437243DFAFC2FBF8F4C = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +98,14 @@
 			);
 			sourceTree = "<group>";
 		};
+		2EE0D61B3978C89B975C81A3 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		3F3E3713895A12825EFDE1DD /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,10 +114,20 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		4CD910B0FBFB776AD9046E5E /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		4FA4745A0BC2D00C38D97292 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				2EE0D61B3978C89B975C81A3 /* Audio */,
 				9330C4EA9FFEA6B9154FD44A /* Persistence */,
+				578E2A65F7A13C4E6C8E2290 /* Speech */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -106,11 +140,20 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		578E2A65F7A13C4E6C8E2290 /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
 		5BFB0C89EBDEBADF5B71DF1D /* HomeCareVoiceLogTests */ = {
 			isa = PBXGroup;
 			children = (
 				803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */,
 				6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */,
+				0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */,
 			);
 			path = HomeCareVoiceLogTests;
 			sourceTree = "<group>";
@@ -145,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				D5DF09AE86DEBB67BBD89DE1 /* App */,
+				1989FEDC2A012411C2A61D07 /* Features */,
 				4FA4745A0BC2D00C38D97292 /* Infrastructure */,
 				5507BF7D09DE714F2F66B46D /* Supporting */,
 			);
@@ -263,10 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E19B5F1A06FF5D087A60097 /* AudioRecorderService.swift in Sources */,
 				53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */,
 				AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */,
 				7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */,
+				2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */,
 				A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */,
+				E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +323,7 @@
 			files = (
 				7437B4D20881C783FDF1A3BE /* CareRecordRepositoryTests.swift in Sources */,
 				2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */,
+				F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
