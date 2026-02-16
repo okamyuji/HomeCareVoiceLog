@@ -1,6 +1,13 @@
 # HomeCareVoiceLog
 
-iOS 17+ home care voice logging app. Fully local/offline, no login.
+[![Swift](https://img.shields.io/badge/Swift-6.0-F05138?logo=swift&logoColor=white)](https://swift.org)
+[![Platform](https://img.shields.io/badge/Platform-iOS_17+-000000?logo=apple&logoColor=white)](https://developer.apple.com/ios/)
+[![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-2196F3?logo=swift&logoColor=white)](https://developer.apple.com/xcode/swiftui/)
+[![SwiftData](https://img.shields.io/badge/Data-SwiftData-34C759?logo=apple&logoColor=white)](https://developer.apple.com/xcode/swiftdata/)
+[![License](https://img.shields.io/badge/License-GPL_3.0-blue.svg)](LICENSE)
+[![App Store](https://img.shields.io/badge/App_Store-Available-0D96F6?logo=app-store&logoColor=white)](https://apps.apple.com/app/id6759207743)
+
+Voice-powered daily care logging for home caregivers. Fully local/offline, no login required.
 
 ## Verification Commands
 
