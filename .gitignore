@@ -6,3 +6,5 @@ xcuserdata/
 Archive/
 **/Archive/
 *.xcarchive/
+AppStoreScreenshots/
+*.xcresult
