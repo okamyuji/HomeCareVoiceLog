@@ -1,0 +1,726 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B2580CF703F55A90D1EED73 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6041363C5B0617A44D5CCCA /* TimelineView.swift */; };
+		2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */; };
+		2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */; };
+		44EE2EFC6B827F103321A866 /* HomeCareVoiceLogCore in Frameworks */ = {isa = PBXBuildFile; productRef = DE243C4263DC63856EBF5A16 /* HomeCareVoiceLogCore */; };
+		53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */; };
+		57573F0490119CCE9CF37839 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE14744FFAA5DA8EB8A6A8E /* RootTabView.swift */; };
+		7437B4D20881C783FDF1A3BE /* CareRecordRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */; };
+		7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */; };
+		8E19B5F1A06FF5D087A60097 /* AudioRecorderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */; };
+		9F9E22B9A19AD5F0860DD36C /* HomeCareVoiceLogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4696BF81B38AFFE0E8D443 /* HomeCareVoiceLogUITests.swift */; };
+		A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */; };
+		AB0805625D973311A64D1369 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9CEA604150123C652633 /* RecordView.swift */; };
+		AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */; };
+		BE37278766DE1737AB8740F2 /* ReminderSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EABE70E52B2FE73690B069 /* ReminderSchedulerTests.swift */; };
+		BE3CB5094795A993BB88AC21 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5885E04BCE2878C9CB8E3A5 /* SettingsView.swift */; };
+		CFBC0D4C4519A1E8820F8434 /* SummaryShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA85DFAF9EB441D72304623 /* SummaryShareView.swift */; };
+		E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */; };
+		E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */; };
+		E9A6AEEB2A6D4E1F8C2C0011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A6AEEB2A6D4E1F8C2C0010 /* Assets.xcassets */; };
+		EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */; };
+		F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */; };
+		F1417BF2BD48FC41163F11D5 /* PlaceholderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D75C615CC73C16898E0A494F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0DFA4ED180E13DE66A5194E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96A3269CD4C7B4FE971D6634;
+			remoteInfo = HomeCareVoiceLog;
+		};
+		F00BA1336803ED34D391714D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0DFA4ED180E13DE66A5194E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96A3269CD4C7B4FE971D6634;
+			remoteInfo = HomeCareVoiceLog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModelTests.swift; sourceTree = "<group>"; };
+		1A4696BF81B38AFFE0E8D443 /* HomeCareVoiceLogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogUITests.swift; sourceTree = "<group>"; };
+		1C85F317D307256080CA9DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
+		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepository.swift; sourceTree = "<group>"; };
+		59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C0C9CEA604150123C652633 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		5FA85DFAF9EB441D72304623 /* SummaryShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryShareView.swift; sourceTree = "<group>"; };
+		6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTests.swift; sourceTree = "<group>"; };
+		6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordEntity.swift; sourceTree = "<group>"; };
+		6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeCareVoiceLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE14744FFAA5DA8EB8A6A8E /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
+		838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsEntity.swift; sourceTree = "<group>"; };
+		B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderUITests.swift; sourceTree = "<group>"; };
+		B5885E04BCE2878C9CB8E3A5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B6041363C5B0617A44D5CCCA /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		B7EABE70E52B2FE73690B069 /* ReminderSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSchedulerTests.swift; sourceTree = "<group>"; };
+		C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderService.swift; sourceTree = "<group>"; };
+		CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogApp.swift; sourceTree = "<group>"; };
+		DD0924C829E28491CFC504E7 /* HomeCareVoiceLogCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HomeCareVoiceLogCore; path = Packages/HomeCareVoiceLogCore; sourceTree = SOURCE_ROOT; };
+		E9A6AEEB2A6D4E1F8C2C0010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC5D2567A8F344E8BC15BA91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44EE2EFC6B827F103321A866 /* HomeCareVoiceLogCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14F410465FDC272C02AA7AF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */,
+				59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */,
+				29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1989FEDC2A012411C2A61D07 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				4CD910B0FBFB776AD9046E5E /* Record */,
+				F0861734699FE60416FA5F8B /* Settings */,
+				CEE83235D9DE22E01CF520D8 /* SummaryShare */,
+				2E40C6D832C185FDEBD45185 /* Timeline */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		27227437243DFAFC2FBF8F4C = {
+			isa = PBXGroup;
+			children = (
+				EB2635C8E7592AC83684155F /* HomeCareVoiceLog */,
+				5BFB0C89EBDEBADF5B71DF1D /* HomeCareVoiceLogTests */,
+				92BF7B95E9B39BB7943A1D8C /* HomeCareVoiceLogUITests */,
+				3F3E3713895A12825EFDE1DD /* Packages */,
+				14F410465FDC272C02AA7AF2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2E40C6D832C185FDEBD45185 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				B6041363C5B0617A44D5CCCA /* TimelineView.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		2EE0D61B3978C89B975C81A3 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				C715FB7294B7FC2FB2B8332E /* AudioRecorderService.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		3F3E3713895A12825EFDE1DD /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				DD0924C829E28491CFC504E7 /* HomeCareVoiceLogCore */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		4CD910B0FBFB776AD9046E5E /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				5C0C9CEA604150123C652633 /* RecordView.swift */,
+				FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		4FA4745A0BC2D00C38D97292 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				2EE0D61B3978C89B975C81A3 /* Audio */,
+				B600F365A96E59BD1AF508CA /* Notifications */,
+				9330C4EA9FFEA6B9154FD44A /* Persistence */,
+				578E2A65F7A13C4E6C8E2290 /* Speech */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		5507BF7D09DE714F2F66B46D /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				1C85F317D307256080CA9DFB /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		578E2A65F7A13C4E6C8E2290 /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
+		5BFB0C89EBDEBADF5B71DF1D /* HomeCareVoiceLogTests */ = {
+			isa = PBXGroup;
+			children = (
+				803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */,
+				6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */,
+				0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */,
+				B7EABE70E52B2FE73690B069 /* ReminderSchedulerTests.swift */,
+			);
+			path = HomeCareVoiceLogTests;
+			sourceTree = "<group>";
+		};
+		92BF7B95E9B39BB7943A1D8C /* HomeCareVoiceLogUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1A4696BF81B38AFFE0E8D443 /* HomeCareVoiceLogUITests.swift */,
+				B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */,
+			);
+			path = HomeCareVoiceLogUITests;
+			sourceTree = "<group>";
+		};
+		9330C4EA9FFEA6B9154FD44A /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				6D9F56BAAFF1007BDEB3C36D /* CareRecordEntity.swift */,
+				54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */,
+				B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		B600F365A96E59BD1AF508CA /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		CEE83235D9DE22E01CF520D8 /* SummaryShare */ = {
+			isa = PBXGroup;
+			children = (
+				5FA85DFAF9EB441D72304623 /* SummaryShareView.swift */,
+			);
+			path = SummaryShare;
+			sourceTree = "<group>";
+		};
+		D5DF09AE86DEBB67BBD89DE1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAA2C96CA341E7B5927962 /* HomeCareVoiceLogApp.swift */,
+				7CE14744FFAA5DA8EB8A6A8E /* RootTabView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EB2635C8E7592AC83684155F /* HomeCareVoiceLog */ = {
+			isa = PBXGroup;
+			children = (
+				D5DF09AE86DEBB67BBD89DE1 /* App */,
+				1989FEDC2A012411C2A61D07 /* Features */,
+				4FA4745A0BC2D00C38D97292 /* Infrastructure */,
+				ECCDE9677B88EB709F1896A2 /* Resources */,
+				5507BF7D09DE714F2F66B46D /* Supporting */,
+			);
+			path = HomeCareVoiceLog;
+			sourceTree = "<group>";
+		};
+		ECCDE9677B88EB709F1896A2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E9A6AEEB2A6D4E1F8C2C0010 /* Assets.xcassets */,
+				AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F0861734699FE60416FA5F8B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B5885E04BCE2878C9CB8E3A5 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53F3054F96D1F592F7579ED2 /* HomeCareVoiceLogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27DBE216D896EDD6A27AE034 /* Build configuration list for PBXNativeTarget "HomeCareVoiceLogTests" */;
+			buildPhases = (
+				ECAC5119D04C32C688A720B6 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3FC1EC66AA81A52DBC54CF3 /* PBXTargetDependency */,
+			);
+			name = HomeCareVoiceLogTests;
+			packageProductDependencies = (
+			);
+			productName = HomeCareVoiceLogTests;
+			productReference = 59E1EE1BC3771BC98C29FB48 /* HomeCareVoiceLogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		69C145E4A77EB399E0B4CDC4 /* HomeCareVoiceLogUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 201FBB8C2D946AC0C5322D7D /* Build configuration list for PBXNativeTarget "HomeCareVoiceLogUITests" */;
+			buildPhases = (
+				1747B59F4A4FBC6DE303E97A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD7CAC53BD6DE3FF77DA1224 /* PBXTargetDependency */,
+			);
+			name = HomeCareVoiceLogUITests;
+			packageProductDependencies = (
+			);
+			productName = HomeCareVoiceLogUITests;
+			productReference = 29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		96A3269CD4C7B4FE971D6634 /* HomeCareVoiceLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A37C3C6E067AB67DA25D6FF /* Build configuration list for PBXNativeTarget "HomeCareVoiceLog" */;
+			buildPhases = (
+				B9222AECEE88A048DA481692 /* Sources */,
+				2B188566B319B489FB30BAC1 /* Resources */,
+				BC5D2567A8F344E8BC15BA91 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HomeCareVoiceLog;
+			packageProductDependencies = (
+				DE243C4263DC63856EBF5A16 /* HomeCareVoiceLogCore */,
+			);
+			productName = HomeCareVoiceLog;
+			productReference = 6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B0DFA4ED180E13DE66A5194E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					69C145E4A77EB399E0B4CDC4 = {
+						TestTargetID = 96A3269CD4C7B4FE971D6634;
+					};
+					96A3269CD4C7B4FE971D6634 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7B04932BABF7F18F5637CD05 /* Build configuration list for PBXProject "HomeCareVoiceLog" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				ja,
+			);
+			mainGroup = 27227437243DFAFC2FBF8F4C;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				19852675C5EBBC6F3189169A /* XCLocalSwiftPackageReference "Packages/HomeCareVoiceLogCore" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				96A3269CD4C7B4FE971D6634 /* HomeCareVoiceLog */,
+				53F3054F96D1F592F7579ED2 /* HomeCareVoiceLogTests */,
+				69C145E4A77EB399E0B4CDC4 /* HomeCareVoiceLogUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B188566B319B489FB30BAC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9A6AEEB2A6D4E1F8C2C0011 /* Assets.xcassets in Resources */,
+				EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1747B59F4A4FBC6DE303E97A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F9E22B9A19AD5F0860DD36C /* HomeCareVoiceLogUITests.swift in Sources */,
+				F1417BF2BD48FC41163F11D5 /* PlaceholderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9222AECEE88A048DA481692 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E19B5F1A06FF5D087A60097 /* AudioRecorderService.swift in Sources */,
+				53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */,
+				AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */,
+				7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */,
+				AB0805625D973311A64D1369 /* RecordView.swift in Sources */,
+				2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */,
+				E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */,
+				A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */,
+				57573F0490119CCE9CF37839 /* RootTabView.swift in Sources */,
+				BE3CB5094795A993BB88AC21 /* SettingsView.swift in Sources */,
+				E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */,
+				CFBC0D4C4519A1E8820F8434 /* SummaryShareView.swift in Sources */,
+				2B2580CF703F55A90D1EED73 /* TimelineView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECAC5119D04C32C688A720B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7437B4D20881C783FDF1A3BE /* CareRecordRepositoryTests.swift in Sources */,
+				2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */,
+				F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */,
+				BE37278766DE1737AB8740F2 /* ReminderSchedulerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3FC1EC66AA81A52DBC54CF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96A3269CD4C7B4FE971D6634 /* HomeCareVoiceLog */;
+			targetProxy = D75C615CC73C16898E0A494F /* PBXContainerItemProxy */;
+		};
+		DD7CAC53BD6DE3FF77DA1224 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96A3269CD4C7B4FE971D6634 /* HomeCareVoiceLog */;
+			targetProxy = F00BA1336803ED34D391714D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		09977076EF0947E821136F01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujiokamoto.HomeCareVoiceLogUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HomeCareVoiceLog;
+			};
+			name = Release;
+		};
+		0DD3C8035809C603635D52A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = P2HW44ZU6P;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		1461C2D55AB26FF40BA53B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujiokamoto.HomeCareVoiceLogTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeCareVoiceLog.app/HomeCareVoiceLog";
+			};
+			name = Debug;
+		};
+		9D642418340A412F70AE695D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujiokamoto.HomeCareVoiceLogUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HomeCareVoiceLog;
+			};
+			name = Debug;
+		};
+		B57AEF72E0459C52C927E4D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = P2HW44ZU6P;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		C3F0B00A26BBD92D80EFCBEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HomeCareVoiceLog/Supporting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujiokamoto.HomeCareVoiceLog;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EF9DF4B5F3B2DBE1B9B97FD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HomeCareVoiceLog/Supporting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujiokamoto.HomeCareVoiceLog;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		FE5ED44EDA3CE60A7B3F2B10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujiokamoto.HomeCareVoiceLogTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HomeCareVoiceLog.app/HomeCareVoiceLog";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		201FBB8C2D946AC0C5322D7D /* Build configuration list for PBXNativeTarget "HomeCareVoiceLogUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D642418340A412F70AE695D /* Debug */,
+				09977076EF0947E821136F01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		27DBE216D896EDD6A27AE034 /* Build configuration list for PBXNativeTarget "HomeCareVoiceLogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1461C2D55AB26FF40BA53B3C /* Debug */,
+				FE5ED44EDA3CE60A7B3F2B10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6A37C3C6E067AB67DA25D6FF /* Build configuration list for PBXNativeTarget "HomeCareVoiceLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3F0B00A26BBD92D80EFCBEB /* Debug */,
+				EF9DF4B5F3B2DBE1B9B97FD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7B04932BABF7F18F5637CD05 /* Build configuration list for PBXProject "HomeCareVoiceLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B57AEF72E0459C52C927E4D5 /* Debug */,
+				0DD3C8035809C603635D52A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		19852675C5EBBC6F3189169A /* XCLocalSwiftPackageReference "Packages/HomeCareVoiceLogCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/HomeCareVoiceLogCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE243C4263DC63856EBF5A16 /* HomeCareVoiceLogCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HomeCareVoiceLogCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B0DFA4ED180E13DE66A5194E /* Project object */;
+}

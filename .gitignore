@@ -3,3 +3,6 @@ DerivedData/
 .build/
 *.xcuserstate
 xcuserdata/
+Archive/
+**/Archive/
+*.xcarchive/
