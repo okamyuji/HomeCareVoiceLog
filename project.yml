@@ -1,0 +1,60 @@
+name: HomeCareVoiceLog
+options:
+  bundleIdPrefix: com.yujiokamoto
+packages:
+  HomeCareVoiceLogCore:
+    path: Packages/HomeCareVoiceLogCore
+settings:
+  SWIFT_VERSION: 6.0
+targets:
+  HomeCareVoiceLog:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - HomeCareVoiceLog
+    resources:
+      - HomeCareVoiceLog/Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yujiokamoto.HomeCareVoiceLog
+        INFOPLIST_FILE: HomeCareVoiceLog/Supporting/Info.plist
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: 1
+    dependencies:
+      - package: HomeCareVoiceLogCore
+  HomeCareVoiceLogTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - HomeCareVoiceLogTests
+    dependencies:
+      - target: HomeCareVoiceLog
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yujiokamoto.HomeCareVoiceLogTests
+        GENERATE_INFOPLIST_FILE: YES
+  HomeCareVoiceLogUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - HomeCareVoiceLogUITests
+    dependencies:
+      - target: HomeCareVoiceLog
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yujiokamoto.HomeCareVoiceLogUITests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  HomeCareVoiceLog:
+    build:
+      targets:
+        HomeCareVoiceLog: all
+        HomeCareVoiceLogTests: [test]
+        HomeCareVoiceLogUITests: [test]
+    test:
+      targets:
+        - HomeCareVoiceLogTests
+        - HomeCareVoiceLogUITests

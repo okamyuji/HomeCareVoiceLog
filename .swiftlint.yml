@@ -17,5 +17,6 @@ line_length:
 
 disabled_rules:
   - todo
+  - trailing_comma
 
 reporter: "xcode"

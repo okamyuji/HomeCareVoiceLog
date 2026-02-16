@@ -16,6 +16,7 @@
 - Data scope: single care recipient only
 - Categories: medication, meal, toileting, medical-visit + free memo
 - Voice flow: record -> stop -> auto-transcribe (no extra user action)
+- Recording feedback: while recording, show a simple visual recording indicator and live elapsed time; hide indicator immediately after stop
 - Speech engine: Apple Speech Framework (on-device preferred)
 - Storage: SwiftData only
 - Summary: manual generation on share action, format = timeline + per-category count + free memo list
@@ -185,6 +186,7 @@ Run: `xcodebuild test -project HomeCareVoiceLog.xcodeproj -scheme HomeCareVoiceL
 - `SFSpeechRecognitionRequest.requiresOnDeviceRecognition = true`
 - No manual tap needed after stop.
 - Delete file after successful transcription persist.
+- Expose real-time recording elapsed time state for UI.
 
 **Step 4: Re-run tests (expect pass)**
 - Same command as Step 2.
@@ -208,6 +210,7 @@ Run: `git add . && git commit -m "feat(record): add auto transcription flow and 
 
 **Step 2: Implement views**
 - Record screen: category selection + free memo text + voice recording controls.
+- Record screen: show simple recording indicator + live elapsed time only while recording.
 - Timeline screen: date-grouped list.
 - Summary screen: manual generate on button tap and ShareLink.
 - Settings: daily reminder toggle + time picker.
