@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct RootTabView: View {
-    let authService: BiometricAuthService
-
     var body: some View {
         TabView {
             RecordView()
@@ -20,7 +18,7 @@ struct RootTabView: View {
                     Label("tab.summary", systemImage: "square.and.arrow.up")
                 }
 
-            SettingsView(authService: authService)
+            SettingsView()
                 .tabItem {
                     Label("tab.settings", systemImage: "gearshape")
                 }

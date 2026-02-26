@@ -6,7 +6,7 @@ struct SettingsView: View {
     @AppStorage("dailyReminderMinute") private var dailyReminderMinute = 0
     @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
 
-    let authService: BiometricAuthService
+    @Environment(BiometricAuthService.self) private var authService
 
     var body: some View {
         NavigationStack {

@@ -5,62 +5,68 @@ import XCTest
 
 @MainActor
 final class BiometricAuthServiceTests: XCTestCase {
-    func testMockAuthenticateReturnsTrue() async {
-        let mock = BiometricAuthServiceMock(shouldSucceed: true)
+    func testMockAuthenticateReturnsSuccess() async {
+        let mock = BiometricAuthServiceMock(result: .success)
         let result = await mock.authenticate()
-        XCTAssertTrue(result)
+        XCTAssertEqual(result, .success)
     }
 
-    func testMockAuthenticateReturnsFalse() async {
-        let mock = BiometricAuthServiceMock(shouldSucceed: false)
+    func testMockAuthenticateReturnsFailure() async {
+        let mock = BiometricAuthServiceMock(result: .failure)
         let result = await mock.authenticate()
-        XCTAssertFalse(result)
+        XCTAssertEqual(result, .failure)
+    }
+
+    func testMockAuthenticateReturnsUserCancelled() async {
+        let mock = BiometricAuthServiceMock(result: .userCancelled)
+        let result = await mock.authenticate()
+        XCTAssertEqual(result, .userCancelled)
     }
 
     func testMockBiometricAvailability() {
-        let availableMock = BiometricAuthServiceMock(shouldSucceed: true, available: true)
+        let availableMock = BiometricAuthServiceMock(result: .success, available: true)
         XCTAssertTrue(availableMock.isBiometricAvailable)
 
-        let unavailableMock = BiometricAuthServiceMock(shouldSucceed: true, available: false)
+        let unavailableMock = BiometricAuthServiceMock(result: .success, available: false)
         XCTAssertFalse(unavailableMock.isBiometricAvailable)
     }
 
     func testMockBiometryType() {
-        let faceIDMock = BiometricAuthServiceMock(shouldSucceed: true, biometry: .faceID)
+        let faceIDMock = BiometricAuthServiceMock(result: .success, biometry: .faceID)
         XCTAssertEqual(faceIDMock.biometryType, .faceID)
 
-        let touchIDMock = BiometricAuthServiceMock(shouldSucceed: true, biometry: .touchID)
+        let touchIDMock = BiometricAuthServiceMock(result: .success, biometry: .touchID)
         XCTAssertEqual(touchIDMock.biometryType, .touchID)
 
-        let opticIDMock = BiometricAuthServiceMock(shouldSucceed: true, biometry: .opticID)
+        let opticIDMock = BiometricAuthServiceMock(result: .success, biometry: .opticID)
         XCTAssertEqual(opticIDMock.biometryType, .opticID)
 
-        let noneMock = BiometricAuthServiceMock(shouldSucceed: true, biometry: .none)
+        let noneMock = BiometricAuthServiceMock(result: .success, biometry: .none)
         XCTAssertEqual(noneMock.biometryType, .none)
     }
 
-    func testUnavailableMockAlwaysReturnsFalse() async {
-        let mock = BiometricAuthServiceMock(shouldSucceed: true, available: false)
+    func testUnavailableMockAlwaysReturnsFailure() async {
+        let mock = BiometricAuthServiceMock(result: .success, available: false)
         let result = await mock.authenticate()
-        XCTAssertFalse(result, "Authentication should fail when biometric is unavailable")
+        XCTAssertEqual(result, .failure, "Authentication should fail when biometric is unavailable")
     }
 }
 
 @MainActor
 final class BiometricAuthServiceMock: BiometricAuthenticating {
-    private let shouldSucceed: Bool
+    private let result: BiometricAuthResult
 
     let biometryType: LABiometryType
     let isBiometricAvailable: Bool
 
-    init(shouldSucceed: Bool, available: Bool = true, biometry: LABiometryType = .faceID) {
-        self.shouldSucceed = shouldSucceed
+    init(result: BiometricAuthResult, available: Bool = true, biometry: LABiometryType = .faceID) {
+        self.result = result
         isBiometricAvailable = available
         biometryType = biometry
     }
 
-    func authenticate() async -> Bool {
-        guard isBiometricAvailable else { return false }
-        return shouldSucceed
+    func authenticate() async -> BiometricAuthResult {
+        guard isBiometricAvailable else { return .failure }
+        return result
     }
 }

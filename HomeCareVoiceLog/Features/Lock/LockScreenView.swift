@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LockScreenView: View {
     let onUnlock: () -> Void
-    let authService: BiometricAuthService
+    @Environment(BiometricAuthService.self) private var authService
 
     @State private var isAuthenticating = false
     @State private var showAuthFailure = false
@@ -61,10 +61,13 @@ struct LockScreenView: View {
         isAuthenticating = true
         showAuthFailure = false
         defer { isAuthenticating = false }
-        if await authService.authenticate() {
+        switch await authService.authenticate() {
+        case .success:
             onUnlock()
-        } else {
+        case .failure:
             showAuthFailure = true
+        case .userCancelled:
+            break
         }
     }
 

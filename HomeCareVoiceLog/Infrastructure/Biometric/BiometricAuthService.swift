@@ -2,11 +2,17 @@ import LocalAuthentication
 import Observation
 import os.log
 
+enum BiometricAuthResult: Equatable {
+    case success
+    case failure
+    case userCancelled
+}
+
 @MainActor
 protocol BiometricAuthenticating: Sendable {
     var biometryType: LABiometryType { get }
     var isBiometricAvailable: Bool { get }
-    func authenticate() async -> Bool
+    func authenticate() async -> BiometricAuthResult
 }
 
 @Observable
@@ -41,7 +47,7 @@ final class BiometricAuthService: BiometricAuthenticating {
         biometryType = context.biometryType
     }
 
-    func authenticate() async -> Bool {
+    func authenticate() async -> BiometricAuthResult {
         let context = LAContext()
         context.localizedCancelTitle = String(localized: "biometric.cancel")
 
@@ -53,17 +59,20 @@ final class BiometricAuthService: BiometricAuthenticating {
             if let error {
                 Self.logger.warning("Biometric policy evaluation unavailable: \(error.localizedDescription)")
             }
-            return false
+            return .failure
         }
 
         do {
-            return try await context.evaluatePolicy(
+            let success = try await context.evaluatePolicy(
                 .deviceOwnerAuthenticationWithBiometrics,
                 localizedReason: String(localized: "biometric.reason")
             )
+            return success ? .success : .failure
+        } catch let error as LAError where error.code == .userCancel {
+            return .userCancelled
         } catch {
             Self.logger.error("Biometric authentication failed: \(error.localizedDescription)")
-            return false
+            return .failure
         }
     }
 }
