@@ -32,11 +32,6 @@ struct HomeCareVoiceLogApp: App {
                 } else {
                     RootTabView()
                         .modelContainer(container)
-                        .onAppear {
-                            if biometricLockEnabled, !authService.isBiometricAvailable {
-                                biometricLockEnabled = false
-                            }
-                        }
                 }
             }
             .environment(authService)
@@ -44,6 +39,9 @@ struct HomeCareVoiceLogApp: App {
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 authService.refresh()
+                if biometricLockEnabled, !authService.isBiometricAvailable {
+                    biometricLockEnabled = false
+                }
             }
             if newPhase != .active, biometricLockEnabled, authService.isBiometricAvailable {
                 isUnlocked = false

@@ -41,11 +41,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("tab.settings")
-            .onAppear {
-                if !authService.isBiometricAvailable, biometricLockEnabled {
-                    biometricLockEnabled = false
-                }
-            }
         }
     }
 

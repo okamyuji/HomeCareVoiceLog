@@ -58,6 +58,7 @@ struct LockScreenView: View {
     }
 
     private func authenticate() async {
+        guard !isAuthenticating else { return }
         isAuthenticating = true
         showAuthFailure = false
         defer { isAuthenticating = false }

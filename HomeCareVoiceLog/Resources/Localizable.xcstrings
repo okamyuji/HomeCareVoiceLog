@@ -547,13 +547,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Authenticate to access your care logs."
+            "value" : "Unlock HomeCare VoiceLog"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ケア記録にアクセスするために認証してください。"
+            "value" : "HomeCare VoiceLogのロックを解除"
           }
         }
       }

@@ -48,19 +48,13 @@ final class BiometricAuthService: BiometricAuthenticating {
     }
 
     func authenticate() async -> BiometricAuthResult {
-        let context = LAContext()
-        context.localizedCancelTitle = String(localized: "biometric.cancel")
-
-        var error: NSError?
-        guard context.canEvaluatePolicy(
-            .deviceOwnerAuthenticationWithBiometrics,
-            error: &error
-        ) else {
-            if let error {
-                Self.logger.warning("Biometric policy evaluation unavailable: \(error.localizedDescription)")
-            }
+        guard isBiometricAvailable else {
+            Self.logger.warning("Biometric authentication unavailable, policy evaluation skipped.")
             return .failure
         }
+
+        let context = LAContext()
+        context.localizedCancelTitle = String(localized: "biometric.cancel")
 
         do {
             let success = try await context.evaluatePolicy(
