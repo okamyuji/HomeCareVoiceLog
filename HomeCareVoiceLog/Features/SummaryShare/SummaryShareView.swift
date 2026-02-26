@@ -5,6 +5,7 @@ struct SummaryShareView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var selectedDay = Date()
     @State private var summaryText = ""
+    @State private var errorMessage: String?
 
     var body: some View {
         NavigationStack {
@@ -28,13 +29,29 @@ struct SummaryShareView: View {
                 }
             }
             .navigationTitle("tab.summary")
+            .alert("summary.error", isPresented: Binding(
+                get: { errorMessage != nil },
+                set: { if !$0 { errorMessage = nil } }
+            )) {
+                Button("OK") { errorMessage = nil }
+            } message: {
+                if let errorMessage {
+                    Text(errorMessage)
+                }
+            }
         }
     }
 
     private func generateSummary() {
         let repository = CareRecordRepository(modelContext: modelContext)
         let formatter = DailySummaryFormatter()
-        let records = (try? repository.records(on: selectedDay)) ?? []
+        let records: [CareRecordEntity]
+        do {
+            records = try repository.records(on: selectedDay)
+        } catch {
+            errorMessage = error.localizedDescription
+            return
+        }
         let drafts = records.map {
             CareRecordDraft(
                 timestamp: $0.timestamp,

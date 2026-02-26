@@ -154,6 +154,22 @@
         }
       }
     },
+    "record.saveError" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Error"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存エラー"
+          }
+        }
+      }
+    },
     "record.category" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -337,6 +353,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "リマインダー時刻"
+          }
+        }
+      }
+    },
+    "summary.error" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー"
           }
         }
       }

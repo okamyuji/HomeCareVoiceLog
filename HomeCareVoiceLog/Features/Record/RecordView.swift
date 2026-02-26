@@ -10,6 +10,7 @@ struct RecordView: View {
     )
     @State private var selectedCategory: CareCategory = .freeMemo
     @State private var freeMemo = ""
+    @State private var saveErrorMessage: String?
     @FocusState private var focusedField: Field?
 
     private enum Field: Hashable {
@@ -67,14 +68,18 @@ struct RecordView: View {
                         if viewModel.isRecording {
                             let recordedDuration = viewModel.elapsedRecordingSeconds
                             await viewModel.stopRecording()
-                            _ = try? CareRecordRepository(modelContext: modelContext).addRecord(
-                                timestamp: Date(),
-                                category: selectedCategory,
-                                transcriptText: viewModel.transcriptText.isEmpty ? nil : viewModel.transcriptText,
-                                freeMemoText: freeMemo.isEmpty ? nil : freeMemo,
-                                durationSeconds: recordedDuration > 0 ? recordedDuration : nil
-                            )
-                            freeMemo = ""
+                            do {
+                                try CareRecordRepository(modelContext: modelContext).addRecord(
+                                    timestamp: Date(),
+                                    category: selectedCategory,
+                                    transcriptText: viewModel.transcriptText.isEmpty ? nil : viewModel.transcriptText,
+                                    freeMemoText: freeMemo.isEmpty ? nil : freeMemo,
+                                    durationSeconds: recordedDuration > 0 ? recordedDuration : nil
+                                )
+                                freeMemo = ""
+                            } catch {
+                                saveErrorMessage = error.localizedDescription
+                            }
                         } else {
                             await viewModel.startRecording()
                         }
@@ -82,6 +87,16 @@ struct RecordView: View {
                 }
             }
             .navigationTitle("tab.record")
+            .alert("record.saveError", isPresented: Binding(
+                get: { saveErrorMessage != nil },
+                set: { if !$0 { saveErrorMessage = nil } }
+            )) {
+                Button("OK") { saveErrorMessage = nil }
+            } message: {
+                if let saveErrorMessage {
+                    Text(saveErrorMessage)
+                }
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()

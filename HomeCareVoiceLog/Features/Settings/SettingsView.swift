@@ -13,6 +13,7 @@ struct SettingsView: View {
             Form {
                 Section {
                     Toggle("settings.dailyReminder", isOn: $dailyReminderEnabled)
+                        .accessibilityIdentifier("daily-reminder-toggle")
 
                     DatePicker(
                         "settings.reminderTime",
@@ -29,11 +30,13 @@ struct SettingsView: View {
                         ),
                         displayedComponents: .hourAndMinute
                     )
+                    .accessibilityIdentifier("reminder-time-picker")
                 }
 
                 if authService.isBiometricAvailable {
                     Section(header: Text("settings.security")) {
                         Toggle(biometricToggleLabel, isOn: $biometricLockEnabled)
+                            .accessibilityIdentifier("biometric-lock-toggle")
                     }
                 }
             }

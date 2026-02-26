@@ -46,6 +46,7 @@ struct LockScreenView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .disabled(isAuthenticating)
+            .accessibilityIdentifier("biometric-unlock-button")
             .padding(.horizontal, 40)
             .padding(.bottom, 40)
         }

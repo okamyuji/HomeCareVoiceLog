@@ -26,6 +26,7 @@ struct TimelineView: View {
             }
             .safeAreaInset(edge: .top) {
                 DatePicker("timeline.day", selection: $selectedDay, displayedComponents: .date)
+                    .accessibilityIdentifier("timeline-date-picker")
                     .padding(.horizontal)
                     .padding(.bottom, 8)
                     .background(.thinMaterial)
