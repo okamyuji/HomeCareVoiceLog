@@ -3,6 +3,10 @@ import SwiftUI
 
 @main
 struct HomeCareVoiceLogApp: App {
+    @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
+    @State private var isUnlocked = false
+    @Environment(\.scenePhase) private var scenePhase
+
     private let container: ModelContainer = {
         let schema = Schema([
             CareRecordEntity.self,
@@ -19,8 +23,19 @@ struct HomeCareVoiceLogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootTabView()
-                .modelContainer(container)
+            if biometricLockEnabled && !isUnlocked {
+                LockScreenView {
+                    isUnlocked = true
+                }
+            } else {
+                RootTabView()
+                    .modelContainer(container)
+            }
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .background && biometricLockEnabled {
+                isUnlocked = false
+            }
         }
     }
 }
