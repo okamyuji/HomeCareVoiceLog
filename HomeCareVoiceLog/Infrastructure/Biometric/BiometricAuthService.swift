@@ -14,7 +14,7 @@ final class BiometricAuthService: BiometricAuthenticating {
 
     var biometryType: LABiometryType {
         var error: NSError?
-        context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+        _ = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
         return context.biometryType
     }
 
