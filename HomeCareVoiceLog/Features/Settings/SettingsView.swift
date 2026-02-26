@@ -6,7 +6,7 @@ struct SettingsView: View {
     @AppStorage("dailyReminderMinute") private var dailyReminderMinute = 0
     @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
 
-    private let authService = BiometricAuthService()
+    @State private var authService = BiometricAuthService()
 
     var body: some View {
         NavigationStack {
@@ -18,7 +18,8 @@ struct SettingsView: View {
                         "settings.reminderTime",
                         selection: Binding(
                             get: {
-                                Calendar.current.date(from: DateComponents(hour: dailyReminderHour, minute: dailyReminderMinute)) ?? Date()
+                                let components = DateComponents(hour: dailyReminderHour, minute: dailyReminderMinute)
+                                return Calendar.current.date(from: components) ?? Date()
                             },
                             set: { value in
                                 let components = Calendar.current.dateComponents([.hour, .minute], from: value)

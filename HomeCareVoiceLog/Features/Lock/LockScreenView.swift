@@ -2,14 +2,14 @@ import SwiftUI
 
 struct LockScreenView: View {
     let onUnlock: () -> Void
-    private let authService: BiometricAuthService
+    @State private var authService: BiometricAuthService
 
     @State private var isAuthenticating = false
     @State private var hasAttemptedAuth = false
 
     init(onUnlock: @escaping () -> Void, authService: BiometricAuthService = BiometricAuthService()) {
         self.onUnlock = onUnlock
-        self.authService = authService
+        _authService = State(initialValue: authService)
     }
 
     var body: some View {
@@ -58,9 +58,8 @@ struct LockScreenView: View {
 
     private func authenticate() async {
         isAuthenticating = true
-        let success = await authService.authenticate()
-        isAuthenticating = false
-        if success {
+        defer { isAuthenticating = false }
+        if await authService.authenticate() {
             onUnlock()
         }
     }
