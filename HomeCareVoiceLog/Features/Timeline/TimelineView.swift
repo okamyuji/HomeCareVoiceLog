@@ -25,12 +25,12 @@ struct TimelineView: View {
                 }
             }
             .safeAreaInset(edge: .top) {
-                DatePicker(String(localized: "timeline.day"), selection: $selectedDay, displayedComponents: .date)
+                DatePicker("timeline.day", selection: $selectedDay, displayedComponents: .date)
                     .padding(.horizontal)
                     .padding(.bottom, 8)
                     .background(.thinMaterial)
             }
-            .navigationTitle(String(localized: "tab.timeline"))
+            .navigationTitle("tab.timeline")
         }
     }
 

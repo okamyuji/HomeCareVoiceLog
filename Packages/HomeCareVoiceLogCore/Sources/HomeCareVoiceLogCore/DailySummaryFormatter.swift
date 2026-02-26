@@ -20,7 +20,8 @@ public struct DailySummaryFormatter: Sendable {
         timeFormatter.timeZone = displayTimeZone
         timeFormatter.dateFormat = "HH:mm"
 
-        let title = isJapanese ? "日次サマリー (\(dateFormatter.string(from: date)))" : "Daily Summary (\(dateFormatter.string(from: date)))"
+        let dateString = dateFormatter.string(from: date)
+        let title = isJapanese ? "日次サマリー (\(dateString))" : "Daily Summary (\(dateString))"
         let timelineHeading = isJapanese ? "タイムライン" : "Timeline"
         let countsHeading = isJapanese ? "カテゴリ別件数" : "Category Counts"
         let memosHeading = isJapanese ? "メモ一覧" : "Free Memos"

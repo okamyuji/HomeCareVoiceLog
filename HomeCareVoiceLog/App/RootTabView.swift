@@ -5,22 +5,22 @@ struct RootTabView: View {
         TabView {
             RecordView()
                 .tabItem {
-                    Label(String(localized: "tab.record"), systemImage: "mic")
+                    Label("tab.record", systemImage: "mic")
                 }
 
             TimelineView()
                 .tabItem {
-                    Label(String(localized: "tab.timeline"), systemImage: "list.bullet")
+                    Label("tab.timeline", systemImage: "list.bullet")
                 }
 
             SummaryShareView()
                 .tabItem {
-                    Label(String(localized: "tab.summary"), systemImage: "square.and.arrow.up")
+                    Label("tab.summary", systemImage: "square.and.arrow.up")
                 }
 
             SettingsView()
                 .tabItem {
-                    Label(String(localized: "tab.settings"), systemImage: "gearshape")
+                    Label("tab.settings", systemImage: "gearshape")
                 }
         }
     }

@@ -12,10 +12,10 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section {
-                    Toggle(String(localized: "settings.dailyReminder"), isOn: $dailyReminderEnabled)
+                    Toggle("settings.dailyReminder", isOn: $dailyReminderEnabled)
 
                     DatePicker(
-                        String(localized: "settings.reminderTime"),
+                        "settings.reminderTime",
                         selection: Binding(
                             get: {
                                 Calendar.current.date(from: DateComponents(hour: dailyReminderHour, minute: dailyReminderMinute)) ?? Date()
@@ -36,18 +36,18 @@ struct SettingsView: View {
                     }
                 }
             }
-            .navigationTitle(String(localized: "tab.settings"))
+            .navigationTitle("tab.settings")
         }
     }
 
-    private var biometricToggleLabel: String {
+    private var biometricToggleLabel: LocalizedStringKey {
         switch authService.biometryType {
         case .faceID:
-            String(localized: "settings.biometric.faceid")
+            "settings.biometric.faceid"
         case .touchID:
-            String(localized: "settings.biometric.touchid")
+            "settings.biometric.touchid"
         default:
-            String(localized: "settings.biometric.lock")
+            "settings.biometric.lock"
         }
     }
 }

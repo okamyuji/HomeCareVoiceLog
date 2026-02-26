@@ -23,7 +23,7 @@ struct RecordView: View {
                     CategorySelectionView(selectedCategory: $selectedCategory)
                 } label: {
                     HStack {
-                        Text(String(localized: "record.category"))
+                        Text("record.category")
                         Spacer()
                         Text(selectedCategory.localizedLabel(locale: .current))
                             .foregroundStyle(.secondary)
@@ -32,7 +32,7 @@ struct RecordView: View {
                 }
                 .accessibilityIdentifier("category-selector-row")
 
-                TextField(String(localized: "record.freeMemo"), text: $freeMemo, axis: .vertical)
+                TextField("record.freeMemo", text: $freeMemo, axis: .vertical)
                     .lineLimit(3 ... 6)
                     .focused($focusedField, equals: .freeMemo)
                     .accessibilityIdentifier("free-memo-field")
@@ -43,7 +43,7 @@ struct RecordView: View {
                             Circle()
                                 .fill(.red)
                                 .frame(width: 10, height: 10)
-                            Text(String(localized: "record.recording"))
+                            Text("record.recording")
                             Spacer()
                             Text(viewModel.elapsedRecordingText)
                                 .monospacedDigit()
@@ -57,12 +57,12 @@ struct RecordView: View {
                 }
 
                 if !viewModel.transcriptText.isEmpty {
-                    Section(String(localized: "record.transcript")) {
+                    Section("record.transcript") {
                         Text(viewModel.transcriptText)
                     }
                 }
 
-                Button(viewModel.isRecording ? String(localized: "record.stop") : String(localized: "record.start")) {
+                Button(recordButtonLabel) {
                     Task {
                         if viewModel.isRecording {
                             let recordedDuration = viewModel.elapsedRecordingSeconds
@@ -81,11 +81,11 @@ struct RecordView: View {
                     }
                 }
             }
-            .navigationTitle(String(localized: "tab.record"))
+            .navigationTitle("tab.record")
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button(String(localized: "keyboard.done")) {
+                    Button("keyboard.done") {
                         dismissKeyboard()
                     }
                 }
@@ -94,7 +94,7 @@ struct RecordView: View {
                 if focusedField == .freeMemo {
                     HStack {
                         Spacer()
-                        Button(String(localized: "keyboard.dismiss")) {
+                        Button("keyboard.dismiss") {
                             dismissKeyboard()
                         }
                         .buttonStyle(.borderedProminent)
@@ -105,6 +105,10 @@ struct RecordView: View {
                 }
             }
         }
+    }
+
+    private var recordButtonLabel: LocalizedStringKey {
+        viewModel.isRecording ? "record.stop" : "record.start"
     }
 
     private func dismissKeyboard() {
@@ -139,6 +143,6 @@ private struct CategorySelectionView: View {
             }
             .accessibilityIdentifier("category-option-\(category.rawValue)")
         }
-        .navigationTitle(String(localized: "record.categorySelectionTitle"))
+        .navigationTitle("record.categorySelectionTitle")
     }
 }

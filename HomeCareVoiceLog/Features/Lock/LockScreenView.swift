@@ -75,14 +75,14 @@ struct LockScreenView: View {
         }
     }
 
-    private var biometricButtonLabel: String {
+    private var biometricButtonLabel: LocalizedStringKey {
         switch authService.biometryType {
         case .faceID:
-            String(localized: "lock.button.faceid")
+            "lock.button.faceid"
         case .touchID:
-            String(localized: "lock.button.touchid")
+            "lock.button.touchid"
         default:
-            String(localized: "lock.button.unlock")
+            "lock.button.unlock"
         }
     }
 }

@@ -9,25 +9,25 @@ struct SummaryShareView: View {
     var body: some View {
         NavigationStack {
             Form {
-                DatePicker(String(localized: "summary.targetDay"), selection: $selectedDay, displayedComponents: .date)
-                Button(String(localized: "summary.generate")) {
+                DatePicker("summary.targetDay", selection: $selectedDay, displayedComponents: .date)
+                Button("summary.generate") {
                     generateSummary()
                 }
                 .accessibilityIdentifier("generate-summary")
 
                 if !summaryText.isEmpty {
-                    Section(String(localized: "summary.preview")) {
+                    Section("summary.preview") {
                         Text(summaryText)
                             .font(.footnote)
                     }
 
                     ShareLink(item: summaryText) {
-                        Label(String(localized: "summary.share"), systemImage: "square.and.arrow.up")
+                        Label("summary.share", systemImage: "square.and.arrow.up")
                     }
                     .accessibilityIdentifier("share-summary")
                 }
             }
-            .navigationTitle(String(localized: "tab.summary"))
+            .navigationTitle("tab.summary")
         }
     }
 

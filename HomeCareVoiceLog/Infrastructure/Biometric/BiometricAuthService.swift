@@ -24,16 +24,16 @@ final class BiometricAuthService: BiometricAuthenticating {
     }
 
     func authenticate() async -> Bool {
-        let context = LAContext()
-        context.localizedCancelTitle = String(localized: "biometric.cancel")
+        let authContext = LAContext()
+        authContext.localizedCancelTitle = String(localized: "biometric.cancel")
 
         var error: NSError?
-        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+        guard authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
             return false
         }
 
         do {
-            return try await context.evaluatePolicy(
+            return try await authContext.evaluatePolicy(
                 .deviceOwnerAuthenticationWithBiometrics,
                 localizedReason: String(localized: "biometric.reason")
             )
