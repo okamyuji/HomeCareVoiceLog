@@ -5,7 +5,7 @@ struct LockScreenView: View {
     let authService: BiometricAuthService
 
     @State private var isAuthenticating = false
-    @State private var hasAttemptedAuth = false
+    @State private var showAuthFailure = false
 
     var body: some View {
         VStack(spacing: 32) {
@@ -24,6 +24,13 @@ struct LockScreenView: View {
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
+
+            if showAuthFailure {
+                Text("lock.authFailed")
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+                    .accessibilityIdentifier("auth-failure-message")
+            }
 
             Spacer()
 
@@ -46,17 +53,18 @@ struct LockScreenView: View {
             .padding(.bottom, 40)
         }
         .task {
-            guard !hasAttemptedAuth else { return }
-            hasAttemptedAuth = true
             await authenticate()
         }
     }
 
     private func authenticate() async {
         isAuthenticating = true
+        showAuthFailure = false
         defer { isAuthenticating = false }
         if await authService.authenticate() {
             onUnlock()
+        } else {
+            showAuthFailure = true
         }
     }
 

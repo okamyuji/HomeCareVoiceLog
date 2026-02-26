@@ -35,7 +35,7 @@ struct HomeCareVoiceLogApp: App {
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
-            if newPhase == .background && biometricLockEnabled {
+            if newPhase != .active && biometricLockEnabled {
                 isUnlocked = false
             }
         }

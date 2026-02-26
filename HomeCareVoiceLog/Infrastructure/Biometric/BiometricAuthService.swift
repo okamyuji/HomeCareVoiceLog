@@ -11,19 +11,22 @@ protocol BiometricAuthenticating: Sendable {
 
 @MainActor
 final class BiometricAuthService: BiometricAuthenticating {
-    private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "HomeCareVoiceLog", category: "BiometricAuth")
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? "HomeCareVoiceLog",
+        category: "BiometricAuth"
+    )
 
-    private let context = LAContext()
     let biometryType: LABiometryType
     let isBiometricAvailable: Bool
 
     init() {
+        let context = LAContext()
         var error: NSError?
         let available = context.canEvaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             error: &error
         )
-        if let error {
+        if !available, let error {
             Self.logger.warning("Biometric availability check failed: \(error.localizedDescription)")
         }
         isBiometricAvailable = available
@@ -31,6 +34,7 @@ final class BiometricAuthService: BiometricAuthenticating {
     }
 
     func authenticate() async -> Bool {
+        let context = LAContext()
         context.localizedCancelTitle = String(localized: "biometric.cancel")
 
         var error: NSError?
@@ -50,6 +54,7 @@ final class BiometricAuthService: BiometricAuthenticating {
                 localizedReason: String(localized: "biometric.reason")
             )
         } catch {
+            Self.logger.error("Biometric authentication failed: \(error.localizedDescription)")
             return false
         }
     }

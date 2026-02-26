@@ -701,6 +701,22 @@
           }
         }
       }
+    },
+    "lock.authFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authentication failed. Please try again."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "認証に失敗しました。もう一度お試しください。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
