@@ -49,7 +49,7 @@ struct SummaryShareView: View {
         do {
             records = try repository.records(on: selectedDay)
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = String(localized: "summary.generateError")
             return
         }
         let drafts = records.map {

@@ -78,7 +78,7 @@ struct RecordView: View {
                                 )
                                 freeMemo = ""
                             } catch {
-                                saveErrorMessage = error.localizedDescription
+                                saveErrorMessage = String(localized: "record.saveError.detail")
                             }
                         } else {
                             await viewModel.startRecording()
