@@ -1,5 +1,6 @@
 import Foundation
 import LocalAuthentication
+import os.log
 
 @MainActor
 protocol BiometricAuthenticating: Sendable {
@@ -10,6 +11,8 @@ protocol BiometricAuthenticating: Sendable {
 
 @MainActor
 final class BiometricAuthService: BiometricAuthenticating {
+    private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "HomeCareVoiceLog", category: "BiometricAuth")
+
     private let context = LAContext()
     let biometryType: LABiometryType
     let isBiometricAvailable: Bool
@@ -20,6 +23,9 @@ final class BiometricAuthService: BiometricAuthenticating {
             .deviceOwnerAuthenticationWithBiometrics,
             error: &error
         )
+        if let error {
+            Self.logger.warning("Biometric availability check failed: \(error.localizedDescription)")
+        }
         isBiometricAvailable = available
         biometryType = context.biometryType
     }
@@ -32,6 +38,9 @@ final class BiometricAuthService: BiometricAuthenticating {
             .deviceOwnerAuthenticationWithBiometrics,
             error: &error
         ) else {
+            if let error {
+                Self.logger.warning("Biometric policy evaluation unavailable: \(error.localizedDescription)")
+            }
             return false
         }
 

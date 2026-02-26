@@ -2,15 +2,10 @@ import SwiftUI
 
 struct LockScreenView: View {
     let onUnlock: () -> Void
-    @State private var authService: BiometricAuthService
+    let authService: BiometricAuthService
 
     @State private var isAuthenticating = false
     @State private var hasAttemptedAuth = false
-
-    init(onUnlock: @escaping () -> Void, authService: BiometricAuthService = BiometricAuthService()) {
-        self.onUnlock = onUnlock
-        _authService = State(initialValue: authService)
-    }
 
     var body: some View {
         VStack(spacing: 32) {

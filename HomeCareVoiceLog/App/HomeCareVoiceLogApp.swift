@@ -7,6 +7,8 @@ struct HomeCareVoiceLogApp: App {
     @State private var isUnlocked = false
     @Environment(\.scenePhase) private var scenePhase
 
+    private let authService = BiometricAuthService()
+
     private let container: ModelContainer = {
         let schema = Schema([
             CareRecordEntity.self,
@@ -24,11 +26,11 @@ struct HomeCareVoiceLogApp: App {
     var body: some Scene {
         WindowGroup {
             if biometricLockEnabled && !isUnlocked {
-                LockScreenView {
+                LockScreenView(onUnlock: {
                     isUnlocked = true
-                }
+                }, authService: authService)
             } else {
-                RootTabView()
+                RootTabView(authService: authService)
                     .modelContainer(container)
             }
         }
