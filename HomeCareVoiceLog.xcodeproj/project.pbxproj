@@ -28,6 +28,7 @@
 		E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */; };
 		E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */; };
 		EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B3C4D5E6F7A8B9C0D1E2F3A4 /* InfoPlist.xcstrings */; };
 		F036B3CE10D9CBF601AF6796 /* RecordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526EBCBCDAB7A3EFD1BC315 /* RecordViewModelTests.swift */; };
 		F1417BF2BD48FC41163F11D5 /* PlaceholderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
 		838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
 		AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		B3C4D5E6F7A8B9C0D1E2F3A4 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsEntity.swift; sourceTree = "<group>"; };
 		B46E465C57F361EDE9621574 /* PlaceholderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderUITests.swift; sourceTree = "<group>"; };
 		B5885E04BCE2878C9CB8E3A5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				D50D6F7A609473B53874B897 /* Assets.xcassets */,
+				B3C4D5E6F7A8B9C0D1E2F3A4 /* InfoPlist.xcstrings */,
 				AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */,
 			);
 			path = Resources;
@@ -375,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8647F25AF20FF3B841FDFD /* Assets.xcassets in Resources */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* InfoPlist.xcstrings in Resources */,
 				EC6378A464BA034641F21F5A /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
