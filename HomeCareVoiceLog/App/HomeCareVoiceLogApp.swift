@@ -5,9 +5,8 @@ import SwiftUI
 struct HomeCareVoiceLogApp: App {
     @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
     @State private var isUnlocked = false
+    @State private var authService = BiometricAuthService()
     @Environment(\.scenePhase) private var scenePhase
-
-    private let authService = BiometricAuthService()
 
     private let container: ModelContainer = {
         let schema = Schema([
@@ -40,6 +39,9 @@ struct HomeCareVoiceLogApp: App {
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                authService.refresh()
+            }
             if newPhase != .active && biometricLockEnabled && authService.isBiometricAvailable {
                 isUnlocked = false
             }

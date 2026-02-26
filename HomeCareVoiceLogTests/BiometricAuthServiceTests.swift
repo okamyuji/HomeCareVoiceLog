@@ -44,21 +44,20 @@ final class BiometricAuthServiceTests: XCTestCase {
 }
 
 @MainActor
-private final class BiometricAuthServiceMock: BiometricAuthenticating {
+final class BiometricAuthServiceMock: BiometricAuthenticating {
     private let shouldSucceed: Bool
-    private let available: Bool
 
     let biometryType: LABiometryType
-    var isBiometricAvailable: Bool { available }
+    let isBiometricAvailable: Bool
 
     init(shouldSucceed: Bool, available: Bool = true, biometry: LABiometryType = .faceID) {
         self.shouldSucceed = shouldSucceed
-        self.available = available
+        self.isBiometricAvailable = available
         self.biometryType = biometry
     }
 
     func authenticate() async -> Bool {
-        guard available else { return false }
+        guard isBiometricAvailable else { return false }
         return shouldSucceed
     }
 }

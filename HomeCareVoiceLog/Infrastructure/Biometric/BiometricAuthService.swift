@@ -1,5 +1,5 @@
-import Foundation
 import LocalAuthentication
+import Observation
 import os.log
 
 @MainActor
@@ -9,6 +9,7 @@ protocol BiometricAuthenticating: Sendable {
     func authenticate() async -> Bool
 }
 
+@Observable
 @MainActor
 final class BiometricAuthService: BiometricAuthenticating {
     private static let logger = Logger(
@@ -16,16 +17,28 @@ final class BiometricAuthService: BiometricAuthenticating {
         category: "BiometricAuth"
     )
 
-    var biometryType: LABiometryType {
-        LAContext().biometryType
+    private(set) var biometryType: LABiometryType = .none
+    private(set) var isBiometricAvailable: Bool = false
+
+    init() {
+        refresh()
     }
 
-    var isBiometricAvailable: Bool {
+    /// Re-query the system for current biometric availability and type.
+    /// Call this when the app returns to the foreground to pick up
+    /// any changes the user made in device Settings.
+    func refresh() {
+        let context = LAContext()
         var error: NSError?
-        return LAContext().canEvaluatePolicy(
+        let available = context.canEvaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             error: &error
         )
+        if !available, let error {
+            Self.logger.warning("Biometric availability check failed: \(error.localizedDescription)")
+        }
+        isBiometricAvailable = available
+        biometryType = context.biometryType
     }
 
     func authenticate() async -> Bool {
