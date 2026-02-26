@@ -80,7 +80,7 @@ struct LockScreenView: View {
             "touchid"
         case .opticID:
             "opticid"
-        default:
+        @unknown default:
             "lock.open"
         }
     }
@@ -93,7 +93,7 @@ struct LockScreenView: View {
             "lock.button.touchid"
         case .opticID:
             "lock.button.opticid"
-        default:
+        @unknown default:
             "lock.button.unlock"
         }
     }

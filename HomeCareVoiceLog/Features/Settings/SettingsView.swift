@@ -52,7 +52,7 @@ struct SettingsView: View {
             "settings.biometric.touchid"
         case .opticID:
             "settings.biometric.opticid"
-        default:
+        @unknown default:
             "settings.biometric.lock"
         }
     }
