@@ -32,6 +32,9 @@ final class BiometricAuthServiceTests: XCTestCase {
         let touchIDMock = BiometricAuthServiceMock(shouldSucceed: true, biometry: .touchID)
         XCTAssertEqual(touchIDMock.biometryType, .touchID)
 
+        let opticIDMock = BiometricAuthServiceMock(shouldSucceed: true, biometry: .opticID)
+        XCTAssertEqual(opticIDMock.biometryType, .opticID)
+
         let noneMock = BiometricAuthServiceMock(shouldSucceed: true, biometry: .none)
         XCTAssertEqual(noneMock.biometryType, .none)
     }
@@ -52,8 +55,8 @@ final class BiometricAuthServiceMock: BiometricAuthenticating {
 
     init(shouldSucceed: Bool, available: Bool = true, biometry: LABiometryType = .faceID) {
         self.shouldSucceed = shouldSucceed
-        self.isBiometricAvailable = available
-        self.biometryType = biometry
+        isBiometricAvailable = available
+        biometryType = biometry
     }
 
     func authenticate() async -> Bool {

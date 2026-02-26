@@ -622,6 +622,22 @@
         }
       }
     },
+    "lock.button.opticid" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock with Optic ID"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optic IDでロック解除"
+          }
+        }
+      }
+    },
     "lock.button.unlock" : {
       "localizations" : {
         "en" : {
@@ -682,6 +698,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Touch IDでロック"
+          }
+        }
+      }
+    },
+    "settings.biometric.opticid" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lock with Optic ID"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optic IDでロック"
           }
         }
       }

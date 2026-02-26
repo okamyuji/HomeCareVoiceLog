@@ -42,7 +42,7 @@ struct SettingsView: View {
             }
             .navigationTitle("tab.settings")
             .onAppear {
-                if !authService.isBiometricAvailable && biometricLockEnabled {
+                if !authService.isBiometricAvailable, biometricLockEnabled {
                     biometricLockEnabled = false
                 }
             }
@@ -55,6 +55,8 @@ struct SettingsView: View {
             "settings.biometric.faceid"
         case .touchID:
             "settings.biometric.touchid"
+        case .opticID:
+            "settings.biometric.opticid"
         default:
             "settings.biometric.lock"
         }

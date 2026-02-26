@@ -9,7 +9,7 @@ final class AppStoreScreenshots: XCTestCase {
         app.launch()
     }
 
-    func testTakeAppStoreScreenshots() throws {
+    func testTakeAppStoreScreenshots() {
         // Screenshot 1: Record screen (main feature)
         let categorySelector = app.buttons["category-selector-row"]
         XCTAssertTrue(categorySelector.waitForExistence(timeout: 3))

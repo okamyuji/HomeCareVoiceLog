@@ -87,6 +87,8 @@ struct LockScreenView: View {
             "lock.button.faceid"
         case .touchID:
             "lock.button.touchid"
+        case .opticID:
+            "lock.button.opticid"
         default:
             "lock.button.unlock"
         }
