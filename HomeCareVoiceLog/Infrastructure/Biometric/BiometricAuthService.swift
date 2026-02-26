@@ -16,21 +16,16 @@ final class BiometricAuthService: BiometricAuthenticating {
         category: "BiometricAuth"
     )
 
-    let biometryType: LABiometryType
-    let isBiometricAvailable: Bool
+    var biometryType: LABiometryType {
+        LAContext().biometryType
+    }
 
-    init() {
-        let context = LAContext()
+    var isBiometricAvailable: Bool {
         var error: NSError?
-        let available = context.canEvaluatePolicy(
+        return LAContext().canEvaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             error: &error
         )
-        if !available, let error {
-            Self.logger.warning("Biometric availability check failed: \(error.localizedDescription)")
-        }
-        isBiometricAvailable = available
-        biometryType = context.biometryType
     }
 
     func authenticate() async -> Bool {

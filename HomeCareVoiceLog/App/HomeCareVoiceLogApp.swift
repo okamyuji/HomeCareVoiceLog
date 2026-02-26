@@ -25,17 +25,22 @@ struct HomeCareVoiceLogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if biometricLockEnabled && !isUnlocked {
+            if biometricLockEnabled && !isUnlocked && authService.isBiometricAvailable {
                 LockScreenView(onUnlock: {
                     isUnlocked = true
                 }, authService: authService)
             } else {
                 RootTabView(authService: authService)
                     .modelContainer(container)
+                    .onAppear {
+                        if biometricLockEnabled && !authService.isBiometricAvailable {
+                            biometricLockEnabled = false
+                        }
+                    }
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
-            if newPhase != .active && biometricLockEnabled {
+            if newPhase != .active && biometricLockEnabled && authService.isBiometricAvailable {
                 isUnlocked = false
             }
         }
