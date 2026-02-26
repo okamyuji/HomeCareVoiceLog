@@ -37,5 +37,10 @@ struct HomeCareVoiceLogApp: App {
                 isUnlocked = false
             }
         }
+        .onChange(of: biometricLockEnabled) { _, newValue in
+            if !newValue {
+                isUnlocked = true
+            }
+        }
     }
 }

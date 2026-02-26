@@ -5,6 +5,7 @@ struct LockScreenView: View {
     private let authService: BiometricAuthService
 
     @State private var isAuthenticating = false
+    @State private var hasAttemptedAuth = false
 
     init(onUnlock: @escaping () -> Void, authService: BiometricAuthService = BiometricAuthService()) {
         self.onUnlock = onUnlock
@@ -49,6 +50,8 @@ struct LockScreenView: View {
             .padding(.bottom, 40)
         }
         .task {
+            guard !hasAttemptedAuth else { return }
+            hasAttemptedAuth = true
             await authenticate()
         }
     }

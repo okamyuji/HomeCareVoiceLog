@@ -11,29 +11,32 @@ protocol BiometricAuthenticating: Sendable {
 @MainActor
 final class BiometricAuthService: BiometricAuthenticating {
     private let context = LAContext()
+    let biometryType: LABiometryType
+    let isBiometricAvailable: Bool
 
-    var biometryType: LABiometryType {
+    init() {
         var error: NSError?
-        _ = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
-        return context.biometryType
-    }
-
-    var isBiometricAvailable: Bool {
-        var error: NSError?
-        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+        let available = context.canEvaluatePolicy(
+            .deviceOwnerAuthenticationWithBiometrics,
+            error: &error
+        )
+        isBiometricAvailable = available
+        biometryType = context.biometryType
     }
 
     func authenticate() async -> Bool {
-        let authContext = LAContext()
-        authContext.localizedCancelTitle = String(localized: "biometric.cancel")
+        context.localizedCancelTitle = String(localized: "biometric.cancel")
 
         var error: NSError?
-        guard authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+        guard context.canEvaluatePolicy(
+            .deviceOwnerAuthenticationWithBiometrics,
+            error: &error
+        ) else {
             return false
         }
 
         do {
-            return try await authContext.evaluatePolicy(
+            return try await context.evaluatePolicy(
                 .deviceOwnerAuthenticationWithBiometrics,
                 localizedReason: String(localized: "biometric.reason")
             )
