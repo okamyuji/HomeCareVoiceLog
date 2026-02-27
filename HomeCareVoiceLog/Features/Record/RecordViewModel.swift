@@ -1,4 +1,5 @@
 import Foundation
+import Observation
 
 protocol FileManaging {
     func removeItem(at url: URL) throws
@@ -6,12 +7,13 @@ protocol FileManaging {
 
 extension FileManager: FileManaging {}
 
+@Observable
 @MainActor
-final class RecordViewModel: ObservableObject {
-    @Published private(set) var isRecording = false
-    @Published private(set) var transcriptText = ""
-    @Published private(set) var elapsedRecordingSeconds = 0
-    @Published private(set) var lastErrorMessage: String?
+final class RecordViewModel {
+    private(set) var isRecording = false
+    private(set) var transcriptText = ""
+    private(set) var elapsedRecordingSeconds = 0
+    private(set) var lastErrorMessage: String?
 
     private let audioRecorder: AudioRecording
     private let speechTranscriber: SpeechTranscribing
@@ -50,7 +52,7 @@ final class RecordViewModel: ObservableObject {
             startElapsedTimer()
             lastErrorMessage = nil
         } catch {
-            lastErrorMessage = error.localizedDescription
+            lastErrorMessage = String(localized: "record.startError")
             isRecording = false
             stopElapsedTimer(resetToZero: true)
         }
@@ -67,7 +69,7 @@ final class RecordViewModel: ObservableObject {
             try? fileManager.removeItem(at: fileURL)
             lastErrorMessage = nil
         } catch {
-            lastErrorMessage = error.localizedDescription
+            lastErrorMessage = String(localized: "record.transcriptionError")
         }
     }
 

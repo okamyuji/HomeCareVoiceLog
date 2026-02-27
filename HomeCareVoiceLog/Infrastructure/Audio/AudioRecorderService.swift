@@ -58,6 +58,7 @@ final class AudioRecorderService: NSObject, AudioRecording {
         recorder.stop()
         self.recorder = nil
         self.outputURL = nil
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
         return outputURL
     }
 

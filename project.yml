@@ -23,6 +23,7 @@ targets:
         TARGETED_DEVICE_FAMILY: 1
     dependencies:
       - package: HomeCareVoiceLogCore
+      - sdk: LocalAuthentication.framework
   HomeCareVoiceLogTests:
     type: bundle.unit-test
     platform: iOS
