@@ -3,6 +3,7 @@ import SwiftUI
 
 struct SummaryShareView: View {
     @Environment(CareRecordRepository.self) private var repository
+    @AppStorage("detailedRecordModeEnabled") private var detailedRecordModeEnabled = true
     @State private var selectedDay = Date()
     @State private var summaryText = ""
     @State private var errorAlert: AppErrorAlert?
@@ -50,10 +51,20 @@ struct SummaryShareView: View {
                 timestamp: $0.timestamp,
                 category: $0.category,
                 transcriptText: $0.transcriptText,
-                freeMemoText: $0.freeMemoText
+                freeMemoText: $0.freeMemoText,
+                bodyTemperature: $0.bodyTemperature,
+                systolicBP: $0.systolicBP,
+                diastolicBP: $0.diastolicBP,
+                pulseRate: $0.pulseRate,
+                oxygenSaturation: $0.oxygenSaturation
             )
         }
 
-        summaryText = formatter.format(records: drafts, date: selectedDay, locale: .current)
+        summaryText = formatter.format(
+            records: drafts,
+            date: selectedDay,
+            locale: .current,
+            includeVitalTrend: detailedRecordModeEnabled
+        )
     }
 }

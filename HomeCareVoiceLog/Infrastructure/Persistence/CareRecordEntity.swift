@@ -9,6 +9,11 @@ final class CareRecordEntity {
     var categoryRawValue: String
     var transcriptText: String?
     var freeMemoText: String?
+    var bodyTemperature: Double?
+    var systolicBP: Int?
+    var diastolicBP: Int?
+    var pulseRate: Int?
+    var oxygenSaturation: Int?
     var durationSeconds: Int?
     var createdAt: Date
     var updatedAt: Date
@@ -19,6 +24,11 @@ final class CareRecordEntity {
         category: CareCategory,
         transcriptText: String?,
         freeMemoText: String?,
+        bodyTemperature: Double? = nil,
+        systolicBP: Int? = nil,
+        diastolicBP: Int? = nil,
+        pulseRate: Int? = nil,
+        oxygenSaturation: Int? = nil,
         durationSeconds: Int?,
         createdAt: Date = .now,
         updatedAt: Date = .now
@@ -28,6 +38,11 @@ final class CareRecordEntity {
         categoryRawValue = category.rawValue
         self.transcriptText = transcriptText
         self.freeMemoText = freeMemoText
+        self.bodyTemperature = bodyTemperature
+        self.systolicBP = systolicBP
+        self.diastolicBP = diastolicBP
+        self.pulseRate = pulseRate
+        self.oxygenSaturation = oxygenSaturation
         self.durationSeconds = durationSeconds
         self.createdAt = createdAt
         self.updatedAt = updatedAt

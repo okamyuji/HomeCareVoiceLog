@@ -5,6 +5,7 @@ struct SettingsView: View {
     @AppStorage("dailyReminderHour") private var dailyReminderHour = 9
     @AppStorage("dailyReminderMinute") private var dailyReminderMinute = 0
     @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
+    @AppStorage("detailedRecordModeEnabled") private var detailedRecordModeEnabled = true
 
     @Environment(BiometricAuthService.self) private var authService
 
@@ -31,6 +32,11 @@ struct SettingsView: View {
                         displayedComponents: .hourAndMinute
                     )
                     .accessibilityIdentifier("reminder-time-picker")
+                }
+
+                Section {
+                    Toggle("settings.detailedRecordMode", isOn: $detailedRecordModeEnabled)
+                        .accessibilityIdentifier("detailed-record-mode-toggle")
                 }
 
                 if authService.isBiometricAvailable {

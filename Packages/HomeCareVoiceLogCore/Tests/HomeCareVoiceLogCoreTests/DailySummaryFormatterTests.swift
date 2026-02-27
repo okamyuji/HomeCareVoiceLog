@@ -50,6 +50,63 @@ func usesJapaneseHeadings() {
     #expect(text.contains("メモ一覧"))
 }
 
+@Test("Includes vital trend section when enabled")
+func includesVitalTrendWhenEnabled() {
+    let formatter = DailySummaryFormatter()
+    let records = [
+        CareRecordDraft(
+            timestamp: date(hour: 7, minute: 30),
+            category: .vitalSigns,
+            transcriptText: nil,
+            freeMemoText: nil,
+            bodyTemperature: 36.8,
+            systolicBP: 118,
+            diastolicBP: 72,
+            pulseRate: 68,
+            oxygenSaturation: 98
+        ),
+    ]
+
+    let text = formatter.format(
+        records: records,
+        date: date(hour: 0, minute: 0),
+        locale: Locale(identifier: "en"),
+        includeVitalTrend: true
+    )
+
+    #expect(text.contains("Vital Trends"))
+    #expect(text.contains("07:30"))
+    #expect(text.contains("Temp 36.8"))
+    #expect(text.contains("BP 118/72"))
+}
+
+@Test("Does not include vital trend section when disabled")
+func doesNotIncludeVitalTrendWhenDisabled() {
+    let formatter = DailySummaryFormatter()
+    let records = [
+        CareRecordDraft(
+            timestamp: date(hour: 7, minute: 30),
+            category: .vitalSigns,
+            transcriptText: nil,
+            freeMemoText: nil,
+            bodyTemperature: 36.8,
+            systolicBP: 118,
+            diastolicBP: 72,
+            pulseRate: 68,
+            oxygenSaturation: 98
+        ),
+    ]
+
+    let text = formatter.format(
+        records: records,
+        date: date(hour: 0, minute: 0),
+        locale: Locale(identifier: "en"),
+        includeVitalTrend: false
+    )
+
+    #expect(!text.contains("Vital Trends"))
+}
+
 private func date(hour: Int, minute: Int) -> Date {
     let calendar = Calendar.autoupdatingCurrent
     var components = DateComponents()

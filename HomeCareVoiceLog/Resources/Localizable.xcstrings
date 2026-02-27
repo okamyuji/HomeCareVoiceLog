@@ -439,6 +439,23 @@
         }
       }
     },
+    "record.saveError.invalidInputPrefix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid input"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力形式が不正です"
+          }
+        }
+      }
+    },
     "record.start" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -520,6 +537,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "文字起こしに失敗しました。もう一度お試しください。"
+          }
+        }
+      }
+    },
+    "record.vital.bodyTemperature" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body Temperature (°C)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体温（℃）"
+          }
+        }
+      }
+    },
+    "record.vital.diastolicBP" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diastolic (mmHg)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拡張期血圧（mmHg）"
+          }
+        }
+      }
+    },
+    "record.vital.oxygenSaturation" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SpO2 (%)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SpO2（%）"
+          }
+        }
+      }
+    },
+    "record.vital.pulseRate" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulse (bpm)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "脈拍（bpm）"
+          }
+        }
+      }
+    },
+    "record.vital.systolicBP" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systolic (mmHg)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収縮期血圧（mmHg）"
+          }
+        }
+      }
+    },
+    "record.vitalSigns.section" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vital Signs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バイタル情報"
           }
         }
       }
@@ -639,6 +758,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "毎日リマインダー"
+          }
+        }
+      }
+    },
+    "settings.detailedRecordMode" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detailed Record Mode"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳細記録モード"
           }
         }
       }

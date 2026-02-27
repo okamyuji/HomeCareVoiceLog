@@ -5,31 +5,40 @@ public enum CareCategory: String, CaseIterable, Codable, Sendable {
     case meal
     case toileting
     case medicalVisit
+    case bathing
+    case vitalSigns
+    case exercise
     case freeMemo
+
+    public static let simpleCases: [CareCategory] = [.medication, .meal, .toileting, .medicalVisit, .freeMemo]
+
+    public static let detailedCases: [CareCategory] = [
+        .medication,
+        .meal,
+        .toileting,
+        .medicalVisit,
+        .bathing,
+        .vitalSigns,
+        .exercise,
+        .freeMemo,
+    ]
+
+    private static let localizedLabels: [CareCategory: (ja: String, en: String)] = [
+        .medication: ("服薬", "Medication"),
+        .meal: ("食事", "Meal"),
+        .toileting: ("排泄", "Toileting"),
+        .medicalVisit: ("通院", "Medical Visit"),
+        .bathing: ("入浴", "Bath"),
+        .vitalSigns: ("バイタル", "Vitals"),
+        .exercise: ("運動", "Exercise"),
+        .freeMemo: ("自由メモ", "Free Memo"),
+    ]
 
     public func localizedLabel(locale: Locale) -> String {
         let isJapanese = locale.language.languageCode?.identifier == "ja"
-        switch (self, isJapanese) {
-        case (.medication, true):
-            return "服薬"
-        case (.meal, true):
-            return "食事"
-        case (.toileting, true):
-            return "排泄"
-        case (.medicalVisit, true):
-            return "通院"
-        case (.freeMemo, true):
-            return "自由メモ"
-        case (.medication, false):
-            return "Medication"
-        case (.meal, false):
-            return "Meal"
-        case (.toileting, false):
-            return "Toileting"
-        case (.medicalVisit, false):
-            return "Medical Visit"
-        case (.freeMemo, false):
-            return "Free Memo"
+        guard let labels = Self.localizedLabels[self] else {
+            return rawValue
         }
+        return isJapanese ? labels.ja : labels.en
     }
 }

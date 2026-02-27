@@ -30,6 +30,7 @@
 		9F9E22B9A19AD5F0860DD36C /* HomeCareVoiceLogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4696BF81B38AFFE0E8D443 /* HomeCareVoiceLogUITests.swift */; };
 		A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B172BC9DEB11118A468ED445 /* ReminderSettingsEntity.swift */; };
 		AB0805625D973311A64D1369 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9CEA604150123C652633 /* RecordView.swift */; };
+		AB3D91531C2749D3A7D31C35 /* VitalSignsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F8B847B35425D93F057B0 /* VitalSignsInputView.swift */; };
 		AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */; };
 		B694042EE4901795879522E1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9756179D44B54518367B6C8F /* InfoPlist.xcstrings */; };
 		BE37278766DE1737AB8740F2 /* ReminderSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EABE70E52B2FE73690B069 /* ReminderSchedulerTests.swift */; };
@@ -70,6 +71,7 @@
 		1F9B2C3D4E5F60718293A4C1 /* View+AppErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AppErrorAlert.swift"; sourceTree = "<group>"; };
 		1F9B2C3D4E5F60718293A4C2 /* Binding+IsPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+IsPresent.swift"; sourceTree = "<group>"; };
 		1F9B2C3D4E5F60718293A4C3 /* LABiometryType+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LABiometryType+UI.swift"; sourceTree = "<group>"; };
+		227F8B847B35425D93F057B0 /* VitalSignsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalSignsInputView.swift; sourceTree = "<group>"; };
 		24AA12BC34DE56F7890A12C4 /* Calendar+DayInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DayInterval.swift"; sourceTree = "<group>"; };
 		24AA12BC34DE56F7890A12C6 /* String+StorageNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+StorageNormalization.swift"; sourceTree = "<group>"; };
 		1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				5C0C9CEA604150123C652633 /* RecordView.swift */,
 				FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */,
+				227F8B847B35425D93F057B0 /* VitalSignsInputView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				CFBC0D4C4519A1E8820F8434 /* SummaryShareView.swift in Sources */,
 				24AA12BC34DE56F7890A12C5 /* String+StorageNormalization.swift in Sources */,
 				2B2580CF703F55A90D1EED73 /* TimelineView.swift in Sources */,
+				AB3D91531C2749D3A7D31C35 /* VitalSignsInputView.swift in Sources */,
 				1F9B2C3D4E5F60718293A4B1 /* View+AppErrorAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

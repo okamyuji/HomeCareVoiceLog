@@ -18,7 +18,12 @@ final class CareRecordRepository {
         category: CareCategory,
         transcriptText: String?,
         freeMemoText: String?,
-        durationSeconds: Int?
+        durationSeconds: Int?,
+        bodyTemperature: Double? = nil,
+        systolicBP: Int? = nil,
+        diastolicBP: Int? = nil,
+        pulseRate: Int? = nil,
+        oxygenSaturation: Int? = nil
     ) throws -> CareRecordEntity {
         let now = Date()
         let normalizedTranscriptText = transcriptText.normalizedForStorage
@@ -28,6 +33,11 @@ final class CareRecordRepository {
             category: category,
             transcriptText: normalizedTranscriptText,
             freeMemoText: normalizedFreeMemoText,
+            bodyTemperature: bodyTemperature,
+            systolicBP: systolicBP,
+            diastolicBP: diastolicBP,
+            pulseRate: pulseRate,
+            oxygenSaturation: oxygenSaturation,
             durationSeconds: durationSeconds,
             createdAt: now,
             updatedAt: now
@@ -41,20 +51,35 @@ final class CareRecordRepository {
         _ record: CareRecordEntity,
         category: CareCategory,
         transcriptText: String?,
-        freeMemoText: String?
+        freeMemoText: String?,
+        bodyTemperature: Double? = nil,
+        systolicBP: Int? = nil,
+        diastolicBP: Int? = nil,
+        pulseRate: Int? = nil,
+        oxygenSaturation: Int? = nil
     ) throws {
         let normalizedTranscriptText = transcriptText.normalizedForStorage
         let normalizedFreeMemoText = freeMemoText.normalizedForStorage
         guard
             record.category != category ||
             record.transcriptText != normalizedTranscriptText ||
-            record.freeMemoText != normalizedFreeMemoText
+            record.freeMemoText != normalizedFreeMemoText ||
+            record.bodyTemperature != bodyTemperature ||
+            record.systolicBP != systolicBP ||
+            record.diastolicBP != diastolicBP ||
+            record.pulseRate != pulseRate ||
+            record.oxygenSaturation != oxygenSaturation
         else {
             return
         }
         record.category = category
         record.transcriptText = normalizedTranscriptText
         record.freeMemoText = normalizedFreeMemoText
+        record.bodyTemperature = bodyTemperature
+        record.systolicBP = systolicBP
+        record.diastolicBP = diastolicBP
+        record.pulseRate = pulseRate
+        record.oxygenSaturation = oxygenSaturation
         record.updatedAt = Date()
         try modelContext.save()
     }
