@@ -88,7 +88,7 @@ struct RecordView: View {
                 get: { saveErrorMessage != nil },
                 set: { if !$0 { saveErrorMessage = nil } }
             )) {
-                Button("OK") { saveErrorMessage = nil }
+                Button("OK") {}
             } message: {
                 if let saveErrorMessage {
                     Text(saveErrorMessage)

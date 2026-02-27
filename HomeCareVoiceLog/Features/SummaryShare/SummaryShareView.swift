@@ -33,7 +33,7 @@ struct SummaryShareView: View {
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )) {
-                Button("OK") { errorMessage = nil }
+                Button("OK") {}
             } message: {
                 if let errorMessage {
                     Text(errorMessage)

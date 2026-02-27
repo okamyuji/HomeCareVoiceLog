@@ -59,9 +59,7 @@ struct TimelineView: View {
                 Button("timeline.deleteConfirmAction", role: .destructive) {
                     deletePendingRecord()
                 }
-                Button("common.cancel", role: .cancel) {
-                    pendingDeleteRecord = nil
-                }
+                Button("common.cancel", role: .cancel) {}
             } message: {
                 Text("timeline.deleteConfirmMessage")
             }
@@ -69,7 +67,7 @@ struct TimelineView: View {
                 get: { deleteErrorMessage != nil },
                 set: { if !$0 { deleteErrorMessage = nil } }
             )) {
-                Button("OK") { deleteErrorMessage = nil }
+                Button("OK") {}
             } message: {
                 if let deleteErrorMessage {
                     Text(deleteErrorMessage)
