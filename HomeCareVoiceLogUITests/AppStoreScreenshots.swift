@@ -12,27 +12,21 @@ final class AppStoreScreenshots: XCTestCase {
     }
 
     func testTakeAppStoreScreenshots() async {
-        // Screenshot 1: Record screen (main feature)
+        // Screenshot 1: Record screen with category selected
         let categorySelector = app.buttons["category-selector-row"]
         XCTAssertTrue(categorySelector.waitForExistence(timeout: 3))
-        let screenshot1 = app.screenshot()
-        let attach1 = XCTAttachment(screenshot: screenshot1)
-        attach1.name = "01_record"
-        attach1.lifetime = .keepAlways
-        add(attach1)
-
-        // Select a category to show more context
         categorySelector.tap()
         let mealCategory = app.buttons["category-option-meal"]
         if mealCategory.waitForExistence(timeout: 2) {
             mealCategory.tap()
         }
+        try? await Task.sleep(for: .seconds(0.5))
 
-        let screenshot1b = app.screenshot()
-        let attach1b = XCTAttachment(screenshot: screenshot1b)
-        attach1b.name = "01b_record_with_category"
-        attach1b.lifetime = .keepAlways
-        add(attach1b)
+        let screenshot1 = app.screenshot()
+        let attach1 = XCTAttachment(screenshot: screenshot1)
+        attach1.name = "01_record"
+        attach1.lifetime = .keepAlways
+        add(attach1)
 
         // Screenshot 2: Timeline screen
         let tabButtons = app.tabBars.buttons
@@ -52,14 +46,5 @@ final class AppStoreScreenshots: XCTestCase {
         attach3.name = "03_summary"
         attach3.lifetime = .keepAlways
         add(attach3)
-
-        // Screenshot 4: Settings screen
-        tabButtons.element(boundBy: 3).tap()
-        try? await Task.sleep(for: .seconds(1))
-        let screenshot4 = app.screenshot()
-        let attach4 = XCTAttachment(screenshot: screenshot4)
-        attach4.name = "04_settings"
-        attach4.lifetime = .keepAlways
-        add(attach4)
     }
 }
