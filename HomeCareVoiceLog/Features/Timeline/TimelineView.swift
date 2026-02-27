@@ -57,7 +57,9 @@ struct TimelineView: View {
                 titleVisibility: .visible
             ) {
                 Button("timeline.deleteConfirmAction", role: .destructive) {
-                    deletePendingRecord()
+                    Task {
+                        deletePendingRecord()
+                    }
                 }
                 Button("common.cancel", role: .cancel) {}
             } message: {
