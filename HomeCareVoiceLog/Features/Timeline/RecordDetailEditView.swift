@@ -15,9 +15,9 @@ struct RecordDetailEditView: View {
 
     init(record: CareRecordEntity) {
         self.record = record
-        _selectedCategory = State(initialValue: record.category)
-        _transcriptText = State(initialValue: record.transcriptText ?? "")
-        _freeMemoText = State(initialValue: record.freeMemoText ?? "")
+        _selectedCategory = State(wrappedValue: record.category)
+        _transcriptText = State(wrappedValue: record.transcriptText ?? "")
+        _freeMemoText = State(wrappedValue: record.freeMemoText ?? "")
     }
 
     var body: some View {

@@ -3,6 +3,14 @@ import HomeCareVoiceLogCore
 import Observation
 import SwiftData
 
+extension Calendar {
+    func dayInterval(for date: Date) -> DateInterval {
+        let start = startOfDay(for: date)
+        let end = self.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86400)
+        return DateInterval(start: start, end: end)
+    }
+}
+
 @MainActor
 @Observable
 final class CareRecordRepository {
@@ -57,7 +65,7 @@ final class CareRecordRepository {
         on day: Date,
         calendar: Calendar = Calendar(identifier: .gregorian)
     ) throws -> [CareRecordEntity] {
-        let range = dayBounds(for: day, calendar: calendar)
+        let range = calendar.dayInterval(for: day)
         let descriptor = FetchDescriptor<CareRecordEntity>(
             predicate: #Predicate { entity in
                 entity.timestamp >= range.start && entity.timestamp < range.end
@@ -84,11 +92,5 @@ final class CareRecordRepository {
         try records(on: day, calendar: calendar).filter { entity in
             entity.category == .freeMemo
         }
-    }
-
-    private func dayBounds(for date: Date, calendar: Calendar) -> DateInterval {
-        let start = calendar.startOfDay(for: date)
-        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86400)
-        return DateInterval(start: start, end: end)
     }
 }

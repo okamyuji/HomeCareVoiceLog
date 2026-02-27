@@ -56,12 +56,10 @@ private struct TimelineRecordList: View {
 
     init(selectedDay: Date, onDeleteRequest: @escaping (CareRecordEntity) -> Void) {
         self.onDeleteRequest = onDeleteRequest
-        let calendar = Calendar.current
-        let start = calendar.startOfDay(for: selectedDay)
-        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86400)
+        let dayInterval = Calendar.current.dayInterval(for: selectedDay)
         _records = Query(
             filter: #Predicate<CareRecordEntity> { entity in
-                entity.timestamp >= start && entity.timestamp < end
+                entity.timestamp >= dayInterval.start && entity.timestamp < dayInterval.end
             },
             sort: [SortDescriptor(\CareRecordEntity.timestamp, order: .reverse)]
         )
