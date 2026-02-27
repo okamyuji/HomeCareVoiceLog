@@ -83,7 +83,7 @@ private struct TimelineRecordList: View {
                         Text(memo)
                             .foregroundStyle(.secondary)
                     }
-                    if let caregiverName = record.caregiverName.normalizedForStorage {
+                    if let caregiverName = record.caregiverName {
                         HStack(spacing: 4) {
                             Text("timeline.caregiver")
                                 .foregroundStyle(.secondary)
