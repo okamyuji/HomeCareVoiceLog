@@ -1,3 +1,4 @@
+import LocalAuthentication
 import SwiftData
 import SwiftUI
 
@@ -50,6 +51,71 @@ struct HomeCareVoiceLogApp: App {
             @unknown default:
                 break
             }
+        }
+    }
+}
+
+struct AppErrorAlert: Identifiable {
+    let id = UUID()
+    let titleKey: LocalizedStringKey
+    let message: String
+}
+
+extension View {
+    func appErrorAlert(_ item: Binding<AppErrorAlert?>) -> some View {
+        alert(item: item) { alert in
+            Alert(
+                title: Text(alert.titleKey),
+                message: Text(alert.message),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+    }
+}
+
+extension LABiometryType {
+    var lockIconName: String {
+        switch self {
+        case .faceID:
+            "faceid"
+        case .touchID:
+            "touchid"
+        case .opticID:
+            "opticid"
+        case .none:
+            "lock.open"
+        @unknown default:
+            "lock.open"
+        }
+    }
+
+    var lockButtonLabelKey: LocalizedStringKey {
+        switch self {
+        case .faceID:
+            "lock.button.faceid"
+        case .touchID:
+            "lock.button.touchid"
+        case .opticID:
+            "lock.button.opticid"
+        case .none:
+            "lock.button.unlock"
+        @unknown default:
+            "lock.button.unlock"
+        }
+    }
+
+    var settingsToggleLabelKey: LocalizedStringKey {
+        switch self {
+        case .faceID:
+            "settings.biometric.faceid"
+        case .touchID:
+            "settings.biometric.touchid"
+        case .opticID:
+            "settings.biometric.opticid"
+        case .none:
+            "settings.biometric.lock"
+        @unknown default:
+            "settings.biometric.lock"
         }
     }
 }

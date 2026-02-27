@@ -35,27 +35,12 @@ struct SettingsView: View {
 
                 if authService.isBiometricAvailable {
                     Section(header: Text("settings.security")) {
-                        Toggle(biometricToggleLabel, isOn: $biometricLockEnabled)
+                        Toggle(authService.biometryType.settingsToggleLabelKey, isOn: $biometricLockEnabled)
                             .accessibilityIdentifier("biometric-lock-toggle")
                     }
                 }
             }
             .navigationTitle("tab.settings")
-        }
-    }
-
-    private var biometricToggleLabel: LocalizedStringKey {
-        switch authService.biometryType {
-        case .faceID:
-            "settings.biometric.faceid"
-        case .touchID:
-            "settings.biometric.touchid"
-        case .opticID:
-            "settings.biometric.opticid"
-        case .none:
-            "settings.biometric.lock"
-        @unknown default:
-            "settings.biometric.lock"
         }
     }
 }

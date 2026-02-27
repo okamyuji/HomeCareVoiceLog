@@ -8,7 +8,7 @@ struct TimelineView: View {
     private var records: [CareRecordEntity]
     @State private var selectedDay = Date()
     @State private var pendingDeleteRecord: CareRecordEntity?
-    @State private var deleteErrorMessage: String?
+    @State private var errorAlert: AppErrorAlert?
 
     var body: some View {
         NavigationStack {
@@ -63,17 +63,12 @@ struct TimelineView: View {
             } message: {
                 Text("timeline.deleteConfirmMessage")
             }
-            .alert("timeline.deleteError", isPresented: Binding(
-                get: { deleteErrorMessage != nil },
-                set: { _ in }
-            )) {
-                Button("OK") { deleteErrorMessage = nil }
-            } message: {
-                if let deleteErrorMessage {
-                    Text(deleteErrorMessage)
-                }
-            }
+            .appErrorAlert($errorAlert)
         }
+    }
+
+    private var repository: CareRecordRepository {
+        CareRecordRepository(modelContext: modelContext)
     }
 
     private var filteredRecords: [CareRecordEntity] {
@@ -86,9 +81,12 @@ struct TimelineView: View {
         defer { self.pendingDeleteRecord = nil }
 
         do {
-            try CareRecordRepository(modelContext: modelContext).deleteRecord(pendingDeleteRecord)
+            try repository.deleteRecord(pendingDeleteRecord)
         } catch {
-            deleteErrorMessage = String(localized: "timeline.deleteError.detail")
+            errorAlert = AppErrorAlert(
+                titleKey: "timeline.deleteError",
+                message: String(localized: "timeline.deleteError.detail")
+            )
         }
     }
 }

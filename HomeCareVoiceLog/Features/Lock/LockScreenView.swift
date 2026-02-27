@@ -39,7 +39,7 @@ struct LockScreenView: View {
                     await authenticate()
                 }
             } label: {
-                Label(biometricInfo.labelKey, systemImage: biometricInfo.iconName)
+                Label(authService.biometryType.lockButtonLabelKey, systemImage: authService.biometryType.lockIconName)
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -69,21 +69,6 @@ struct LockScreenView: View {
             showAuthFailure = true
         case .userCancelled:
             break
-        }
-    }
-
-    private var biometricInfo: (iconName: String, labelKey: LocalizedStringKey) {
-        switch authService.biometryType {
-        case .faceID:
-            ("faceid", "lock.button.faceid")
-        case .touchID:
-            ("touchid", "lock.button.touchid")
-        case .opticID:
-            ("opticid", "lock.button.opticid")
-        case .none:
-            ("lock.open", "lock.button.unlock")
-        @unknown default:
-            ("lock.open", "lock.button.unlock")
         }
     }
 }

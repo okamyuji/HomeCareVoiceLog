@@ -7,7 +7,7 @@ struct RecordView: View {
     let viewModel: RecordViewModel
     @State private var selectedCategory: CareCategory = .freeMemo
     @State private var freeMemo = ""
-    @State private var saveErrorMessage: String?
+    @State private var errorAlert: AppErrorAlert?
     @FocusState private var focusedField: Field?
 
     private enum Field: Hashable {
@@ -66,7 +66,7 @@ struct RecordView: View {
                             let recordedDuration = viewModel.elapsedRecordingSeconds
                             await viewModel.stopRecording()
                             do {
-                                try CareRecordRepository(modelContext: modelContext).addRecord(
+                                try repository.addRecord(
                                     timestamp: Date(),
                                     category: selectedCategory,
                                     transcriptText: viewModel.transcriptText.isEmpty ? nil : viewModel.transcriptText,
@@ -75,7 +75,10 @@ struct RecordView: View {
                                 )
                                 freeMemo = ""
                             } catch {
-                                saveErrorMessage = String(localized: "record.saveError.detail")
+                                errorAlert = AppErrorAlert(
+                                    titleKey: "record.saveError",
+                                    message: String(localized: "record.saveError.detail")
+                                )
                             }
                         } else {
                             await viewModel.startRecording()
@@ -84,16 +87,7 @@ struct RecordView: View {
                 }
             }
             .navigationTitle("tab.record")
-            .alert("record.saveError", isPresented: Binding(
-                get: { saveErrorMessage != nil },
-                set: { _ in }
-            )) {
-                Button("OK") { saveErrorMessage = nil }
-            } message: {
-                if let saveErrorMessage {
-                    Text(saveErrorMessage)
-                }
-            }
+            .appErrorAlert($errorAlert)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
@@ -121,6 +115,10 @@ struct RecordView: View {
 
     private var recordButtonLabel: LocalizedStringKey {
         viewModel.isRecording ? "record.stop" : "record.start"
+    }
+
+    private var repository: CareRecordRepository {
+        CareRecordRepository(modelContext: modelContext)
     }
 
     private func dismissKeyboard() {

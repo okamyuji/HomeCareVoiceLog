@@ -11,8 +11,7 @@ struct RecordDetailEditView: View {
     @State private var selectedCategory: CareCategory
     @State private var transcriptText: String
     @State private var freeMemoText: String
-    @State private var saveErrorMessage: String?
-    @State private var isSaving = false
+    @State private var errorAlert: AppErrorAlert?
 
     init(record: CareRecordEntity) {
         self.record = record
@@ -46,35 +45,24 @@ struct RecordDetailEditView: View {
                 Button("common.cancel") {
                     dismiss()
                 }
-                .disabled(isSaving)
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("common.save") {
                     save()
                 }
-                .disabled(isSaving)
                 .accessibilityIdentifier("timeline-edit-save-button")
             }
         }
-        .alert("record.saveError", isPresented: Binding(
-            get: { saveErrorMessage != nil },
-            set: { _ in }
-        )) {
-            Button("OK") { saveErrorMessage = nil }
-        } message: {
-            if let saveErrorMessage {
-                Text(saveErrorMessage)
-            }
-        }
+        .appErrorAlert($errorAlert)
+    }
+
+    private var repository: CareRecordRepository {
+        CareRecordRepository(modelContext: modelContext)
     }
 
     private func save() {
-        guard !isSaving else { return }
-        isSaving = true
-        defer { isSaving = false }
-
         do {
-            try CareRecordRepository(modelContext: modelContext).updateRecord(
+            try repository.updateRecord(
                 record,
                 category: selectedCategory,
                 transcriptText: normalized(text: transcriptText),
@@ -82,7 +70,10 @@ struct RecordDetailEditView: View {
             )
             dismiss()
         } catch {
-            saveErrorMessage = String(localized: "record.saveError.detail")
+            errorAlert = AppErrorAlert(
+                titleKey: "record.saveError",
+                message: String(localized: "record.saveError.detail")
+            )
         }
     }
 
