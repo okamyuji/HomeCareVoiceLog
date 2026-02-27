@@ -85,11 +85,11 @@ struct TimelineView: View {
 
     private func deletePendingRecord() {
         guard let pendingDeleteRecord else { return }
+        defer { self.pendingDeleteRecord = nil }
+
         do {
             try CareRecordRepository(modelContext: modelContext).deleteRecord(pendingDeleteRecord)
-            self.pendingDeleteRecord = nil
         } catch {
-            self.pendingDeleteRecord = nil
             deleteErrorMessage = String(localized: "timeline.deleteError.detail")
         }
     }
