@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0627203099CA835B156E3030 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1290EF9A4B740962ABDCC22E /* LockScreenView.swift */; };
 		1EA691C68EB9C425937DA451 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87679A3444686DB633959FAF /* LocalAuthentication.framework */; };
+		1C4A8F22B6E14D3A9F0C7E11 /* RecordDetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F4B5C3D442A19D1E2F30 /* RecordDetailEditView.swift */; };
 		2B2580CF703F55A90D1EED73 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6041363C5B0617A44D5CCCA /* TimelineView.swift */; };
 		2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */; };
 		2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */; };
@@ -71,6 +72,7 @@
 		6F488CE71FD753B460D0BB43 /* HomeCareVoiceLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeCareVoiceLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE14744FFAA5DA8EB8A6A8E /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
+		8A91F4B5C3D442A19D1E2F30 /* RecordDetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailEditView.swift; sourceTree = "<group>"; };
 		838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
 		87679A3444686DB633959FAF /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		9756179D44B54518367B6C8F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -136,12 +138,13 @@
 			);
 			sourceTree = "<group>";
 		};
-		2E40C6D832C185FDEBD45185 /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-				B6041363C5B0617A44D5CCCA /* TimelineView.swift */,
-			);
-			path = Timeline;
+			2E40C6D832C185FDEBD45185 /* Timeline */ = {
+				isa = PBXGroup;
+				children = (
+					8A91F4B5C3D442A19D1E2F30 /* RecordDetailEditView.swift */,
+					B6041363C5B0617A44D5CCCA /* TimelineView.swift */,
+				);
+				path = Timeline;
 			sourceTree = "<group>";
 		};
 		2EE0D61B3978C89B975C81A3 /* Audio */ = {
@@ -442,8 +445,9 @@
 				AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */,
 				7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */,
 				0627203099CA835B156E3030 /* LockScreenView.swift in Sources */,
-				AB0805625D973311A64D1369 /* RecordView.swift in Sources */,
-				2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */,
+					AB0805625D973311A64D1369 /* RecordView.swift in Sources */,
+					1C4A8F22B6E14D3A9F0C7E11 /* RecordDetailEditView.swift in Sources */,
+					2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */,
 				E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */,
 				A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */,
 				57573F0490119CCE9CF37839 /* RootTabView.swift in Sources */,

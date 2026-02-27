@@ -29,6 +29,24 @@ struct CareRecordRepository {
         return entity
     }
 
+    func updateRecord(
+        _ record: CareRecordEntity,
+        category: CareCategory,
+        transcriptText: String?,
+        freeMemoText: String?
+    ) throws {
+        record.category = category
+        record.transcriptText = transcriptText
+        record.freeMemoText = freeMemoText
+        record.updatedAt = Date()
+        try modelContext.save()
+    }
+
+    func deleteRecord(_ record: CareRecordEntity) throws {
+        modelContext.delete(record)
+        try modelContext.save()
+    }
+
     func records(
         on day: Date,
         calendar: Calendar = Calendar(identifier: .gregorian)
