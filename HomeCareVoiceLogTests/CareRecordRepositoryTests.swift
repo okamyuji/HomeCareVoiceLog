@@ -110,6 +110,7 @@ final class CareRecordRepositoryTests: XCTestCase {
         XCTAssertEqual(records[0].category, .medication)
         XCTAssertEqual(records[0].transcriptText, "After")
         XCTAssertEqual(records[0].freeMemoText, "After memo")
+        XCTAssertNil(records[0].caregiverName)
         XCTAssertGreaterThanOrEqual(records[0].updatedAt, originalUpdatedAt)
     }
 

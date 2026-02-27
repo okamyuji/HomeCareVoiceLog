@@ -9,6 +9,7 @@ final class CareRecordEntity {
     var categoryRawValue: String
     var transcriptText: String?
     var freeMemoText: String?
+    var caregiverName: String?
     var bodyTemperature: Double?
     var systolicBP: Int?
     var diastolicBP: Int?
@@ -24,6 +25,7 @@ final class CareRecordEntity {
         category: CareCategory,
         transcriptText: String?,
         freeMemoText: String?,
+        caregiverName: String? = nil,
         bodyTemperature: Double? = nil,
         systolicBP: Int? = nil,
         diastolicBP: Int? = nil,
@@ -38,6 +40,7 @@ final class CareRecordEntity {
         categoryRawValue = category.rawValue
         self.transcriptText = transcriptText
         self.freeMemoText = freeMemoText
+        self.caregiverName = caregiverName
         self.bodyTemperature = bodyTemperature
         self.systolicBP = systolicBP
         self.diastolicBP = diastolicBP

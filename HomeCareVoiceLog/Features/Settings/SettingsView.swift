@@ -6,6 +6,7 @@ struct SettingsView: View {
     @AppStorage("dailyReminderMinute") private var dailyReminderMinute = 0
     @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
     @AppStorage("detailedRecordModeEnabled") private var detailedRecordModeEnabled = true
+    @AppStorage("caregiverName") private var caregiverName = ""
 
     @Environment(BiometricAuthService.self) private var authService
 
@@ -37,6 +38,19 @@ struct SettingsView: View {
                 Section {
                     Toggle("settings.detailedRecordMode", isOn: $detailedRecordModeEnabled)
                         .accessibilityIdentifier("detailed-record-mode-toggle")
+                }
+
+                Section {
+                    TextField(
+                        "settings.caregiverName",
+                        text: Binding(
+                            get: { caregiverName },
+                            set: { caregiverName = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                        )
+                    )
+                    .textInputAutocapitalization(.words)
+                    .disableAutocorrection(true)
+                    .accessibilityIdentifier("caregiver-name-field")
                 }
 
                 if authService.isBiometricAvailable {

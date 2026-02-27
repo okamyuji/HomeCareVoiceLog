@@ -779,6 +779,23 @@
         }
       }
     },
+    "settings.caregiverName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caregiver Name"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "介護者名"
+          }
+        }
+      }
+    },
     "settings.reminderTime" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -995,6 +1012,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日付"
+          }
+        }
+      }
+    },
+    "timeline.caregiver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caregiver:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録者:"
           }
         }
       }

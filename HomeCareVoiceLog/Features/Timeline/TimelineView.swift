@@ -83,6 +83,15 @@ private struct TimelineRecordList: View {
                         Text(memo)
                             .foregroundStyle(.secondary)
                     }
+                    if let caregiverName = record.caregiverName {
+                        HStack(spacing: 4) {
+                            Text("timeline.caregiver")
+                                .foregroundStyle(.secondary)
+                            Text(caregiverName)
+                                .foregroundStyle(.secondary)
+                        }
+                        .font(.caption)
+                    }
                 }
             }
             .accessibilityIdentifier("timeline-record-\(record.id.uuidString)")
