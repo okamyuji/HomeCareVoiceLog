@@ -50,9 +50,7 @@ struct RecordDetailEditView: View {
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("common.save") {
-                    Task {
-                        save()
-                    }
+                    save()
                 }
                 .disabled(isSaving)
                 .accessibilityIdentifier("timeline-edit-save-button")
