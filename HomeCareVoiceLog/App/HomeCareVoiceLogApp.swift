@@ -9,6 +9,7 @@ struct HomeCareVoiceLogApp: App {
     @State private var isUnlocked = false
     @State private var authService = BiometricAuthService()
     @Environment(\.scenePhase) private var scenePhase
+    private let isRunningXCTest = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
     private let container: ModelContainer
     private let repository: CareRecordRepository
@@ -32,7 +33,7 @@ struct HomeCareVoiceLogApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                if biometricLockEnabled, !isUnlocked, authService.isBiometricAvailable {
+                if !isRunningXCTest, biometricLockEnabled, !isUnlocked, authService.isBiometricAvailable {
                     LockScreenView(onUnlock: {
                         isUnlocked = true
                     })
