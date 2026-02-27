@@ -1,9 +1,14 @@
 import SwiftUI
 
 struct RootTabView: View {
+    @State private var recordViewModel = RecordViewModel(
+        audioRecorder: AudioRecorderService(),
+        speechTranscriber: SpeechTranscriptionService()
+    )
+
     var body: some View {
         TabView {
-            RecordView()
+            RecordView(viewModel: recordViewModel)
                 .tabItem {
                     Label("tab.record", systemImage: "mic")
                 }

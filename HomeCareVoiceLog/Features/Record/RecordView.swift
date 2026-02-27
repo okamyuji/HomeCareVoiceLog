@@ -4,10 +4,7 @@ import UIKit
 
 struct RecordView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var viewModel = RecordViewModel(
-        audioRecorder: AudioRecorderService(),
-        speechTranscriber: SpeechTranscriptionService()
-    )
+    let viewModel: RecordViewModel
     @State private var selectedCategory: CareCategory = .freeMemo
     @State private var freeMemo = ""
     @State private var saveErrorMessage: String?
