@@ -37,14 +37,18 @@ struct HomeCareVoiceLogApp: App {
             .environment(authService)
         }
         .onChange(of: scenePhase) { _, newPhase in
-            if newPhase == .active {
+            switch newPhase {
+            case .active:
                 authService.refresh()
                 if biometricLockEnabled, !authService.isBiometricAvailable {
                     biometricLockEnabled = false
                 }
-            }
-            if newPhase != .active, biometricLockEnabled, authService.isBiometricAvailable {
-                isUnlocked = false
+            case .inactive, .background:
+                if biometricLockEnabled, authService.isBiometricAvailable {
+                    isUnlocked = false
+                }
+            @unknown default:
+                break
             }
         }
         .onChange(of: biometricLockEnabled) { _, newValue in
