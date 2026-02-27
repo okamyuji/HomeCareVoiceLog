@@ -1,6 +1,42 @@
 import SwiftData
 import SwiftUI
 
+enum AppLockStateReducer {
+    struct Result {
+        var shouldRefreshBiometricState: Bool
+        var biometricLockEnabled: Bool
+        var isUnlocked: Bool
+    }
+
+    static func reduce(
+        for phase: ScenePhase,
+        biometricLockEnabled: Bool,
+        isBiometricAvailable: Bool,
+        isUnlocked: Bool
+    ) -> Result {
+        switch phase {
+        case .active:
+            return Result(
+                shouldRefreshBiometricState: true,
+                biometricLockEnabled: biometricLockEnabled && isBiometricAvailable,
+                isUnlocked: isUnlocked
+            )
+        case .inactive, .background:
+            return Result(
+                shouldRefreshBiometricState: false,
+                biometricLockEnabled: biometricLockEnabled,
+                isUnlocked: biometricLockEnabled ? false : isUnlocked
+            )
+        @unknown default:
+            return Result(
+                shouldRefreshBiometricState: false,
+                biometricLockEnabled: biometricLockEnabled,
+                isUnlocked: isUnlocked
+            )
+        }
+    }
+}
+
 @main
 struct HomeCareVoiceLogApp: App {
     @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
@@ -37,19 +73,20 @@ struct HomeCareVoiceLogApp: App {
             .environment(authService)
         }
         .onChange(of: scenePhase) { _, newPhase in
-            switch newPhase {
-            case .active:
+            var isBiometricAvailable = authService.isBiometricAvailable
+            if newPhase == .active {
                 authService.refresh()
-                if biometricLockEnabled, !authService.isBiometricAvailable {
-                    biometricLockEnabled = false
-                }
-            case .inactive, .background:
-                if biometricLockEnabled, authService.isBiometricAvailable {
-                    isUnlocked = false
-                }
-            @unknown default:
-                break
+                isBiometricAvailable = authService.isBiometricAvailable
             }
+
+            let result = AppLockStateReducer.reduce(
+                for: newPhase,
+                biometricLockEnabled: biometricLockEnabled,
+                isBiometricAvailable: isBiometricAvailable,
+                isUnlocked: isUnlocked
+            )
+            biometricLockEnabled = result.biometricLockEnabled
+            isUnlocked = result.isUnlocked
         }
         .onChange(of: biometricLockEnabled) { _, newValue in
             if !newValue {
