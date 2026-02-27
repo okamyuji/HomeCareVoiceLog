@@ -3,7 +3,7 @@ import Observation
 import os.log
 
 @MainActor
-protocol BiometricAuthContext {
+protocol BiometricAuthContext: AnyObject {
     var biometryType: LABiometryType { get }
     var localizedCancelTitle: String? { get set }
     func canEvaluatePolicy(_ policy: LAPolicy, error: NSErrorPointer) -> Bool
@@ -65,7 +65,7 @@ final class BiometricAuthService: BiometricAuthenticating {
             return .failure
         }
 
-        var context = contextFactory()
+        let context = contextFactory()
         context.localizedCancelTitle = String(localized: "biometric.cancel")
 
         do {
