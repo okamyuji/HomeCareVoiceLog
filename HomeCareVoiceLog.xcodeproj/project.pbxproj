@@ -8,7 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0627203099CA835B156E3030 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1290EF9A4B740962ABDCC22E /* LockScreenView.swift */; };
+		1C4A8F22B6E14D3A9F0C7E11 /* RecordDetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91F4B5C3D442A19D1E2F30 /* RecordDetailEditView.swift */; };
 		1EA691C68EB9C425937DA451 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87679A3444686DB633959FAF /* LocalAuthentication.framework */; };
+		1F9B2C3D4E5F60718293A4B0 /* AppErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2C3D4E5F60718293A4C0 /* AppErrorAlert.swift */; };
+		1F9B2C3D4E5F60718293A4B1 /* View+AppErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2C3D4E5F60718293A4C1 /* View+AppErrorAlert.swift */; };
+		1F9B2C3D4E5F60718293A4B2 /* Binding+IsPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2C3D4E5F60718293A4C2 /* Binding+IsPresent.swift */; };
+		1F9B2C3D4E5F60718293A4B3 /* LABiometryType+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2C3D4E5F60718293A4C3 /* LABiometryType+UI.swift */; };
+		24AA12BC34DE56F7890A12C3 /* Calendar+DayInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA12BC34DE56F7890A12C4 /* Calendar+DayInterval.swift */; };
+		24AA12BC34DE56F7890A12C5 /* String+StorageNormalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA12BC34DE56F7890A12C6 /* String+StorageNormalization.swift */; };
 		2B2580CF703F55A90D1EED73 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6041363C5B0617A44D5CCCA /* TimelineView.swift */; };
 		2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */; };
 		2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */; };
@@ -59,6 +66,12 @@
 		1290EF9A4B740962ABDCC22E /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
 		1A4696BF81B38AFFE0E8D443 /* HomeCareVoiceLogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCareVoiceLogUITests.swift; sourceTree = "<group>"; };
 		1C85F317D307256080CA9DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1F9B2C3D4E5F60718293A4C0 /* AppErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorAlert.swift; sourceTree = "<group>"; };
+		1F9B2C3D4E5F60718293A4C1 /* View+AppErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AppErrorAlert.swift"; sourceTree = "<group>"; };
+		1F9B2C3D4E5F60718293A4C2 /* Binding+IsPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+IsPresent.swift"; sourceTree = "<group>"; };
+		1F9B2C3D4E5F60718293A4C3 /* LABiometryType+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LABiometryType+UI.swift"; sourceTree = "<group>"; };
+		24AA12BC34DE56F7890A12C4 /* Calendar+DayInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DayInterval.swift"; sourceTree = "<group>"; };
+		24AA12BC34DE56F7890A12C6 /* String+StorageNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+StorageNormalization.swift"; sourceTree = "<group>"; };
 		1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
 		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepository.swift; sourceTree = "<group>"; };
@@ -73,6 +86,7 @@
 		803ADFE90DF5B3C5785CC5EE /* CareRecordRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepositoryTests.swift; sourceTree = "<group>"; };
 		838BC80E6917C00041CA1C54 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
 		87679A3444686DB633959FAF /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		8A91F4B5C3D442A19D1E2F30 /* RecordDetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailEditView.swift; sourceTree = "<group>"; };
 		9756179D44B54518367B6C8F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		ACE6ABF629B471DCCA8DE0A1 /* BiometricAuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthServiceTests.swift; sourceTree = "<group>"; };
 		AD308CAA6B7CD6F759F1CF9D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -139,6 +153,7 @@
 		2E40C6D832C185FDEBD45185 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				8A91F4B5C3D442A19D1E2F30 /* RecordDetailEditView.swift */,
 				B6041363C5B0617A44D5CCCA /* TimelineView.swift */,
 			);
 			path = Timeline;
@@ -184,6 +199,12 @@
 		5507BF7D09DE714F2F66B46D /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				1F9B2C3D4E5F60718293A4C0 /* AppErrorAlert.swift */,
+				1F9B2C3D4E5F60718293A4C2 /* Binding+IsPresent.swift */,
+				24AA12BC34DE56F7890A12C4 /* Calendar+DayInterval.swift */,
+				1F9B2C3D4E5F60718293A4C3 /* LABiometryType+UI.swift */,
+				24AA12BC34DE56F7890A12C6 /* String+StorageNormalization.swift */,
+				1F9B2C3D4E5F60718293A4C1 /* View+AppErrorAlert.swift */,
 				1C85F317D307256080CA9DFB /* Info.plist */,
 			);
 			path = Supporting;
@@ -438,11 +459,16 @@
 			files = (
 				8E19B5F1A06FF5D087A60097 /* AudioRecorderService.swift in Sources */,
 				F85E3E0CAFA52D73486CBA84 /* BiometricAuthService.swift in Sources */,
+				1F9B2C3D4E5F60718293A4B2 /* Binding+IsPresent.swift in Sources */,
+				24AA12BC34DE56F7890A12C3 /* Calendar+DayInterval.swift in Sources */,
 				53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */,
 				AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */,
+				1F9B2C3D4E5F60718293A4B0 /* AppErrorAlert.swift in Sources */,
 				7C41A3B2C06894CE17DED95C /* HomeCareVoiceLogApp.swift in Sources */,
+				1F9B2C3D4E5F60718293A4B3 /* LABiometryType+UI.swift in Sources */,
 				0627203099CA835B156E3030 /* LockScreenView.swift in Sources */,
 				AB0805625D973311A64D1369 /* RecordView.swift in Sources */,
+				1C4A8F22B6E14D3A9F0C7E11 /* RecordDetailEditView.swift in Sources */,
 				2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */,
 				E90679E457AC60A5D1B1DB48 /* ReminderScheduler.swift in Sources */,
 				A7EC779380B93E15F80499C7 /* ReminderSettingsEntity.swift in Sources */,
@@ -450,7 +476,9 @@
 				BE3CB5094795A993BB88AC21 /* SettingsView.swift in Sources */,
 				E84F66B3645A7C1545396D2C /* SpeechTranscriptionService.swift in Sources */,
 				CFBC0D4C4519A1E8820F8434 /* SummaryShareView.swift in Sources */,
+				24AA12BC34DE56F7890A12C5 /* String+StorageNormalization.swift in Sources */,
 				2B2580CF703F55A90D1EED73 /* TimelineView.swift in Sources */,
+				1F9B2C3D4E5F60718293A4B1 /* View+AppErrorAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +693,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HomeCareVoiceLog/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -683,6 +712,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HomeCareVoiceLog/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

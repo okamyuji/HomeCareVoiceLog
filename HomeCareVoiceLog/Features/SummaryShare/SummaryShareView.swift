@@ -2,10 +2,10 @@ import HomeCareVoiceLogCore
 import SwiftUI
 
 struct SummaryShareView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(CareRecordRepository.self) private var repository
     @State private var selectedDay = Date()
     @State private var summaryText = ""
-    @State private var errorMessage: String?
+    @State private var errorAlert: AppErrorAlert?
 
     var body: some View {
         NavigationStack {
@@ -29,27 +29,20 @@ struct SummaryShareView: View {
                 }
             }
             .navigationTitle("tab.summary")
-            .alert("summary.error", isPresented: Binding(
-                get: { errorMessage != nil },
-                set: { if !$0 { errorMessage = nil } }
-            )) {
-                Button("OK") { errorMessage = nil }
-            } message: {
-                if let errorMessage {
-                    Text(errorMessage)
-                }
-            }
+            .appErrorAlert($errorAlert)
         }
     }
 
     private func generateSummary() {
-        let repository = CareRecordRepository(modelContext: modelContext)
         let formatter = DailySummaryFormatter()
         let records: [CareRecordEntity]
         do {
             records = try repository.records(on: selectedDay)
         } catch {
-            errorMessage = String(localized: "summary.generateError")
+            errorAlert = AppErrorAlert(
+                titleKey: "summary.error",
+                message: String(localized: "summary.generateError")
+            )
             return
         }
         let drafts = records.map {

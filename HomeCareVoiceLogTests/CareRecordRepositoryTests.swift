@@ -87,6 +87,115 @@ final class CareRecordRepositoryTests: XCTestCase {
         XCTAssertNil(memos[0].transcriptText)
     }
 
+    func testUpdateRecordPersistsChanges() throws {
+        let repository = try makeRepository()
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .meal,
+            transcriptText: "Before",
+            freeMemoText: "Before memo",
+            durationSeconds: 12
+        )
+        let originalUpdatedAt = record.updatedAt
+
+        try repository.updateRecord(
+            record,
+            category: .medication,
+            transcriptText: "After",
+            freeMemoText: "After memo"
+        )
+
+        let records = try repository.records(on: date(year: 2026, month: 2, day: 14, hour: 0, minute: 0))
+        XCTAssertEqual(records.count, 1)
+        XCTAssertEqual(records[0].category, .medication)
+        XCTAssertEqual(records[0].transcriptText, "After")
+        XCTAssertEqual(records[0].freeMemoText, "After memo")
+        XCTAssertGreaterThanOrEqual(records[0].updatedAt, originalUpdatedAt)
+    }
+
+    func testUpdateRecordNoChangesDoesNotTouchUpdatedAt() throws {
+        let repository = try makeRepository()
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .meal,
+            transcriptText: "No Change",
+            freeMemoText: "No Change Memo",
+            durationSeconds: 12
+        )
+        let originalUpdatedAt = record.updatedAt
+
+        try repository.updateRecord(
+            record,
+            category: .meal,
+            transcriptText: "No Change",
+            freeMemoText: "No Change Memo"
+        )
+
+        XCTAssertEqual(record.updatedAt, originalUpdatedAt)
+    }
+
+    func testAddRecordNormalizesTextFields() throws {
+        let repository = try makeRepository()
+
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .freeMemo,
+            transcriptText: "  Transcript  ",
+            freeMemoText: "   ",
+            durationSeconds: nil
+        )
+
+        XCTAssertEqual(record.transcriptText, "Transcript")
+        XCTAssertNil(record.freeMemoText)
+    }
+
+    func testUpdateRecordSkipsSaveWhenNormalizedValuesAreEqual() throws {
+        let repository = try makeRepository()
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .meal,
+            transcriptText: "A",
+            freeMemoText: nil,
+            durationSeconds: nil
+        )
+        let originalUpdatedAt = record.updatedAt
+
+        try repository.updateRecord(
+            record,
+            category: .meal,
+            transcriptText: "  A  ",
+            freeMemoText: "   "
+        )
+
+        XCTAssertEqual(record.updatedAt, originalUpdatedAt)
+        XCTAssertEqual(record.transcriptText, "A")
+        XCTAssertNil(record.freeMemoText)
+    }
+
+    func testDeleteRecordRemovesEntity() throws {
+        let repository = try makeRepository()
+        let keep = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .meal,
+            transcriptText: "Keep",
+            freeMemoText: nil,
+            durationSeconds: nil
+        )
+        let deleteTarget = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 10, minute: 0),
+            category: .medication,
+            transcriptText: "Delete",
+            freeMemoText: nil,
+            durationSeconds: nil
+        )
+
+        try repository.deleteRecord(deleteTarget)
+
+        let records = try repository.records(on: date(year: 2026, month: 2, day: 14, hour: 0, minute: 0))
+        XCTAssertEqual(records.count, 1)
+        XCTAssertEqual(records[0].id, keep.id)
+    }
+
     private func makeRepository() throws -> CareRecordRepository {
         let schema = Schema([
             CareRecordEntity.self,
