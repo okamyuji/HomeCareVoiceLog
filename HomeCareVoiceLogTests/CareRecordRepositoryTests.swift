@@ -134,6 +134,44 @@ final class CareRecordRepositoryTests: XCTestCase {
         XCTAssertEqual(record.updatedAt, originalUpdatedAt)
     }
 
+    func testAddRecordNormalizesTextFields() throws {
+        let repository = try makeRepository()
+
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .freeMemo,
+            transcriptText: "  Transcript  ",
+            freeMemoText: "   ",
+            durationSeconds: nil
+        )
+
+        XCTAssertEqual(record.transcriptText, "Transcript")
+        XCTAssertNil(record.freeMemoText)
+    }
+
+    func testUpdateRecordSkipsSaveWhenNormalizedValuesAreEqual() throws {
+        let repository = try makeRepository()
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .meal,
+            transcriptText: "A",
+            freeMemoText: nil,
+            durationSeconds: nil
+        )
+        let originalUpdatedAt = record.updatedAt
+
+        try repository.updateRecord(
+            record,
+            category: .meal,
+            transcriptText: "  A  ",
+            freeMemoText: "   "
+        )
+
+        XCTAssertEqual(record.updatedAt, originalUpdatedAt)
+        XCTAssertEqual(record.transcriptText, "A")
+        XCTAssertNil(record.freeMemoText)
+    }
+
     func testDeleteRecordRemovesEntity() throws {
         let repository = try makeRepository()
         let keep = try repository.addRecord(

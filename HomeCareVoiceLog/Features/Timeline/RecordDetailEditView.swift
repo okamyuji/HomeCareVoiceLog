@@ -16,8 +16,8 @@ struct RecordDetailEditView: View {
     init(record: CareRecordEntity) {
         self.record = record
         _selectedCategory = State(wrappedValue: record.category)
-        _transcriptText = State(wrappedValue: Self.editableText(record.transcriptText))
-        _freeMemoText = State(wrappedValue: Self.editableText(record.freeMemoText))
+        _transcriptText = State(wrappedValue: record.transcriptText.normalizedForStorage ?? "")
+        _freeMemoText = State(wrappedValue: record.freeMemoText.normalizedForStorage ?? "")
     }
 
     var body: some View {
@@ -62,8 +62,8 @@ struct RecordDetailEditView: View {
             try repository.updateRecord(
                 record,
                 category: selectedCategory,
-                transcriptText: Self.normalizedText(transcriptText),
-                freeMemoText: Self.normalizedText(freeMemoText)
+                transcriptText: transcriptText.normalizedForStorage,
+                freeMemoText: freeMemoText.normalizedForStorage
             )
             dismiss()
         } catch {
@@ -76,17 +76,7 @@ struct RecordDetailEditView: View {
 
     private var isModified: Bool {
         record.category != selectedCategory ||
-            Self.normalizedText(record.transcriptText) != Self.normalizedText(transcriptText) ||
-            Self.normalizedText(record.freeMemoText) != Self.normalizedText(freeMemoText)
-    }
-
-    private static func editableText(_ text: String?) -> String {
-        normalizedText(text) ?? ""
-    }
-
-    private static func normalizedText(_ text: String?) -> String? {
-        guard let text else { return nil }
-        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        return trimmed.isEmpty ? nil : trimmed
+            record.transcriptText.normalizedForStorage != transcriptText.normalizedForStorage ||
+            record.freeMemoText.normalizedForStorage != freeMemoText.normalizedForStorage
     }
 }

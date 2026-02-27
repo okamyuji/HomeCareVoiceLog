@@ -69,8 +69,8 @@ struct RecordView: View {
                                 try repository.addRecord(
                                     timestamp: Date(),
                                     category: selectedCategory,
-                                    transcriptText: viewModel.transcriptText.isEmpty ? nil : viewModel.transcriptText,
-                                    freeMemoText: freeMemo.isEmpty ? nil : freeMemo,
+                                    transcriptText: viewModel.transcriptText.normalizedForStorage,
+                                    freeMemoText: freeMemo.normalizedForStorage,
                                     durationSeconds: recordedDuration > 0 ? recordedDuration : nil
                                 )
                                 freeMemo = ""

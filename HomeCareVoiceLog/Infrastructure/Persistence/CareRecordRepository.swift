@@ -21,11 +21,13 @@ final class CareRecordRepository {
         durationSeconds: Int?
     ) throws -> CareRecordEntity {
         let now = Date()
+        let normalizedTranscriptText = transcriptText.normalizedForStorage
+        let normalizedFreeMemoText = freeMemoText.normalizedForStorage
         let entity = CareRecordEntity(
             timestamp: timestamp,
             category: category,
-            transcriptText: transcriptText,
-            freeMemoText: freeMemoText,
+            transcriptText: normalizedTranscriptText,
+            freeMemoText: normalizedFreeMemoText,
             durationSeconds: durationSeconds,
             createdAt: now,
             updatedAt: now
@@ -41,16 +43,18 @@ final class CareRecordRepository {
         transcriptText: String?,
         freeMemoText: String?
     ) throws {
+        let normalizedTranscriptText = transcriptText.normalizedForStorage
+        let normalizedFreeMemoText = freeMemoText.normalizedForStorage
         guard
             record.category != category ||
-            record.transcriptText != transcriptText ||
-            record.freeMemoText != freeMemoText
+            record.transcriptText != normalizedTranscriptText ||
+            record.freeMemoText != normalizedFreeMemoText
         else {
             return
         }
         record.category = category
-        record.transcriptText = transcriptText
-        record.freeMemoText = freeMemoText
+        record.transcriptText = normalizedTranscriptText
+        record.freeMemoText = normalizedFreeMemoText
         record.updatedAt = Date()
         try modelContext.save()
     }
