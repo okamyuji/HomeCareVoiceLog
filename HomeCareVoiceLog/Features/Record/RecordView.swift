@@ -84,6 +84,14 @@ struct RecordView: View {
                         if viewModel.isRecording {
                             let recordedDuration = viewModel.elapsedRecordingSeconds
                             await viewModel.stopRecording()
+                            let vitalResult = parsedVitalSigns
+                            if vitalResult.hasInvalidInput {
+                                errorAlert = AppErrorAlert(
+                                    titleKey: "record.saveError",
+                                    message: String(localized: "record.saveError.detail")
+                                )
+                                return
+                            }
                             do {
                                 try repository.addRecord(
                                     timestamp: Date(),
@@ -91,11 +99,11 @@ struct RecordView: View {
                                     transcriptText: viewModel.transcriptText.normalizedForStorage,
                                     freeMemoText: freeMemo.normalizedForStorage,
                                     durationSeconds: recordedDuration > 0 ? recordedDuration : nil,
-                                    bodyTemperature: isShowingVitalInput ? normalizedDouble(from: bodyTemperature) : nil,
-                                    systolicBP: isShowingVitalInput ? normalizedInt(from: systolicBP) : nil,
-                                    diastolicBP: isShowingVitalInput ? normalizedInt(from: diastolicBP) : nil,
-                                    pulseRate: isShowingVitalInput ? normalizedInt(from: pulseRate) : nil,
-                                    oxygenSaturation: isShowingVitalInput ? normalizedInt(from: oxygenSaturation) : nil
+                                    bodyTemperature: vitalResult.values.bodyTemperature,
+                                    systolicBP: vitalResult.values.systolicBP,
+                                    diastolicBP: vitalResult.values.diastolicBP,
+                                    pulseRate: vitalResult.values.pulseRate,
+                                    oxygenSaturation: vitalResult.values.oxygenSaturation
                                 )
                                 freeMemo = ""
                                 resetVitalInputs()
@@ -138,7 +146,6 @@ struct RecordView: View {
             .onChange(of: detailedRecordModeEnabled) { _, isEnabled in
                 if !isEnabled, !CareCategory.simpleCases.contains(selectedCategory) {
                     selectedCategory = .freeMemo
-                    resetVitalInputs()
                 }
             }
             .onChange(of: selectedCategory) { _, newCategory in
@@ -161,6 +168,19 @@ struct RecordView: View {
         detailedRecordModeEnabled && selectedCategory == .vitalSigns
     }
 
+    private var parsedVitalSigns: VitalSignsParseResult {
+        guard isShowingVitalInput else {
+            return .empty
+        }
+        return VitalSignsInputParser.parse(
+            bodyTemperature: bodyTemperature,
+            systolicBP: systolicBP,
+            diastolicBP: diastolicBP,
+            pulseRate: pulseRate,
+            oxygenSaturation: oxygenSaturation
+        )
+    }
+
     private func dismissKeyboard() {
         focusedField = nil
         UIApplication.shared.sendAction(
@@ -179,13 +199,6 @@ struct RecordView: View {
         oxygenSaturation = ""
     }
 
-    private func normalizedInt(from text: String) -> Int? {
-        text.normalizedForStorage.flatMap(Int.init)
-    }
-
-    private func normalizedDouble(from text: String) -> Double? {
-        text.normalizedForStorage.flatMap(Double.init)
-    }
 }
 
 private struct CategorySelectionView: View {

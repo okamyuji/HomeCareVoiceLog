@@ -80,7 +80,6 @@ struct RecordDetailEditView: View {
         .onChange(of: detailedRecordModeEnabled) { _, isEnabled in
             if !isEnabled, !CareCategory.simpleCases.contains(selectedCategory) {
                 selectedCategory = .freeMemo
-                clearVitalInputs()
             }
         }
         .onChange(of: selectedCategory) { _, newCategory in
@@ -91,17 +90,25 @@ struct RecordDetailEditView: View {
     }
 
     private func save() {
+        let vitalResult = parsedVitalSigns
+        if vitalResult.hasInvalidInput {
+            errorAlert = AppErrorAlert(
+                titleKey: "record.saveError",
+                message: String(localized: "record.saveError.detail")
+            )
+            return
+        }
         do {
             try repository.updateRecord(
                 record,
                 category: selectedCategory,
                 transcriptText: transcriptText.normalizedForStorage,
                 freeMemoText: freeMemoText.normalizedForStorage,
-                bodyTemperature: isShowingVitalInput ? normalizedDouble(from: bodyTemperature) : nil,
-                systolicBP: isShowingVitalInput ? normalizedInt(from: systolicBP) : nil,
-                diastolicBP: isShowingVitalInput ? normalizedInt(from: diastolicBP) : nil,
-                pulseRate: isShowingVitalInput ? normalizedInt(from: pulseRate) : nil,
-                oxygenSaturation: isShowingVitalInput ? normalizedInt(from: oxygenSaturation) : nil
+                bodyTemperature: vitalResult.values.bodyTemperature,
+                systolicBP: vitalResult.values.systolicBP,
+                diastolicBP: vitalResult.values.diastolicBP,
+                pulseRate: vitalResult.values.pulseRate,
+                oxygenSaturation: vitalResult.values.oxygenSaturation
             )
             dismiss()
         } catch {
@@ -113,14 +120,16 @@ struct RecordDetailEditView: View {
     }
 
     private var isModified: Bool {
-        record.category != selectedCategory ||
+        let vitalResult = parsedVitalSigns
+        return record.category != selectedCategory ||
             record.transcriptText.normalizedForStorage != transcriptText.normalizedForStorage ||
             record.freeMemoText.normalizedForStorage != freeMemoText.normalizedForStorage ||
-            record.bodyTemperature != (isShowingVitalInput ? normalizedDouble(from: bodyTemperature) : nil) ||
-            record.systolicBP != (isShowingVitalInput ? normalizedInt(from: systolicBP) : nil) ||
-            record.diastolicBP != (isShowingVitalInput ? normalizedInt(from: diastolicBP) : nil) ||
-            record.pulseRate != (isShowingVitalInput ? normalizedInt(from: pulseRate) : nil) ||
-            record.oxygenSaturation != (isShowingVitalInput ? normalizedInt(from: oxygenSaturation) : nil)
+            vitalResult.hasInvalidInput ||
+            record.bodyTemperature != vitalResult.values.bodyTemperature ||
+            record.systolicBP != vitalResult.values.systolicBP ||
+            record.diastolicBP != vitalResult.values.diastolicBP ||
+            record.pulseRate != vitalResult.values.pulseRate ||
+            record.oxygenSaturation != vitalResult.values.oxygenSaturation
     }
 
     private var selectableCategories: [CareCategory] {
@@ -131,20 +140,25 @@ struct RecordDetailEditView: View {
         detailedRecordModeEnabled && selectedCategory == .vitalSigns
     }
 
+    private var parsedVitalSigns: VitalSignsParseResult {
+        guard isShowingVitalInput else {
+            return .empty
+        }
+        return VitalSignsInputParser.parse(
+            bodyTemperature: bodyTemperature,
+            systolicBP: systolicBP,
+            diastolicBP: diastolicBP,
+            pulseRate: pulseRate,
+            oxygenSaturation: oxygenSaturation
+        )
+    }
+
     private func clearVitalInputs() {
         bodyTemperature = ""
         systolicBP = ""
         diastolicBP = ""
         pulseRate = ""
         oxygenSaturation = ""
-    }
-
-    private func normalizedInt(from text: String) -> Int? {
-        text.normalizedForStorage.flatMap(Int.init)
-    }
-
-    private func normalizedDouble(from text: String) -> Double? {
-        text.normalizedForStorage.flatMap(Double.init)
     }
 
     private static func formattedInt(_ value: Int?) -> String {

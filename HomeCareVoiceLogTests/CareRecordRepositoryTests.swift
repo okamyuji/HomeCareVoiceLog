@@ -271,3 +271,56 @@ final class CareRecordRepositoryTests: XCTestCase {
         return Calendar(identifier: .gregorian).date(from: components)!
     }
 }
+
+final class VitalSignsInputParserTests: XCTestCase {
+    func testParseTreatsEmptyInputsAsNilWithoutErrors() {
+        let result = VitalSignsInputParser.parse(
+            bodyTemperature: "   ",
+            systolicBP: "",
+            diastolicBP: "\n",
+            pulseRate: "",
+            oxygenSaturation: ""
+        )
+
+        XCTAssertFalse(result.hasInvalidInput)
+        XCTAssertNil(result.values.bodyTemperature)
+        XCTAssertNil(result.values.systolicBP)
+        XCTAssertNil(result.values.diastolicBP)
+        XCTAssertNil(result.values.pulseRate)
+        XCTAssertNil(result.values.oxygenSaturation)
+    }
+
+    func testParseSupportsValidNumericInputs() {
+        let result = VitalSignsInputParser.parse(
+            bodyTemperature: "36,8",
+            systolicBP: "120",
+            diastolicBP: "78",
+            pulseRate: "70",
+            oxygenSaturation: "97"
+        )
+
+        XCTAssertFalse(result.hasInvalidInput)
+        XCTAssertEqual(result.values.bodyTemperature ?? 0, 36.8, accuracy: 0.0001)
+        XCTAssertEqual(result.values.systolicBP, 120)
+        XCTAssertEqual(result.values.diastolicBP, 78)
+        XCTAssertEqual(result.values.pulseRate, 70)
+        XCTAssertEqual(result.values.oxygenSaturation, 97)
+    }
+
+    func testParseFlagsInvalidNonEmptyInputs() {
+        let result = VitalSignsInputParser.parse(
+            bodyTemperature: "abc",
+            systolicBP: "120",
+            diastolicBP: "x",
+            pulseRate: "70",
+            oxygenSaturation: "97%"
+        )
+
+        XCTAssertTrue(result.hasInvalidInput)
+        XCTAssertNil(result.values.bodyTemperature)
+        XCTAssertEqual(result.values.systolicBP, 120)
+        XCTAssertNil(result.values.diastolicBP)
+        XCTAssertEqual(result.values.pulseRate, 70)
+        XCTAssertNil(result.values.oxygenSaturation)
+    }
+}
