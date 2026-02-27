@@ -51,6 +51,7 @@ final class RecordViewModelTests: XCTestCase {
         await viewModel.stopRecording()
 
         XCTAssertNotNil(viewModel.lastErrorMessage)
+        XCTAssertFalse(viewModel.lastErrorMessage?.isEmpty ?? true)
         XCTAssertEqual(files.deletedURLs.count, 0)
     }
 

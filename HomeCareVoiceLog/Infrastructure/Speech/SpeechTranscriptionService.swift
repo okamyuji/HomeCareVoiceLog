@@ -45,27 +45,36 @@ final class SpeechTranscriptionService: SpeechTranscribing {
         }
 
         return try await withCheckedThrowingContinuation { continuation in
-            var finished = false
-            recognizer.recognitionTask(with: request) { result, error in
-                if finished {
-                    return
+            // Use a class-based wrapper to safely track whether the continuation has been resumed.
+            // The recognitionTask callback may be called multiple times from arbitrary threads.
+            final class ResumeGuard: @unchecked Sendable {
+                private var resumed = false
+                private let lock = NSLock()
+
+                func resumeOnce(_ block: () -> Void) {
+                    lock.lock()
+                    defer { lock.unlock() }
+                    guard !resumed else { return }
+                    resumed = true
+                    block()
                 }
+            }
+            let resumeGuard = ResumeGuard()
+
+            recognizer.recognitionTask(with: request) { result, error in
                 if let error {
-                    finished = true
-                    continuation.resume(throwing: error)
+                    resumeGuard.resumeOnce { continuation.resume(throwing: error) }
                     return
                 }
 
                 guard let result else {
-                    finished = true
-                    continuation.resume(throwing: SpeechTranscriptionError.recognitionFailed)
+                    resumeGuard.resumeOnce { continuation.resume(throwing: SpeechTranscriptionError.recognitionFailed) }
                     return
                 }
 
                 if result.isFinal {
-                    finished = true
                     let text = result.bestTranscription.formattedString.trimmingCharacters(in: .whitespacesAndNewlines)
-                    continuation.resume(returning: text)
+                    resumeGuard.resumeOnce { continuation.resume(returning: text) }
                 }
             }
         }

@@ -4,7 +4,7 @@ import UIKit
 
 struct RecordView: View {
     @Environment(\.modelContext) private var modelContext
-    @StateObject private var viewModel = RecordViewModel(
+    @State private var viewModel = RecordViewModel(
         audioRecorder: AudioRecorderService(),
         speechTranscriber: SpeechTranscriptionService()
     )

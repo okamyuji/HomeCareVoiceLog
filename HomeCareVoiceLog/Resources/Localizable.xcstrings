@@ -371,22 +371,6 @@
         }
       }
     },
-    "record.saveError.detail" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed to save the record. Please try again."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "記録の保存に失敗しました。もう一度お試しください。"
-          }
-        }
-      }
-    },
     "record.saveError" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -404,6 +388,23 @@
         }
       }
     },
+    "record.saveError.detail" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to save the record. Please try again."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "記録の保存に失敗しました。もう一度お試しください。"
+          }
+        }
+      }
+    },
     "record.start" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -417,6 +418,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "録音開始"
+          }
+        }
+      }
+    },
+    "record.startError" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to start recording. Please check microphone permissions."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "録音の開始に失敗しました。マイクの許可を確認してください。"
           }
         }
       }
@@ -451,6 +469,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "文字起こし"
+          }
+        }
+      }
+    },
+    "record.transcriptionError" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to transcribe the recording. Please try again."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字起こしに失敗しました。もう一度お試しください。"
           }
         }
       }
@@ -624,22 +659,6 @@
         }
       }
     },
-    "summary.generateError" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed to generate summary. Please try again."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "サマリーの生成に失敗しました。もう一度お試しください。"
-          }
-        }
-      }
-    },
     "summary.generate" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -653,6 +672,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "サマリー生成"
+          }
+        }
+      }
+    },
+    "summary.generateError" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to generate summary. Please try again."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サマリーの生成に失敗しました。もう一度お試しください。"
           }
         }
       }

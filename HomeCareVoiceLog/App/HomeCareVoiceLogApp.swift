@@ -31,9 +31,9 @@ struct HomeCareVoiceLogApp: App {
                     })
                 } else {
                     RootTabView()
-                        .modelContainer(container)
                 }
             }
+            .modelContainer(container)
             .environment(authService)
         }
         .onChange(of: scenePhase) { _, newPhase in

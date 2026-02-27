@@ -15,27 +15,11 @@ final class UserNotificationCenterAdapter: NotificationScheduling {
     }
 
     func requestAuthorization(options: UNAuthorizationOptions) async throws -> Bool {
-        try await withCheckedThrowingContinuation { continuation in
-            center.requestAuthorization(options: options) { granted, error in
-                if let error {
-                    continuation.resume(throwing: error)
-                } else {
-                    continuation.resume(returning: granted)
-                }
-            }
-        }
+        try await center.requestAuthorization(options: options)
     }
 
     func add(_ request: UNNotificationRequest) async throws {
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            center.add(request) { error in
-                if let error {
-                    continuation.resume(throwing: error)
-                } else {
-                    continuation.resume(returning: ())
-                }
-            }
-        }
+        try await center.add(request)
     }
 
     func removePendingNotificationRequests(withIdentifiers identifiers: [String]) {
