@@ -2,7 +2,7 @@ import HomeCareVoiceLogCore
 import SwiftUI
 
 struct SummaryShareView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(CareRecordRepository.self) private var repository
     @State private var selectedDay = Date()
     @State private var summaryText = ""
     @State private var errorAlert: AppErrorAlert?
@@ -31,10 +31,6 @@ struct SummaryShareView: View {
             .navigationTitle("tab.summary")
             .appErrorAlert($errorAlert)
         }
-    }
-
-    private var repository: CareRecordRepository {
-        CareRecordRepository(modelContext: modelContext)
     }
 
     private func generateSummary() {

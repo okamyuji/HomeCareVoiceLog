@@ -1,10 +1,16 @@
 import Foundation
 import HomeCareVoiceLogCore
+import Observation
 import SwiftData
 
 @MainActor
-struct CareRecordRepository {
+@Observable
+final class CareRecordRepository {
     let modelContext: ModelContext
+
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+    }
 
     @discardableResult
     func addRecord(

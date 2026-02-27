@@ -3,7 +3,7 @@ import SwiftUI
 
 @MainActor
 struct TimelineView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(CareRecordRepository.self) private var repository
     @Query(sort: [SortDescriptor(\CareRecordEntity.timestamp, order: .reverse)])
     private var records: [CareRecordEntity]
     @State private var selectedDay = Date()
@@ -63,10 +63,6 @@ struct TimelineView: View {
             }
             .appErrorAlert($errorAlert)
         }
-    }
-
-    private var repository: CareRecordRepository {
-        CareRecordRepository(modelContext: modelContext)
     }
 
     private var filteredRecords: [CareRecordEntity] {

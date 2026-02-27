@@ -3,7 +3,7 @@ import SwiftUI
 import UIKit
 
 struct RecordView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(CareRecordRepository.self) private var repository
     let viewModel: RecordViewModel
     @State private var selectedCategory: CareCategory = .freeMemo
     @State private var freeMemo = ""
@@ -115,10 +115,6 @@ struct RecordView: View {
 
     private var recordButtonLabel: LocalizedStringKey {
         viewModel.isRecording ? "record.stop" : "record.start"
-    }
-
-    private var repository: CareRecordRepository {
-        CareRecordRepository(modelContext: modelContext)
     }
 
     private func dismissKeyboard() {

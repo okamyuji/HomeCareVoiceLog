@@ -4,7 +4,7 @@ import SwiftUI
 @MainActor
 struct RecordDetailEditView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
+    @Environment(CareRecordRepository.self) private var repository
 
     private let record: CareRecordEntity
 
@@ -54,10 +54,6 @@ struct RecordDetailEditView: View {
             }
         }
         .appErrorAlert($errorAlert)
-    }
-
-    private var repository: CareRecordRepository {
-        CareRecordRepository(modelContext: modelContext)
     }
 
     private func save() {

@@ -3,13 +3,17 @@ import SwiftData
 import SwiftUI
 
 @main
+@MainActor
 struct HomeCareVoiceLogApp: App {
     @AppStorage("biometricLockEnabled") private var biometricLockEnabled = false
     @State private var isUnlocked = false
     @State private var authService = BiometricAuthService()
     @Environment(\.scenePhase) private var scenePhase
 
-    private let container: ModelContainer = {
+    private let container: ModelContainer
+    private let repository: CareRecordRepository
+
+    init() {
         let schema = Schema([
             CareRecordEntity.self,
             ReminderSettingsEntity.self,
@@ -17,11 +21,13 @@ struct HomeCareVoiceLogApp: App {
         let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
-            return try ModelContainer(for: schema, configurations: [configuration])
+            let container = try ModelContainer(for: schema, configurations: [configuration])
+            self.container = container
+            repository = CareRecordRepository(modelContext: container.mainContext)
         } catch {
             fatalError("Failed to create SwiftData container: \(error)")
         }
-    }()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -36,6 +42,7 @@ struct HomeCareVoiceLogApp: App {
             }
             .modelContainer(container)
             .environment(authService)
+            .environment(repository)
         }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
