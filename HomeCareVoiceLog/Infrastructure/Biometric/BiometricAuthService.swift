@@ -2,6 +2,16 @@ import LocalAuthentication
 import Observation
 import os.log
 
+@MainActor
+protocol BiometricAuthContext {
+    var biometryType: LABiometryType { get }
+    var localizedCancelTitle: String? { get set }
+    func canEvaluatePolicy(_ policy: LAPolicy, error: NSErrorPointer) -> Bool
+    func evaluatePolicy(_ policy: LAPolicy, localizedReason: String) async throws -> Bool
+}
+
+extension LAContext: BiometricAuthContext {}
+
 enum BiometricAuthResult: Equatable {
     case success
     case failure
@@ -25,8 +35,10 @@ final class BiometricAuthService: BiometricAuthenticating {
 
     private(set) var biometryType: LABiometryType = .none
     private(set) var isBiometricAvailable: Bool = false
+    private let contextFactory: @MainActor () -> any BiometricAuthContext
 
-    init() {
+    init(contextFactory: @escaping @MainActor () -> any BiometricAuthContext = { LAContext() }) {
+        self.contextFactory = contextFactory
         refresh()
     }
 
@@ -34,7 +46,7 @@ final class BiometricAuthService: BiometricAuthenticating {
     /// Call this when the app returns to the foreground to pick up
     /// any changes the user made in device Settings.
     func refresh() {
-        let context = LAContext()
+        let context = contextFactory()
         var error: NSError?
         let available = context.canEvaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
@@ -53,12 +65,12 @@ final class BiometricAuthService: BiometricAuthenticating {
             return .failure
         }
 
-        let context = LAContext()
+        var context = contextFactory()
         context.localizedCancelTitle = String(localized: "biometric.cancel")
 
         do {
             let success = try await context.evaluatePolicy(
-                .deviceOwnerAuthenticationWithBiometrics,
+                .deviceOwnerAuthentication,
                 localizedReason: String(localized: "biometric.reason")
             )
             return success ? .success : .failure
