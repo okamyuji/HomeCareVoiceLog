@@ -123,14 +123,6 @@ struct RecordView: View {
             }
             .navigationTitle("tab.record")
             .appErrorAlert($errorAlert)
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("keyboard.done") {
-                        dismissKeyboard()
-                    }
-                }
-            }
             .overlay(alignment: .bottomTrailing) {
                 if focusedField == .freeMemo {
                     Button("keyboard.dismiss") {
