@@ -1,10 +1,6 @@
 import SwiftData
 import SwiftUI
 
-func timelineDisplayCaregiverName(_ rawName: String?) -> String? {
-    rawName.normalizedForStorage
-}
-
 @MainActor
 struct TimelineView: View {
     @Environment(CareRecordRepository.self) private var repository
@@ -87,7 +83,7 @@ private struct TimelineRecordList: View {
                         Text(memo)
                             .foregroundStyle(.secondary)
                     }
-                    if let caregiverName = timelineDisplayCaregiverName(record.caregiverName) {
+                    if let caregiverName = record.caregiverName.normalizedForStorage {
                         HStack(spacing: 4) {
                             Text("timeline.caregiver")
                                 .foregroundStyle(.secondary)
