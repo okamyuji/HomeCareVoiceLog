@@ -54,13 +54,14 @@ struct TimelineView: View {
                     get: { pendingDeleteRecord != nil },
                     set: { if !$0 { pendingDeleteRecord = nil } }
                 ),
-                titleVisibility: .visible
-            ) {
+                titleVisibility: .visible,
+                presenting: pendingDeleteRecord
+            ) { record in
                 Button("timeline.deleteConfirmAction", role: .destructive) {
-                    deletePendingRecord()
+                    deleteRecord(record)
                 }
                 Button("common.cancel", role: .cancel) {}
-            } message: {
+            } message: { _ in
                 Text("timeline.deleteConfirmMessage")
             }
             .appErrorAlert($errorAlert)
@@ -76,12 +77,9 @@ struct TimelineView: View {
         return records.filter { calendar.isDate($0.timestamp, inSameDayAs: selectedDay) }
     }
 
-    private func deletePendingRecord() {
-        guard let pendingDeleteRecord else { return }
-        defer { self.pendingDeleteRecord = nil }
-
+    private func deleteRecord(_ record: CareRecordEntity) {
         do {
-            try repository.deleteRecord(pendingDeleteRecord)
+            try repository.deleteRecord(record)
         } catch {
             errorAlert = AppErrorAlert(
                 titleKey: "timeline.deleteError",

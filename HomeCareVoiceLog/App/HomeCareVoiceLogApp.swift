@@ -63,12 +63,17 @@ struct AppErrorAlert: Identifiable {
 
 extension View {
     func appErrorAlert(_ item: Binding<AppErrorAlert?>) -> some View {
-        alert(item: item) { alert in
-            Alert(
-                title: Text(alert.titleKey),
-                message: Text(alert.message),
-                dismissButton: .default(Text("OK"))
-            )
+        alert(
+            item.wrappedValue?.titleKey ?? "",
+            isPresented: Binding(
+                get: { item.wrappedValue != nil },
+                set: { if !$0 { item.wrappedValue = nil } }
+            ),
+            presenting: item.wrappedValue
+        ) { _ in
+            Button("OK", role: .cancel) {}
+        } message: { alert in
+            Text(alert.message)
         }
     }
 }
