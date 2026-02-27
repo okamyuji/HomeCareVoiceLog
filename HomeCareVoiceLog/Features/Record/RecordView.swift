@@ -131,17 +131,14 @@ struct RecordView: View {
                     }
                 }
             }
-            .safeAreaInset(edge: .bottom) {
+            .overlay(alignment: .bottomTrailing) {
                 if focusedField == .freeMemo {
-                    HStack {
-                        Spacer()
-                        Button("keyboard.dismiss") {
-                            dismissKeyboard()
-                        }
-                        .buttonStyle(.borderedProminent)
+                    Button("keyboard.dismiss") {
+                        dismissKeyboard()
                     }
+                    .buttonStyle(.borderedProminent)
                     .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
+                    .padding(.bottom, 12)
                     .accessibilityIdentifier("dismiss-keyboard-button")
                 }
             }
