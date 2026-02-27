@@ -439,6 +439,23 @@
         }
       }
     },
+    "record.saveError.invalidInputPrefix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid input"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "入力形式が不正です"
+          }
+        }
+      }
+    },
     "record.start" : {
       "extractionState" : "stale",
       "localizations" : {

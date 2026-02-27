@@ -283,6 +283,7 @@ final class VitalSignsInputParserTests: XCTestCase {
         )
 
         XCTAssertFalse(result.hasInvalidInput)
+        XCTAssertEqual(result.invalidFields, [])
         XCTAssertNil(result.values.bodyTemperature)
         XCTAssertNil(result.values.systolicBP)
         XCTAssertNil(result.values.diastolicBP)
@@ -300,6 +301,7 @@ final class VitalSignsInputParserTests: XCTestCase {
         )
 
         XCTAssertFalse(result.hasInvalidInput)
+        XCTAssertEqual(result.invalidFields, [])
         XCTAssertEqual(result.values.bodyTemperature ?? 0, 36.8, accuracy: 0.0001)
         XCTAssertEqual(result.values.systolicBP, 120)
         XCTAssertEqual(result.values.diastolicBP, 78)
@@ -317,6 +319,7 @@ final class VitalSignsInputParserTests: XCTestCase {
         )
 
         XCTAssertTrue(result.hasInvalidInput)
+        XCTAssertEqual(result.invalidFields, [.bodyTemperature, .diastolicBP, .oxygenSaturation])
         XCTAssertNil(result.values.bodyTemperature)
         XCTAssertEqual(result.values.systolicBP, 120)
         XCTAssertNil(result.values.diastolicBP)

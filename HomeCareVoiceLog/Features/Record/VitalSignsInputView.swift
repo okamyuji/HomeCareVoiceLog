@@ -1,5 +1,28 @@
 import SwiftUI
 
+enum VitalSignField: CaseIterable, Equatable {
+    case bodyTemperature
+    case systolicBP
+    case diastolicBP
+    case pulseRate
+    case oxygenSaturation
+
+    var labelKey: String {
+        switch self {
+        case .bodyTemperature:
+            return "record.vital.bodyTemperature"
+        case .systolicBP:
+            return "record.vital.systolicBP"
+        case .diastolicBP:
+            return "record.vital.diastolicBP"
+        case .pulseRate:
+            return "record.vital.pulseRate"
+        case .oxygenSaturation:
+            return "record.vital.oxygenSaturation"
+        }
+    }
+}
+
 struct VitalSignsValues: Equatable {
     let bodyTemperature: Double?
     let systolicBP: Int?
@@ -18,9 +41,19 @@ struct VitalSignsValues: Equatable {
 
 struct VitalSignsParseResult: Equatable {
     let values: VitalSignsValues
-    let hasInvalidInput: Bool
+    let invalidFields: [VitalSignField]
 
-    static let empty = VitalSignsParseResult(values: .empty, hasInvalidInput: false)
+    var hasInvalidInput: Bool {
+        !invalidFields.isEmpty
+    }
+
+    func invalidInputMessage(locale: Locale = .current) -> String {
+        let labels = invalidFields.map { NSLocalizedString($0.labelKey, comment: "") }
+        let prefix = String(localized: "record.saveError.invalidInputPrefix", locale: locale)
+        return prefix + ": " + labels.joined(separator: ", ")
+    }
+
+    static let empty = VitalSignsParseResult(values: .empty, invalidFields: [])
 }
 
 enum VitalSignsInputParser {
@@ -37,11 +70,22 @@ enum VitalSignsInputParser {
         let parsedPulse = parseOptionalInt(pulseRate)
         let parsedOxygen = parseOptionalInt(oxygenSaturation)
 
-        let hasInvalidInput = parsedBodyTemperature.isInvalid ||
-            parsedSystolic.isInvalid ||
-            parsedDiastolic.isInvalid ||
-            parsedPulse.isInvalid ||
-            parsedOxygen.isInvalid
+        var invalidFields: [VitalSignField] = []
+        if parsedBodyTemperature.isInvalid {
+            invalidFields.append(.bodyTemperature)
+        }
+        if parsedSystolic.isInvalid {
+            invalidFields.append(.systolicBP)
+        }
+        if parsedDiastolic.isInvalid {
+            invalidFields.append(.diastolicBP)
+        }
+        if parsedPulse.isInvalid {
+            invalidFields.append(.pulseRate)
+        }
+        if parsedOxygen.isInvalid {
+            invalidFields.append(.oxygenSaturation)
+        }
 
         return VitalSignsParseResult(
             values: VitalSignsValues(
@@ -51,7 +95,7 @@ enum VitalSignsInputParser {
                 pulseRate: parsedPulse.value,
                 oxygenSaturation: parsedOxygen.value
             ),
-            hasInvalidInput: hasInvalidInput
+            invalidFields: invalidFields
         )
     }
 

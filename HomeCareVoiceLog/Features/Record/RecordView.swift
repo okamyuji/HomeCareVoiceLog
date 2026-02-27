@@ -88,7 +88,7 @@ struct RecordView: View {
                             if vitalResult.hasInvalidInput {
                                 errorAlert = AppErrorAlert(
                                     titleKey: "record.saveError",
-                                    message: String(localized: "record.saveError.detail")
+                                    message: vitalResult.invalidInputMessage()
                                 )
                                 return
                             }
