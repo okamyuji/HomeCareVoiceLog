@@ -4,41 +4,14 @@ import SwiftUI
 @MainActor
 struct TimelineView: View {
     @Environment(CareRecordRepository.self) private var repository
-    @Query(sort: [SortDescriptor(\CareRecordEntity.timestamp, order: .reverse)])
-    private var records: [CareRecordEntity]
     @State private var selectedDay = Date()
     @State private var pendingDeleteRecord: CareRecordEntity?
     @State private var errorAlert: AppErrorAlert?
 
     var body: some View {
         NavigationStack {
-            List(filteredRecords) { record in
-                NavigationLink {
-                    RecordDetailEditView(record: record)
-                } label: {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(record.category.localizedLabel(locale: .current))
-                            .font(.headline)
-                        Text(record.timestamp, style: .time)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        if let transcript = record.transcriptText, !transcript.isEmpty {
-                            Text(transcript)
-                        }
-                        if let memo = record.freeMemoText, !memo.isEmpty {
-                            Text(memo)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
-                .accessibilityIdentifier("timeline-record-\(record.id.uuidString)")
-                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                    Button(role: .destructive) {
-                        pendingDeleteRecord = record
-                    } label: {
-                        Label("timeline.delete", systemImage: "trash")
-                    }
-                }
+            TimelineRecordList(selectedDay: selectedDay) { record in
+                pendingDeleteRecord = record
             }
             .safeAreaInset(edge: .top) {
                 DatePicker("timeline.day", selection: $selectedDay, displayedComponents: .date)
@@ -65,11 +38,6 @@ struct TimelineView: View {
         }
     }
 
-    private var filteredRecords: [CareRecordEntity] {
-        let calendar = Calendar.current
-        return records.filter { calendar.isDate($0.timestamp, inSameDayAs: selectedDay) }
-    }
-
     private func deleteRecord(_ record: CareRecordEntity) {
         do {
             try repository.deleteRecord(record)
@@ -78,6 +46,55 @@ struct TimelineView: View {
                 titleKey: "timeline.deleteError",
                 message: String(localized: "timeline.deleteError.detail")
             )
+        }
+    }
+}
+
+private struct TimelineRecordList: View {
+    @Query private var records: [CareRecordEntity]
+    private let onDeleteRequest: (CareRecordEntity) -> Void
+
+    init(selectedDay: Date, onDeleteRequest: @escaping (CareRecordEntity) -> Void) {
+        self.onDeleteRequest = onDeleteRequest
+        let calendar = Calendar.current
+        let start = calendar.startOfDay(for: selectedDay)
+        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86400)
+        _records = Query(
+            filter: #Predicate<CareRecordEntity> { entity in
+                entity.timestamp >= start && entity.timestamp < end
+            },
+            sort: [SortDescriptor(\CareRecordEntity.timestamp, order: .reverse)]
+        )
+    }
+
+    var body: some View {
+        List(records) { record in
+            NavigationLink {
+                RecordDetailEditView(record: record)
+            } label: {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(record.category.localizedLabel(locale: .current))
+                        .font(.headline)
+                    Text(record.timestamp, style: .time)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    if let transcript = record.transcriptText, !transcript.isEmpty {
+                        Text(transcript)
+                    }
+                    if let memo = record.freeMemoText, !memo.isEmpty {
+                        Text(memo)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            .accessibilityIdentifier("timeline-record-\(record.id.uuidString)")
+            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                Button(role: .destructive) {
+                    onDeleteRequest(record)
+                } label: {
+                    Label("timeline.delete", systemImage: "trash")
+                }
+            }
         }
     }
 }
