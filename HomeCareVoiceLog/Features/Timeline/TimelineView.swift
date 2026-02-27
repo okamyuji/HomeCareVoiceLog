@@ -50,10 +50,7 @@ struct TimelineView: View {
             .navigationTitle("tab.timeline")
             .confirmationDialog(
                 "timeline.deleteConfirmTitle",
-                isPresented: Binding(
-                    get: { pendingDeleteRecord != nil },
-                    set: { if !$0 { pendingDeleteRecord = nil } }
-                ),
+                isPresented: $pendingDeleteRecord.isPresent(),
                 titleVisibility: .visible,
                 presenting: pendingDeleteRecord
             ) { record in

@@ -65,16 +65,26 @@ extension View {
     func appErrorAlert(_ item: Binding<AppErrorAlert?>) -> some View {
         alert(
             item.wrappedValue?.titleKey ?? "",
-            isPresented: Binding(
-                get: { item.wrappedValue != nil },
-                set: { if !$0 { item.wrappedValue = nil } }
-            ),
+            isPresented: item.isPresent(),
             presenting: item.wrappedValue
         ) { _ in
             Button("OK", role: .cancel) {}
         } message: { alert in
             Text(alert.message)
         }
+    }
+}
+
+extension Binding {
+    func isPresent<Wrapped>() -> Binding<Bool> where Value == Wrapped? {
+        Binding<Bool>(
+            get: { wrappedValue != nil },
+            set: { isPresented in
+                if !isPresented {
+                    wrappedValue = nil
+                }
+            }
+        )
     }
 }
 
