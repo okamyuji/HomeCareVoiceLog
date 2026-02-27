@@ -1,14 +1,10 @@
-import SwiftUI
-
-extension Binding {
-    func isPresent<Wrapped>() -> Binding<Bool> where Value == Wrapped? {
-        Binding<Bool>(
-            get: { wrappedValue != nil },
-            set: { isPresented in
-                if !isPresented {
-                    wrappedValue = nil
-                }
+extension Optional {
+    var isPresent: Bool {
+        get { self != nil }
+        set {
+            if !newValue {
+                self = nil
             }
-        )
+        }
     }
 }
