@@ -14,6 +14,7 @@
 		1F9B2C3D4E5F60718293A4B1 /* View+AppErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2C3D4E5F60718293A4C1 /* View+AppErrorAlert.swift */; };
 		1F9B2C3D4E5F60718293A4B2 /* Binding+IsPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2C3D4E5F60718293A4C2 /* Binding+IsPresent.swift */; };
 		1F9B2C3D4E5F60718293A4B3 /* LABiometryType+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2C3D4E5F60718293A4C3 /* LABiometryType+UI.swift */; };
+		24AA12BC34DE56F7890A12C3 /* Calendar+DayInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AA12BC34DE56F7890A12C4 /* Calendar+DayInterval.swift */; };
 		2B2580CF703F55A90D1EED73 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6041363C5B0617A44D5CCCA /* TimelineView.swift */; };
 		2D2046CA8E97F9A08882C873 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A984107B2E71C27206FF9FD /* PlaceholderTests.swift */; };
 		2F1B10A1BD5A5AB2DDA96893 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEF039BB800E37049DE04C0 /* RecordViewModel.swift */; };
@@ -68,6 +69,7 @@
 		1F9B2C3D4E5F60718293A4C1 /* View+AppErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AppErrorAlert.swift"; sourceTree = "<group>"; };
 		1F9B2C3D4E5F60718293A4C2 /* Binding+IsPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+IsPresent.swift"; sourceTree = "<group>"; };
 		1F9B2C3D4E5F60718293A4C3 /* LABiometryType+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LABiometryType+UI.swift"; sourceTree = "<group>"; };
+		24AA12BC34DE56F7890A12C4 /* Calendar+DayInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DayInterval.swift"; sourceTree = "<group>"; };
 		1ED5914B58964EC12A3351B7 /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
 		29768432327A513561C65B86 /* HomeCareVoiceLogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeCareVoiceLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CF2AFBB6836F0AE6200F61 /* CareRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRecordRepository.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				1F9B2C3D4E5F60718293A4C0 /* AppErrorAlert.swift */,
 				1F9B2C3D4E5F60718293A4C2 /* Binding+IsPresent.swift */,
+				24AA12BC34DE56F7890A12C4 /* Calendar+DayInterval.swift */,
 				1F9B2C3D4E5F60718293A4C3 /* LABiometryType+UI.swift */,
 				1F9B2C3D4E5F60718293A4C1 /* View+AppErrorAlert.swift */,
 				1C85F317D307256080CA9DFB /* Info.plist */,
@@ -454,6 +457,7 @@
 				8E19B5F1A06FF5D087A60097 /* AudioRecorderService.swift in Sources */,
 				F85E3E0CAFA52D73486CBA84 /* BiometricAuthService.swift in Sources */,
 				1F9B2C3D4E5F60718293A4B2 /* Binding+IsPresent.swift in Sources */,
+				24AA12BC34DE56F7890A12C3 /* Calendar+DayInterval.swift in Sources */,
 				53F12EE7BFE19556E373EB5E /* CareRecordEntity.swift in Sources */,
 				AF81084B12EF3F2D6952F0AD /* CareRecordRepository.swift in Sources */,
 				1F9B2C3D4E5F60718293A4B0 /* AppErrorAlert.swift in Sources */,

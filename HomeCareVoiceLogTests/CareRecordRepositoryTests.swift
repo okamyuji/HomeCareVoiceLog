@@ -113,6 +113,27 @@ final class CareRecordRepositoryTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(records[0].updatedAt, originalUpdatedAt)
     }
 
+    func testUpdateRecordNoChangesDoesNotTouchUpdatedAt() throws {
+        let repository = try makeRepository()
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 9, minute: 0),
+            category: .meal,
+            transcriptText: "No Change",
+            freeMemoText: "No Change Memo",
+            durationSeconds: 12
+        )
+        let originalUpdatedAt = record.updatedAt
+
+        try repository.updateRecord(
+            record,
+            category: .meal,
+            transcriptText: "No Change",
+            freeMemoText: "No Change Memo"
+        )
+
+        XCTAssertEqual(record.updatedAt, originalUpdatedAt)
+    }
+
     func testDeleteRecordRemovesEntity() throws {
         let repository = try makeRepository()
         let keep = try repository.addRecord(

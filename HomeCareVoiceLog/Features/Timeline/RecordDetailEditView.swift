@@ -16,8 +16,8 @@ struct RecordDetailEditView: View {
     init(record: CareRecordEntity) {
         self.record = record
         _selectedCategory = State(wrappedValue: record.category)
-        _transcriptText = State(wrappedValue: record.transcriptText ?? "")
-        _freeMemoText = State(wrappedValue: record.freeMemoText ?? "")
+        _transcriptText = State(wrappedValue: Self.editableText(record.transcriptText))
+        _freeMemoText = State(wrappedValue: Self.editableText(record.freeMemoText))
     }
 
     var body: some View {
@@ -50,6 +50,7 @@ struct RecordDetailEditView: View {
                 Button("common.save") {
                     save()
                 }
+                .disabled(!isModified)
                 .accessibilityIdentifier("timeline-edit-save-button")
             }
         }
@@ -61,8 +62,8 @@ struct RecordDetailEditView: View {
             try repository.updateRecord(
                 record,
                 category: selectedCategory,
-                transcriptText: normalized(text: transcriptText),
-                freeMemoText: normalized(text: freeMemoText)
+                transcriptText: Self.normalizedText(transcriptText),
+                freeMemoText: Self.normalizedText(freeMemoText)
             )
             dismiss()
         } catch {
@@ -73,7 +74,18 @@ struct RecordDetailEditView: View {
         }
     }
 
-    private func normalized(text: String) -> String? {
+    private var isModified: Bool {
+        record.category != selectedCategory ||
+            Self.normalizedText(record.transcriptText) != Self.normalizedText(transcriptText) ||
+            Self.normalizedText(record.freeMemoText) != Self.normalizedText(freeMemoText)
+    }
+
+    private static func editableText(_ text: String?) -> String {
+        normalizedText(text) ?? ""
+    }
+
+    private static func normalizedText(_ text: String?) -> String? {
+        guard let text else { return nil }
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed
     }
