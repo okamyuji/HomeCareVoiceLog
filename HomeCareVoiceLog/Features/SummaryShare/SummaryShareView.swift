@@ -31,9 +31,9 @@ struct SummaryShareView: View {
             .navigationTitle("tab.summary")
             .alert("summary.error", isPresented: Binding(
                 get: { errorMessage != nil },
-                set: { if !$0 { errorMessage = nil } }
+                set: { _ in }
             )) {
-                Button("OK") {}
+                Button("OK") { errorMessage = nil }
             } message: {
                 if let errorMessage {
                     Text(errorMessage)

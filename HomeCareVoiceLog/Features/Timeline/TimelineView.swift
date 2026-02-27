@@ -65,9 +65,9 @@ struct TimelineView: View {
             }
             .alert("timeline.deleteError", isPresented: Binding(
                 get: { deleteErrorMessage != nil },
-                set: { if !$0 { deleteErrorMessage = nil } }
+                set: { _ in }
             )) {
-                Button("OK") {}
+                Button("OK") { deleteErrorMessage = nil }
             } message: {
                 if let deleteErrorMessage {
                     Text(deleteErrorMessage)

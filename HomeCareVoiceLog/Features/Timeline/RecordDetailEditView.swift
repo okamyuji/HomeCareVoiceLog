@@ -58,9 +58,9 @@ struct RecordDetailEditView: View {
         }
         .alert("record.saveError", isPresented: Binding(
             get: { saveErrorMessage != nil },
-            set: { if !$0 { saveErrorMessage = nil } }
+            set: { _ in }
         )) {
-            Button("OK") {}
+            Button("OK") { saveErrorMessage = nil }
         } message: {
             if let saveErrorMessage {
                 Text(saveErrorMessage)
