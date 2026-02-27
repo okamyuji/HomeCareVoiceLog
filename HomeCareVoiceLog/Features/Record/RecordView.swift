@@ -4,9 +4,15 @@ import UIKit
 
 struct RecordView: View {
     @Environment(CareRecordRepository.self) private var repository
+    @AppStorage("detailedRecordModeEnabled") private var detailedRecordModeEnabled = true
     let viewModel: RecordViewModel
     @State private var selectedCategory: CareCategory = .freeMemo
     @State private var freeMemo = ""
+    @State private var bodyTemperature = ""
+    @State private var systolicBP = ""
+    @State private var diastolicBP = ""
+    @State private var pulseRate = ""
+    @State private var oxygenSaturation = ""
     @State private var errorAlert: AppErrorAlert?
     @FocusState private var focusedField: Field?
 
@@ -18,7 +24,10 @@ struct RecordView: View {
         NavigationStack {
             Form {
                 NavigationLink {
-                    CategorySelectionView(selectedCategory: $selectedCategory)
+                    CategorySelectionView(
+                        selectedCategory: $selectedCategory,
+                        categories: selectableCategories
+                    )
                 } label: {
                     HStack {
                         Text("record.category")
@@ -34,6 +43,16 @@ struct RecordView: View {
                     .lineLimit(3 ... 6)
                     .focused($focusedField, equals: .freeMemo)
                     .accessibilityIdentifier("free-memo-field")
+
+                if isShowingVitalInput {
+                    VitalSignsInputView(
+                        bodyTemperature: $bodyTemperature,
+                        systolicBP: $systolicBP,
+                        diastolicBP: $diastolicBP,
+                        pulseRate: $pulseRate,
+                        oxygenSaturation: $oxygenSaturation
+                    )
+                }
 
                 if viewModel.isRecording {
                     Section {
@@ -71,9 +90,15 @@ struct RecordView: View {
                                     category: selectedCategory,
                                     transcriptText: viewModel.transcriptText.normalizedForStorage,
                                     freeMemoText: freeMemo.normalizedForStorage,
-                                    durationSeconds: recordedDuration > 0 ? recordedDuration : nil
+                                    durationSeconds: recordedDuration > 0 ? recordedDuration : nil,
+                                    bodyTemperature: isShowingVitalInput ? normalizedDouble(from: bodyTemperature) : nil,
+                                    systolicBP: isShowingVitalInput ? normalizedInt(from: systolicBP) : nil,
+                                    diastolicBP: isShowingVitalInput ? normalizedInt(from: diastolicBP) : nil,
+                                    pulseRate: isShowingVitalInput ? normalizedInt(from: pulseRate) : nil,
+                                    oxygenSaturation: isShowingVitalInput ? normalizedInt(from: oxygenSaturation) : nil
                                 )
                                 freeMemo = ""
+                                resetVitalInputs()
                             } catch {
                                 errorAlert = AppErrorAlert(
                                     titleKey: "record.saveError",
@@ -110,11 +135,30 @@ struct RecordView: View {
                     .accessibilityIdentifier("dismiss-keyboard-button")
                 }
             }
+            .onChange(of: detailedRecordModeEnabled) { _, isEnabled in
+                if !isEnabled, !CareCategory.simpleCases.contains(selectedCategory) {
+                    selectedCategory = .freeMemo
+                    resetVitalInputs()
+                }
+            }
+            .onChange(of: selectedCategory) { _, newCategory in
+                if newCategory != .vitalSigns {
+                    resetVitalInputs()
+                }
+            }
         }
     }
 
     private var recordButtonLabel: LocalizedStringKey {
         viewModel.isRecording ? "record.stop" : "record.start"
+    }
+
+    private var selectableCategories: [CareCategory] {
+        detailedRecordModeEnabled ? CareCategory.detailedCases : CareCategory.simpleCases
+    }
+
+    private var isShowingVitalInput: Bool {
+        detailedRecordModeEnabled && selectedCategory == .vitalSigns
     }
 
     private func dismissKeyboard() {
@@ -126,14 +170,31 @@ struct RecordView: View {
             for: nil
         )
     }
+
+    private func resetVitalInputs() {
+        bodyTemperature = ""
+        systolicBP = ""
+        diastolicBP = ""
+        pulseRate = ""
+        oxygenSaturation = ""
+    }
+
+    private func normalizedInt(from text: String) -> Int? {
+        text.normalizedForStorage.flatMap(Int.init)
+    }
+
+    private func normalizedDouble(from text: String) -> Double? {
+        text.normalizedForStorage.flatMap(Double.init)
+    }
 }
 
 private struct CategorySelectionView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var selectedCategory: CareCategory
+    let categories: [CareCategory]
 
     var body: some View {
-        List(CareCategory.allCases, id: \.self) { category in
+        List(categories, id: \.self) { category in
             Button {
                 selectedCategory = category
                 dismiss()

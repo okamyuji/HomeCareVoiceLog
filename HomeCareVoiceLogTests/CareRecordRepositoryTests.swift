@@ -196,6 +196,60 @@ final class CareRecordRepositoryTests: XCTestCase {
         XCTAssertEqual(records[0].id, keep.id)
     }
 
+    func testAddRecordPersistsVitalSigns() throws {
+        let repository = try makeRepository()
+
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 8, minute: 0),
+            category: .vitalSigns,
+            transcriptText: nil,
+            freeMemoText: nil,
+            durationSeconds: nil,
+            bodyTemperature: 36.7,
+            systolicBP: 120,
+            diastolicBP: 78,
+            pulseRate: 70,
+            oxygenSaturation: 97
+        )
+
+        XCTAssertEqual(record.bodyTemperature, 36.7)
+        XCTAssertEqual(record.systolicBP, 120)
+        XCTAssertEqual(record.diastolicBP, 78)
+        XCTAssertEqual(record.pulseRate, 70)
+        XCTAssertEqual(record.oxygenSaturation, 97)
+    }
+
+    func testUpdateRecordNoVitalChangesDoesNotTouchUpdatedAt() throws {
+        let repository = try makeRepository()
+        let record = try repository.addRecord(
+            timestamp: date(year: 2026, month: 2, day: 14, hour: 8, minute: 0),
+            category: .vitalSigns,
+            transcriptText: nil,
+            freeMemoText: nil,
+            durationSeconds: nil,
+            bodyTemperature: 36.5,
+            systolicBP: 112,
+            diastolicBP: 70,
+            pulseRate: 66,
+            oxygenSaturation: 99
+        )
+        let originalUpdatedAt = record.updatedAt
+
+        try repository.updateRecord(
+            record,
+            category: .vitalSigns,
+            transcriptText: nil,
+            freeMemoText: nil,
+            bodyTemperature: 36.5,
+            systolicBP: 112,
+            diastolicBP: 70,
+            pulseRate: 66,
+            oxygenSaturation: 99
+        )
+
+        XCTAssertEqual(record.updatedAt, originalUpdatedAt)
+    }
+
     private func makeRepository() throws -> CareRecordRepository {
         let schema = Schema([
             CareRecordEntity.self,

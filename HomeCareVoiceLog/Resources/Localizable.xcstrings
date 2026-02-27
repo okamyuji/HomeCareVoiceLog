@@ -388,6 +388,102 @@
         }
       }
     },
+    "record.vital.bodyTemperature" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body Temperature (°C)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体温（℃）"
+          }
+        }
+      }
+    },
+    "record.vital.diastolicBP" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diastolic (mmHg)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拡張期血圧（mmHg）"
+          }
+        }
+      }
+    },
+    "record.vital.oxygenSaturation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SpO2 (%)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SpO2（%）"
+          }
+        }
+      }
+    },
+    "record.vital.pulseRate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulse (bpm)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "脈拍（bpm）"
+          }
+        }
+      }
+    },
+    "record.vital.systolicBP" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systolic (mmHg)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "収縮期血圧（mmHg）"
+          }
+        }
+      }
+    },
+    "record.vitalSigns.section" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vital Signs"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バイタル情報"
+          }
+        }
+      }
+    },
     "record.recording" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -639,6 +735,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "毎日リマインダー"
+          }
+        }
+      }
+    },
+    "settings.detailedRecordMode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detailed Record Mode"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳細記録モード"
           }
         }
       }
