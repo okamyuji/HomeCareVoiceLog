@@ -9,7 +9,12 @@ struct HomeCareVoiceLogApp: App {
     @State private var isUnlocked = false
     @State private var authService = BiometricAuthService()
     @Environment(\.scenePhase) private var scenePhase
-    private let isRunningXCTest = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    private let isRunningXCTest: Bool = {
+        let processInfo = ProcessInfo.processInfo
+        return processInfo.environment["XCTestConfigurationFilePath"] != nil
+            || processInfo.environment["UITEST_DISABLE_BIOMETRIC_LOCK"] == "1"
+            || processInfo.arguments.contains("-ui-testing")
+    }()
 
     private let container: ModelContainer
     private let repository: CareRecordRepository

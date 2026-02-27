@@ -2,9 +2,16 @@ import XCTest
 
 @MainActor
 final class HomeCareVoiceLogUITests: XCTestCase {
-    func testTabNavigationAndShareButtonVisibility() {
+    private func launchApp() -> XCUIApplication {
         let app = XCUIApplication()
+        app.launchArguments.append("-ui-testing")
+        app.launchEnvironment["UITEST_DISABLE_BIOMETRIC_LOCK"] = "1"
         app.launch()
+        return app
+    }
+
+    func testTabNavigationAndShareButtonVisibility() {
+        let app = launchApp()
 
         let tabButtons = app.tabBars.buttons
         XCTAssertGreaterThanOrEqual(tabButtons.count, 4)
@@ -21,8 +28,7 @@ final class HomeCareVoiceLogUITests: XCTestCase {
     }
 
     func testCategorySelectionUpdatesSelectedLabel() {
-        let app = XCUIApplication()
-        app.launch()
+        let app = launchApp()
 
         let categorySelector = app.buttons["category-selector-row"]
         XCTAssertTrue(categorySelector.waitForExistence(timeout: 2))
@@ -37,8 +43,7 @@ final class HomeCareVoiceLogUITests: XCTestCase {
     }
 
     func testKeyboardCanBeDismissedWithExplicitButton() {
-        let app = XCUIApplication()
-        app.launch()
+        let app = launchApp()
 
         let memoInput = app.descendants(matching: .any)["free-memo-field"]
         XCTAssertTrue(memoInput.waitForExistence(timeout: 2))

@@ -6,6 +6,8 @@ final class AppStoreScreenshots: XCTestCase {
 
     override func setUp() async throws {
         continueAfterFailure = false
+        app.launchArguments.append("-ui-testing")
+        app.launchEnvironment["UITEST_DISABLE_BIOMETRIC_LOCK"] = "1"
         app.launch()
     }
 
