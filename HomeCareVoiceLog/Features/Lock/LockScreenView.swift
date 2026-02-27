@@ -39,7 +39,7 @@ struct LockScreenView: View {
                     await authenticate()
                 }
             } label: {
-                Label(biometricButtonLabel, systemImage: biometricIconName)
+                Label(biometricInfo.labelKey, systemImage: biometricInfo.iconName)
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -72,29 +72,18 @@ struct LockScreenView: View {
         }
     }
 
-    private var biometricIconName: String {
+    private var biometricInfo: (iconName: String, labelKey: LocalizedStringKey) {
         switch authService.biometryType {
         case .faceID:
-            "faceid"
+            ("faceid", "lock.button.faceid")
         case .touchID:
-            "touchid"
+            ("touchid", "lock.button.touchid")
         case .opticID:
-            "opticid"
+            ("opticid", "lock.button.opticid")
+        case .none:
+            ("lock.open", "lock.button.unlock")
         @unknown default:
-            "lock.open"
-        }
-    }
-
-    private var biometricButtonLabel: LocalizedStringKey {
-        switch authService.biometryType {
-        case .faceID:
-            "lock.button.faceid"
-        case .touchID:
-            "lock.button.touchid"
-        case .opticID:
-            "lock.button.opticid"
-        @unknown default:
-            "lock.button.unlock"
+            ("lock.open", "lock.button.unlock")
         }
     }
 }
