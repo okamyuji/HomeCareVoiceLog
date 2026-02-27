@@ -19,6 +19,7 @@ final class CareRecordRepository {
         transcriptText: String?,
         freeMemoText: String?,
         durationSeconds: Int?,
+        caregiverName: String? = nil,
         bodyTemperature: Double? = nil,
         systolicBP: Int? = nil,
         diastolicBP: Int? = nil,
@@ -28,11 +29,13 @@ final class CareRecordRepository {
         let now = Date()
         let normalizedTranscriptText = transcriptText.normalizedForStorage
         let normalizedFreeMemoText = freeMemoText.normalizedForStorage
+        let normalizedCaregiverName = caregiverName.normalizedForStorage
         let entity = CareRecordEntity(
             timestamp: timestamp,
             category: category,
             transcriptText: normalizedTranscriptText,
             freeMemoText: normalizedFreeMemoText,
+            caregiverName: normalizedCaregiverName,
             bodyTemperature: bodyTemperature,
             systolicBP: systolicBP,
             diastolicBP: diastolicBP,

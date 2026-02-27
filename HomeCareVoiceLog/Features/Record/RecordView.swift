@@ -5,6 +5,7 @@ import UIKit
 struct RecordView: View {
     @Environment(CareRecordRepository.self) private var repository
     @AppStorage("detailedRecordModeEnabled") private var detailedRecordModeEnabled = true
+    @AppStorage("caregiverName") private var caregiverName = ""
     let viewModel: RecordViewModel
     @State private var selectedCategory: CareCategory = .freeMemo
     @State private var freeMemo = ""
@@ -99,6 +100,7 @@ struct RecordView: View {
                                     transcriptText: viewModel.transcriptText.normalizedForStorage,
                                     freeMemoText: freeMemo.normalizedForStorage,
                                     durationSeconds: recordedDuration > 0 ? recordedDuration : nil,
+                                    caregiverName: caregiverName.normalizedForStorage,
                                     bodyTemperature: vitalResult.values.bodyTemperature,
                                     systolicBP: vitalResult.values.systolicBP,
                                     diastolicBP: vitalResult.values.diastolicBP,
